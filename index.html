@@ -655,6 +655,13 @@
             color: var(--text-dark);
         }
 
+        /* CTA en páginas de servicio */
+        .service-cta {
+            text-align: center;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+
         /* FOOTER */
         footer {
             background: var(--primary);
@@ -749,7 +756,7 @@
                 <div class="contact-card">
                     <h3>📍 Ubicación</h3>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.8!2d-100.389!3d20.588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM1JzE2LjgiTiAxMDDCsDIzJzIwLjQiVw!5e0!3m2!1ses!2smx!4v1234567890" width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3734.848391785678!2d-100.41994492494988!3d20.58183900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1738366800000!5m2!1ses!2smx" width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="contact-card">
@@ -921,7 +928,17 @@
                 <p>✓ En línea</p>
                 <p>✓ Híbrido</p>
             </div>
+
+            <div class="service-cta">
+                <button class="btn-cta btn-cta-morado" onclick="toggleForm('empresa')">
+                    Solicitar Cotización para mi Escuela
+                </button>
+            </div>
         </div>
+
+        <footer>
+            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
+        </footer>
     </div>
 
     <!-- PÁGINA CORPORATIVO -->
@@ -978,7 +995,17 @@
                 <p>✓ En línea</p>
                 <p>✓ Híbrido</p>
             </div>
+
+            <div class="service-cta">
+                <button class="btn-cta btn-cta-morado" onclick="toggleForm('empresa')">
+                    Solicitar Cotización para mi Empresa
+                </button>
+            </div>
         </div>
+
+        <footer>
+            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
+        </footer>
     </div>
 
     <!-- PÁGINA CLÍNICA -->
@@ -998,7 +1025,17 @@
                 <h3>Servicios disponibles</h3>
                 <p>Próximamente agregaremos más información sobre nuestros servicios de consulta privada.</p>
             </div>
+
+            <div class="service-cta">
+                <button class="btn-cta btn-cta-rosa" onclick="toggleForm('personal')">
+                    Agendar una Cita Personal
+                </button>
+            </div>
         </div>
+
+        <footer>
+            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
+        </footer>
     </div>
 
     <!-- PÁGINA PSICOMETRÍA -->
@@ -1018,7 +1055,17 @@
                 <h3>Servicios de evaluación</h3>
                 <p>Próximamente agregaremos más información sobre nuestros servicios de psicometría.</p>
             </div>
+
+            <div class="service-cta">
+                <button class="btn-cta btn-cta-morado" onclick="toggleForm('empresa')">
+                    Solicitar Cotización
+                </button>
+            </div>
         </div>
+
+        <footer>
+            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
+        </footer>
     </div>
 
     <script>
