@@ -83,6 +83,25 @@
             z-index: 1;
         }
 
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 2rem;
+            display: block;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
@@ -680,6 +699,10 @@
                 font-size: 3rem;
             }
 
+            .hero-logo {
+                width: 150px;
+            }
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
@@ -707,6 +730,7 @@
     <div id="main-page" class="page active">
         <section class="hero">
             <div class="hero-content">
+                <img src="logo.png" alt="Bienestar Emocional Logo" class="hero-logo">
                 <h1>Bienestar Emocional</h1>
                 <p class="hero-subtitle">La salud mental es un camino que se transita mejor en compañía</p>
             </div>
