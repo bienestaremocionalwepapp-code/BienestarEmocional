@@ -32,6 +32,41 @@
             line-height: 1.7;
         }
 
+        /* LOADING SPINNER */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(139, 95, 168, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
         /* CONTROL DE PÁGINAS */
         .page {
             display: none;
@@ -302,6 +337,13 @@
         
         .map-container {
             margin-top: 1rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+            border-radius: 10px;
         }
         
         .contact-links {
@@ -726,12 +768,18 @@
     </style>
 </head>
 <body>
+    <!-- LOADING OVERLAY -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando información...</div>
+    </div>
+
     <!-- PÁGINA PRINCIPAL -->
-    <div id="main-page" class="page active">
+    <div id="main-page" class="page">
         <section class="hero">
             <div class="hero-content">
-                <img src="logo.png" alt="Bienestar Emocional Logo" class="hero-logo">
-                <h1>Bienestar Emocional</h1>
+                <img id="hero-logo" src="" alt="Bienestar Emocional Logo" class="hero-logo">
+                <h1 id="hero-title">Bienestar Emocional</h1>
                 <p class="hero-subtitle">La salud mental es un camino que se transita mejor en compañía</p>
             </div>
         </section>
@@ -768,7 +816,7 @@
                 <div class="service-card empresarial" onclick="showService('psicometria')">
                     <span class="service-icon">📊</span>
                     <h3>Evaluaciones Especializadas</h3>
-                    <p>Psicometría profesional para procesos de selección y desarrollo</p>
+                    <p>Psicometría profesional y evaluaciones psicológicas</p>
                     <button class="btn btn-empresarial">Conocer Más</button>
                 </div>
             </div>
@@ -779,28 +827,18 @@
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>📍 Ubicación</h3>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d933.7121042886963!2d-100.41822163041992!3d20.581838999999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35b4e2e6e8e8f%3A0x8e8e8e8e8e8e8e8e!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1738366800000!5m2!1ses!2smx" width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="map-container" id="map-container">
+                        <!-- El mapa se cargará dinámicamente -->
                     </div>
                 </div>
                 <div class="contact-card">
                     <h3>💬 Contacto Directo</h3>
-                    <div class="contact-links">
-                        <a href="https://wa.me/524425839311" target="_blank" class="contact-link whatsapp">
-                            <span>📱</span> WhatsApp: +52 442 583 9311
-                        </a>
-                        <a href="mailto:bienestaremocional58@gmail.com" class="contact-link email">
-                            <span>📧</span> bienestaremocional58@gmail.com
-                        </a>
+                    <div class="contact-links" id="contact-links">
+                        <!-- Los contactos se cargarán dinámicamente -->
                     </div>
                     <h3 style="margin-top: 2rem;">🌐 Redes Sociales</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/bienestar_emocional01?igsh=eGNwanZjdThhaDRk" target="_blank" class="social-link">
-                            📷 Instagram
-                        </a>
-                        <a href="https://www.facebook.com/share/1N7W3VwGrb/" target="_blank" class="social-link">
-                            👥 Facebook
-                        </a>
+                    <div class="social-links" id="social-links">
+                        <!-- Las redes sociales se cargarán dinámicamente -->
                     </div>
                 </div>
             </div>
@@ -1042,12 +1080,61 @@
 
         <div class="content-section">
             <div class="intro-text">
-                <p>Brindamos atención psicológica profesional y personalizada para niños, adolescentes y adultos en un espacio seguro, confidencial y empático.</p>
+                <p>Brindamos atención psicológica profesional y personalizada para niños, adolescentes y adultos en un espacio seguro, confidencial y empático. Nuestro enfoque se centra en el bienestar integral de cada persona, respetando su ritmo y necesidades particulares.</p>
             </div>
 
             <div class="service-detail">
-                <h3>Servicios disponibles</h3>
-                <p>Próximamente agregaremos más información sobre nuestros servicios de consulta privada.</p>
+                <h3>Atención Infantil (3-12 años)</h3>
+                <p>Terapia especializada para niñas y niños que enfrentan dificultades emocionales, conductuales o de desarrollo.</p>
+                <ul>
+                    <li>Terapia de juego</li>
+                    <li>Manejo de emociones y conductas</li>
+                    <li>Dificultades de aprendizaje y atención</li>
+                    <li>Ansiedad y miedos infantiles</li>
+                    <li>Adaptación a cambios familiares</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Atención a Adolescentes (13-18 años)</h3>
+                <p>Acompañamiento especializado en esta etapa de cambios y descubrimiento personal.</p>
+                <ul>
+                    <li>Ansiedad y depresión</li>
+                    <li>Autoestima e identidad</li>
+                    <li>Relaciones interpersonales</li>
+                    <li>Manejo de estrés escolar</li>
+                    <li>Orientación vocacional</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Atención a Adultos (18+ años)</h3>
+                <p>Terapia individual enfocada en el crecimiento personal y el bienestar emocional.</p>
+                <ul>
+                    <li>Ansiedad y trastornos del estado de ánimo</li>
+                    <li>Duelo y pérdidas</li>
+                    <li>Relaciones de pareja y familiares</li>
+                    <li>Desarrollo personal y autoconocimiento</li>
+                    <li>Manejo del estrés laboral</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Terapia de Pareja</h3>
+                <p>Espacio para fortalecer la comunicación y resolver conflictos en la relación.</p>
+                <ul>
+                    <li>Comunicación efectiva</li>
+                    <li>Resolución de conflictos</li>
+                    <li>Reconstrucción de confianza</li>
+                    <li>Fortalecimiento del vínculo</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Modalidades disponibles:</strong></p>
+                <p>✓ Presencial - En nuestro consultorio</p>
+                <p>✓ En línea - Videollamada segura y confidencial</p>
+                <p><strong>Primera sesión:</strong> Evaluación inicial y diseño de plan terapéutico personalizado</p>
             </div>
 
             <div class="service-cta">
@@ -1067,22 +1154,80 @@
         <div class="service-header">
             <button class="btn back-btn" onclick="showMain()">← Volver al Inicio</button>
             <h1>📊 Evaluaciones Especializadas</h1>
-            <p>Psicometría profesional</p>
+            <p>Psicometría profesional y evaluaciones psicológicas</p>
         </div>
 
         <div class="content-section">
             <div class="intro-text">
-                <p>Aplicación e interpretación de pruebas psicométricas para procesos de reclutamiento, selección y evaluación del desarrollo personal y profesional.</p>
+                <p>Realizamos evaluaciones psicológicas integrales utilizando herramientas psicométricas validadas y estandarizadas. Nuestros servicios están dirigidos tanto a organizaciones para procesos de selección y desarrollo, como a personas que requieren evaluaciones clínicas especializadas.</p>
             </div>
 
             <div class="service-detail">
-                <h3>Servicios de evaluación</h3>
-                <p>Próximamente agregaremos más información sobre nuestros servicios de psicometría.</p>
+                <h3>Evaluaciones Psicológicas Clínicas</h3>
+                <p>Evaluaciones especializadas para el ámbito personal y clínico:</p>
+                <ul>
+                    <li>Evaluación de inteligencia (WAIS, WISC, Raven)</li>
+                    <li>Evaluación de personalidad (MMPI, 16PF, Big Five)</li>
+                    <li>Evaluación neuropsicológica</li>
+                    <li>Evaluación de trastornos específicos (ansiedad, depresión, TDAH)</li>
+                    <li>Evaluación del desarrollo infantil y adolescente</li>
+                    <li>Evaluación vocacional y de aptitudes</li>
+                    <li>Informes psicológicos para trámites legales, médicos o educativos</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Evaluaciones Psicométricas Empresariales</h3>
+                <p>Herramientas para la gestión del talento humano:</p>
+                <ul>
+                    <li>Evaluación de competencias laborales</li>
+                    <li>Pruebas de selección de personal (Cleaver, Kostick, Terman Merrill)</li>
+                    <li>Evaluación de clima laboral</li>
+                    <li>Evaluación de riesgos psicosociales (NOM-035)</li>
+                    <li>Assessment de liderazgo y potencial</li>
+                    <li>Evaluación de equipos de trabajo</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Proceso de Evaluación</h3>
+                <p>Nuestro proceso garantiza resultados confiables y profesionales:</p>
+                <ul>
+                    <li>Entrevista inicial para definir objetivos</li>
+                    <li>Aplicación de batería de pruebas seleccionadas</li>
+                    <li>Análisis e interpretación de resultados</li>
+                    <li>Elaboración de informe profesional detallado</li>
+                    <li>Sesión de retroalimentación y orientación</li>
+                </ul>
+            </div>
+
+            <div class="service-detail">
+                <h3>Áreas de Aplicación</h3>
+                <p>Nuestras evaluaciones son útiles en diversos contextos:</p>
+                <ul>
+                    <li>Diagnóstico clínico y diseño de tratamiento</li>
+                    <li>Selección y reclutamiento de personal</li>
+                    <li>Desarrollo organizacional</li>
+                    <li>Orientación vocacional</li>
+                    <li>Peritajes y dictámenes legales</li>
+                    <li>Admisión a programas educativos</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Entrega de resultados:</strong></p>
+                <p>✓ Informe psicológico profesional</p>
+                <p>✓ Sesión de interpretación de resultados</p>
+                <p>✓ Recomendaciones y orientación personalizada</p>
+                <p><strong>Tiempo de entrega:</strong> 5-10 días hábiles según la complejidad</p>
             </div>
 
             <div class="service-cta">
+                <button class="btn-cta btn-cta-rosa" onclick="showMain(); setTimeout(() => toggleForm('personal'), 100);" style="margin-right: 1rem; margin-bottom: 1rem;">
+                    Evaluación Personal
+                </button>
                 <button class="btn-cta btn-cta-morado" onclick="showMain(); setTimeout(() => toggleForm('empresa'), 100);">
-                    Solicitar Cotización
+                    Evaluación Empresarial
                 </button>
             </div>
         </div>
@@ -1093,10 +1238,215 @@
     </div>
 
     <script>
-        // URL de Google Apps Script (configurar después)
-        let SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0s5wpP0zqhRkOCKiStL-nKhBi0JUwR63q-sX8O7uvLj3uGMqIArhR42KFTTIh_hybgA/exec';
+        // ========================================
+        // CONFIGURACIÓN
+        // ========================================
+        // IMPORTANTE: Reemplaza esta URL con la URL de tu Google Apps Script
+        // La obtienes después de hacer "Implementar > Nueva implementación"
+        const SCRIPT_URL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI';
 
-        // Navegación entre páginas
+        // Parámetros globales cargados desde Google Sheets
+        let parametrosGlobales = null;
+
+        // ========================================
+        // CARGAR PARÁMETROS AL INICIAR
+        // ========================================
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('🚀 Iniciando carga de parámetros...');
+            await cargarParametros();
+        });
+
+        // ========================================
+        // FUNCIÓN: CARGAR PARÁMETROS DESDE GOOGLE SHEETS
+        // ========================================
+        async function cargarParametros() {
+            try {
+                // Mostrar loading
+                const loading = document.getElementById('loading-overlay');
+                
+                // Verificar si la URL está configurada
+                if (SCRIPT_URL === 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI') {
+                    console.warn('⚠️ URL de Google Apps Script no configurada');
+                    // Usar valores por defecto
+                    usarValoresPorDefecto();
+                    ocultarLoading();
+                    return;
+                }
+
+                console.log('📡 Solicitando parámetros a:', SCRIPT_URL);
+
+                // Hacer la petición con timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
+
+                const response = await fetch(SCRIPT_URL + '?action=obtenerParametros', {
+                    method: 'GET',
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                const result = await response.json();
+                console.log('📥 Respuesta recibida:', result);
+
+                if (result.status === 'success' && result.data) {
+                    parametrosGlobales = result.data;
+                    aplicarParametros(result.data);
+                    console.log('✅ Parámetros aplicados correctamente');
+                } else {
+                    console.error('❌ Error en la respuesta:', result.message);
+                    usarValoresPorDefecto();
+                }
+
+            } catch (error) {
+                console.error('❌ Error al cargar parámetros:', error);
+                usarValoresPorDefecto();
+            } finally {
+                ocultarLoading();
+            }
+        }
+
+        // ========================================
+        // FUNCIÓN: APLICAR PARÁMETROS AL HTML
+        // ========================================
+        function aplicarParametros(params) {
+            console.log('🎨 Aplicando parámetros al HTML...');
+
+            // 1. LOGO
+            const logo = document.getElementById('hero-logo');
+            if (params.logo && params.logo !== '__' && params.logo.trim() !== '') {
+                // Si el logo viene como URL o base64
+                if (params.logo.startsWith('http')) {
+                    logo.src = params.logo;
+                } else if (params.logo.startsWith('data:image')) {
+                    logo.src = params.logo;
+                } else {
+                    // Si es base64 sin el prefijo
+                    logo.src = 'data:image/png;base64,' + params.logo;
+                }
+            } else {
+                // Logo por defecto (placeholder)
+                logo.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="%238B5FA8" width="200" height="200"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="60" fill="white">BE</text></svg>';
+            }
+
+            // 2. TÍTULO
+            if (params.nombre) {
+                document.getElementById('hero-title').textContent = params.nombre;
+                document.title = params.nombre;
+            }
+
+            // 3. MAPA
+            if (params.mapa && params.mapa !== '__') {
+                const mapContainer = document.getElementById('map-container');
+                let embedUrl = params.mapa;
+                
+                // Convertir diferentes formatos de Google Maps a embed
+                if (params.mapa.includes('maps.app.goo.gl') || params.mapa.includes('goo.gl')) {
+                    // Para links cortos, crear iframe básico
+                    mapContainer.innerHTML = `
+                        <iframe 
+                            src="${params.mapa}" 
+                            width="100%" 
+                            height="250" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    `;
+                } else if (params.mapa.includes('google.com/maps')) {
+                    // Extraer coordenadas si están en la URL
+                    mapContainer.innerHTML = `
+                        <iframe 
+                            src="${params.mapa}" 
+                            width="100%" 
+                            height="250" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    `;
+                }
+            }
+
+            // 4. WHATSAPP
+            if (params.whatsapp && params.whatsapp !== '__') {
+                const contactLinks = document.getElementById('contact-links');
+                const whatsappNum = params.whatsapp.replace(/\s/g, '');
+                const whatsappLink = `https://wa.me/52${whatsappNum}`;
+                
+                contactLinks.innerHTML += `
+                    <a href="${whatsappLink}" target="_blank" class="contact-link whatsapp">
+                        <span>📱</span> WhatsApp: ${params.whatsapp}
+                    </a>
+                `;
+            }
+
+            // 5. EMAIL
+            if (params.correo && params.correo !== '__') {
+                const contactLinks = document.getElementById('contact-links');
+                contactLinks.innerHTML += `
+                    <a href="mailto:${params.correo}" class="contact-link email">
+                        <span>📧</span> ${params.correo}
+                    </a>
+                `;
+            }
+
+            // 6. REDES SOCIALES
+            const socialLinks = document.getElementById('social-links');
+            
+            if (params.instagram && params.instagram !== '__' && params.instagram.includes('instagram.com')) {
+                socialLinks.innerHTML += `
+                    <a href="${params.instagram}" target="_blank" class="social-link">
+                        📷 Instagram
+                    </a>
+                `;
+            }
+            
+            if (params.facebook && params.facebook !== '__' && params.facebook.includes('facebook.com')) {
+                socialLinks.innerHTML += `
+                    <a href="${params.facebook}" target="_blank" class="social-link">
+                        👥 Facebook
+                    </a>
+                `;
+            }
+
+            console.log('✅ Parámetros aplicados');
+        }
+
+        // ========================================
+        // FUNCIÓN: USAR VALORES POR DEFECTO
+        // ========================================
+        function usarValoresPorDefecto() {
+            console.log('⚙️ Usando valores por defecto...');
+            
+            aplicarParametros({
+                nombre: 'Bienestar Emocional',
+                logo: '',
+                facebook: 'https://www.facebook.com/share/1CD3a2fD2M/',
+                instagram: 'https://www.instagram.com/bienestar_emocional01',
+                mapa: 'https://maps.app.goo.gl/gQ4dhmGrFiXezif17',
+                whatsapp: '442 583 9311',
+                correo: 'bienestaremocional58@gmail.com'
+            });
+        }
+
+        // ========================================
+        // FUNCIÓN: OCULTAR LOADING
+        // ========================================
+        function ocultarLoading() {
+            const loading = document.getElementById('loading-overlay');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    document.getElementById('main-page').classList.add('active');
+                }, 300);
+            }, 500);
+        }
+
+        // ========================================
+        // NAVEGACIÓN ENTRE PÁGINAS
+        // ========================================
         function showService(service) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(service + '-page').classList.add('active');
@@ -1109,7 +1459,9 @@
             window.scrollTo(0, 0);
         }
 
-        // Toggle formularios
+        // ========================================
+        // TOGGLE FORMULARIOS
+        // ========================================
         function toggleForm(formType) {
             const formId = 'form-' + formType;
             const formElement = document.getElementById(formId);
@@ -1131,39 +1483,57 @@
             }
         });
 
-        // Mostrar alertas
+        // ========================================
+        // FUNCIÓN: MOSTRAR ALERTAS
+        // ========================================
         function showAlert(elementId, message, type) {
             const alertDiv = document.getElementById(elementId);
             alertDiv.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            
+            // Auto-ocultar después de 5 segundos
             setTimeout(() => {
                 alertDiv.innerHTML = '';
             }, 5000);
         }
 
-        // Enviar datos a Google Sheets
+        // ========================================
+        // FUNCIÓN: ENVIAR DATOS A GOOGLE SHEETS
+        // ========================================
         async function enviarASheet(action, data) {
-            if (!SCRIPT_URL) {
-                return { error: 'Por favor configura la URL de Google Sheets primero' };
+            // Verificar si la URL está configurada
+            if (SCRIPT_URL === 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI') {
+                return { 
+                    error: 'El sistema no está configurado. Por favor contacta al administrador.' 
+                };
             }
 
             try {
-                await fetch(SCRIPT_URL, {
+                console.log('📤 Enviando datos:', action, data);
+
+                const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ action, ...data })
                 });
 
-                return { status: 'success' };
+                const result = await response.json();
+                console.log('📥 Respuesta recibida:', result);
+
+                return result;
+
             } catch (error) {
-                console.error('Error:', error);
-                return { error: 'Error al conectar con Google Sheets' };
+                console.error('❌ Error al enviar datos:', error);
+                return { 
+                    error: 'Error de conexión. Por favor intenta nuevamente.' 
+                };
             }
         }
 
-        // Form Personal
+        // ========================================
+        // FORMULARIO: CITA PERSONAL
+        // ========================================
         document.getElementById('personalForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -1176,20 +1546,37 @@
                 preferencia: document.getElementById('per_preferencia').value
             };
 
+            // Deshabilitar botón mientras se envía
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
             const result = await enviarASheet('personal', data);
 
             if (result.error) {
                 showAlert('personal-alert', '❌ ' + result.error, 'error');
-            } else {
-                showAlert('personal-alert', '✅ Solicitud enviada exitosamente. Nos pondremos en contacto contigo pronto.', 'success');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
+            } else if (result.status === 'success') {
+                showAlert('personal-alert', '✅ ' + result.message + ' Nos pondremos en contacto contigo pronto.', 'success');
                 this.reset();
+                
+                // Cerrar formulario después de 2 segundos
                 setTimeout(() => {
                     toggleForm('personal');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Solicitud';
                 }, 2000);
+            } else {
+                showAlert('personal-alert', '❌ Error inesperado. Por favor intenta nuevamente.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
             }
         });
 
-        // Form Empresa
+        // ========================================
+        // FORMULARIO: COTIZACIÓN EMPRESA
+        // ========================================
         document.getElementById('empresaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -1203,16 +1590,31 @@
                 mensaje: document.getElementById('emp_mensaje').value
             };
 
+            // Deshabilitar botón mientras se envía
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
             const result = await enviarASheet('empresa', data);
 
             if (result.error) {
                 showAlert('empresa-alert', '❌ ' + result.error, 'error');
-            } else {
-                showAlert('empresa-alert', '✅ Solicitud enviada exitosamente. Nos pondremos en contacto contigo pronto.', 'success');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
+            } else if (result.status === 'success') {
+                showAlert('empresa-alert', '✅ ' + result.message + ' Un especialista se pondrá en contacto contigo pronto.', 'success');
                 this.reset();
+                
+                // Cerrar formulario después de 2 segundos
                 setTimeout(() => {
                     toggleForm('empresa');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Solicitud';
                 }, 2000);
+            } else {
+                showAlert('empresa-alert', '❌ Error inesperado. Por favor intenta nuevamente.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
             }
         });
     </script>
