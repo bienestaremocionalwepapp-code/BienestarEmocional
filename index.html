@@ -31,15 +31,69 @@
       padding: 3rem 1.5rem 2.5rem;
       text-align: center;
     }
-    .logo-img {
-      max-width: 100%;
-      width: 380px;
-      height: auto;
-      margin-bottom: 1.5rem;
-      border-radius: 24px;
-      box-shadow: var(--glow), 0 8px 30px rgba(0,0,0,0.5);
-      border: 3px solid rgba(255,105,180,0.3);
+
+    /* Icono tradicional de psicología (cabeza + cerebro + ondas mentales) */
+    .psych-icon {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1.5rem;
+      position: relative;
     }
+    .head-profile {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      width: 80px;
+      height: 100px;
+      background: var(--rosa-suave);
+      border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+      box-shadow: var(--glow), inset 0 5px 15px rgba(255,255,255,0.4);
+      overflow: hidden;
+    }
+    .brain-inside {
+      position: absolute;
+      top: 30px;
+      left: 10px;
+      width: 60px;
+      height: 50px;
+      background: var(--rosa-vibrante);
+      border-radius: 50%;
+      box-shadow: inset 0 5px 12px #fff8;
+    }
+    .brain-fold {
+      position: absolute;
+      background: #ff6b81;
+      border-radius: 50%;
+    }
+    .fold1 { width: 20px; height: 15px; top: 10px; left: 10px; }
+    .fold2 { width: 18px; height: 14px; top: 20px; left: 25px; }
+    .fold3 { width: 16px; height: 12px; top: 30px; left: 15px; }
+    .mind-waves {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 60px;
+    }
+    .wave {
+      position: absolute;
+      left: 50%;
+      border: 3px solid var(--morado-suave);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: pulseWave 4s infinite;
+    }
+    .wave1 { width: 40px; height: 40px; top: 0; transform: translateX(-50%); animation-delay: 0s; }
+    .wave2 { width: 60px; height: 60px; top: 10px; transform: translateX(-50%); animation-delay: 1s; }
+    .wave3 { width: 80px; height: 80px; top: 20px; transform: translateX(-50%); animation-delay: 2s; }
+
+    @keyframes pulseWave {
+      0% { transform: translateX(-50%) scale(0.5); opacity: 0.8; }
+      50% { transform: translateX(-50%) scale(1.2); opacity: 0.3; }
+      100% { transform: translateX(-50%) scale(1.8); opacity: 0; }
+    }
+
     h1 { color: var(--rosa-vibrante); font-size: 2.8rem; margin-bottom: 0.8rem; text-shadow: var(--glow); }
     .tagline { font-size: 1.5rem; color: var(--morado-suave); max-width: 90%; margin: 0 auto; }
 
@@ -140,7 +194,7 @@
 
     @media (max-width: 768px) {
       body { font-size: 1rem; }
-      .logo-img { width: 300px; }
+      .psych-icon { width: 100px; height: 100px; }
       h1 { font-size: 2.4rem; }
       h2 { font-size: 1.9rem; }
       .equipos-btn { min-width: 100%; }
@@ -150,13 +204,20 @@
 <body>
 
   <header>
-    <img src="https://files.catbox.moe/abcdefg.png" alt="Bienestar Emocional Logo" class="logo-img">
-    <!-- 
-      IMPORTANTE: Reemplaza la URL de arriba por tu propia subida permanente.
-      Sube la imagen a GitHub (misma repo) → src="logo.png"
-      O a ImgBB / Catbox y copia el link directo.
-      Esta URL es temporal solo para que funcione ahora.
-    -->
+    <div class="psych-icon">
+      <div class="head-profile">
+        <div class="brain-inside">
+          <div class="brain-fold fold1"></div>
+          <div class="brain-fold fold2"></div>
+          <div class="brain-fold fold3"></div>
+        </div>
+      </div>
+      <div class="mind-waves">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+      </div>
+    </div>
     <h1>Bienestar Emocional</h1>
     <p class="tagline">Profesionales dedicados al bienestar mental y emocional</p>
   </header>
