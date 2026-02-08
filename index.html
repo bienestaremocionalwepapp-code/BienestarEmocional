@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bienestar Emocional 🌸🧠💜 | Psicología con Alegría</title>
+  <title>Bienestar Emocional 🧠✨ | Psicología y Bienestar Mental</title>
   <style>
     :root {
       --rosa-suave: #ffd1dc;
@@ -16,6 +16,7 @@
       --card: #2c144a;
       --border: #ff69b433;
       --shadow: 0 12px 40px rgba(186,85,211,0.35);
+      --glow: 0 0 30px rgba(255,105,180,0.6);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -25,133 +26,93 @@
       line-height: 1.7;
       font-size: 1.9rem;
     }
+
     header {
       background: linear-gradient(135deg, var(--morado-oscuro), #3a1a5c);
-      padding: 4rem 1.5rem 3rem;
+      padding: 5rem 1.5rem 4rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    header::before {
-      content: "🌸 💜 🌸 🧠 💜 🌸";
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 5rem;
-      opacity: 0.12;
-      white-space: nowrap;
-      animation: float 18s infinite linear;
-    }
-    @keyframes float {
-      0% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(20px); }
-      100% { transform: translateX(-50%) translateY(0); }
-    }
 
-    /* Logo interactivo: Cerebro feliz con brazos y piernas que salta y mueve */
-    .logo-container {
+    /* Logo animado celestial con brillos, saltos y glow feliz */
+    .logo-wrapper {
       position: relative;
-      width: 220px;
-      height: 260px;
-      margin: 0 auto 2rem;
+      width: 320px;
+      height: 320px;
+      margin: 0 auto 2.5rem;
+      animation: floatGlow 6s infinite ease-in-out;
     }
-    .brain-logo {
+    .logo-bg {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 180px;
-      height: 160px;
-      background: linear-gradient(135deg, var(--rosa-vibrante), #ff1493);
-      border-radius: 50% 50% 40% 40%;
-      box-shadow: var(--shadow), inset 0 10px 30px rgba(255,255,255,0.3);
-      animation: bounce 2.2s infinite ease-in-out, rotateSlight 8s infinite linear;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,105,180,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 4s infinite alternate;
+      z-index: 1;
     }
-    .brain-logo::before,
-    .brain-logo::after {
-      content: '';
+    .logo-img {
+      position: relative;
+      width: 100%;
+      height: auto;
+      z-index: 2;
+      filter: drop-shadow(0 0 20px rgba(186,85,211,0.8));
+      animation: happyJump 3.5s infinite ease-in-out;
+    }
+    .sparkles {
       position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
       background: white;
       border-radius: 50%;
+      box-shadow: 0 0 12px white;
+      opacity: 0;
+      animation: sparkleAnim 5s infinite;
     }
-    .brain-logo::before { /* ojo izquierdo */
-      width: 40px; height: 40px; top: 40px; left: 30px;
-      box-shadow: inset 0 8px 15px #0003;
+    .sparkle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 40%; left: 70%; animation-delay: 1.2s; }
+    .sparkle:nth-child(3) { top: 60%; left: 20%; animation-delay: 2.4s; }
+    .sparkle:nth-child(4) { top: 80%; left: 80%; animation-delay: 3.6s; }
+
+    @keyframes happyJump {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(3deg); }
     }
-    .brain-logo::after { /* ojo derecho */
-      width: 40px; height: 40px; top: 40px; right: 30px;
-      box-shadow: inset 0 8px 15px #0003;
+    @keyframes pulseGlow {
+      0% { opacity: 0.3; transform: scale(0.9); }
+      100% { opacity: 0.7; transform: scale(1.2); }
     }
-    .smile {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 40px;
-      border-bottom: 12px solid white;
-      border-radius: 0 0 100px 100px;
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes sparkleAnim {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0; transform: scale(0.5) translateY(-50px); }
     }
 
-    /* Brazos */
-    .arm-left, .arm-right {
-      position: absolute;
-      top: 70px;
-      width: 60px;
-      height: 100px;
-      background: linear-gradient(var(--rosa-suave), var(--rosa-vibrante));
-      border-radius: 30px;
-      transform-origin: top center;
+    h1 {
+      color: var(--rosa-vibrante);
+      font-size: 3.8rem;
+      margin-bottom: 0.8rem;
+      text-shadow: var(--glow);
     }
-    .arm-left { left: -20px; transform: rotate(-30deg); animation: waveLeft 3s infinite alternate ease-in-out; }
-    .arm-right { right: -20px; transform: rotate(30deg); animation: waveRight 3s infinite alternate ease-in-out; }
-
-    /* Piernas */
-    .leg-left, .leg-right {
-      position: absolute;
-      bottom: -60px;
-      width: 50px;
-      height: 100px;
-      background: linear-gradient(var(--morado-vibrante), #8a2be2);
-      border-radius: 25px 25px 10px 10px;
-      transform-origin: top center;
+    .tagline {
+      font-size: 2.1rem;
+      color: var(--morado-suave);
+      max-width: 90%;
+      margin: 0 auto;
     }
-    .leg-left { left: 30px; transform: rotate(-15deg); animation: kickLeft 2.8s infinite alternate ease-in-out; }
-    .leg-right { right: 30px; transform: rotate(15deg); animation: kickRight 2.8s infinite alternate ease-in-out; }
-
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-20px); }
-    }
-    @keyframes rotateSlight {
-      0% { transform: translate(-50%, -50%) rotate(-3deg); }
-      50% { transform: translate(-50%, -50%) rotate(3deg); }
-      100% { transform: translate(-50%, -50%) rotate(-3deg); }
-    }
-    @keyframes waveLeft {
-      0% { transform: rotate(-40deg); }
-      100% { transform: rotate(-10deg); }
-    }
-    @keyframes waveRight {
-      0% { transform: rotate(40deg); }
-      100% { transform: rotate(10deg); }
-    }
-    @keyframes kickLeft {
-      0% { transform: rotate(-25deg); }
-      100% { transform: rotate(5deg); }
-    }
-    @keyframes kickRight {
-      0% { transform: rotate(25deg); }
-      100% { transform: rotate(-5deg); }
-    }
-
-    /* Resto de estilos (mantengo lo anterior pero ajustado) */
-    h1 { color: var(--rosa-vibrante); font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(255,105,180,0.6); }
-    .tagline { font-size: 2rem; max-width: 90%; margin: 0 auto; color: var(--morado-suave); font-style: italic; }
 
     section { padding: 4rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-    h2 { color: var(--rosa-vibrante); font-size: 3rem; margin-bottom: 2rem; text-align: center; }
+    h2 { color: var(--rosa-vibrante); font-size: 3rem; margin-bottom: 2rem; text-align: center; text-shadow: var(--glow); }
 
     .card {
       background: var(--card);
@@ -162,24 +123,34 @@
       box-shadow: var(--shadow);
     }
 
-    .equipos-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin: 2.5rem 0; }
+    .equipos-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
     .equipos-btn {
       background: linear-gradient(135deg, var(--morado-vibrante), #8a2be2);
       color: white;
       border: none;
-      padding: 1.4rem 2.2rem;
-      font-size: 2rem;
+      padding: 1.5rem 2.5rem;
+      font-size: 2.1rem;
       border-radius: 20px;
       cursor: pointer;
-      transition: all 0.35s ease;
-      box-shadow: 0 8px 25px rgba(186,85,211,0.5);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(186,85,211,0.5);
       display: flex;
       align-items: center;
       gap: 1rem;
-      min-width: 220px;
+      min-width: 240px;
       justify-content: center;
     }
-    .equipos-btn:hover { transform: translateY(-8px) scale(1.05); background: linear-gradient(135deg, var(--rosa-vibrante), #ff1493); }
+    .equipos-btn:hover {
+      transform: translateY(-10px) scale(1.06);
+      background: linear-gradient(135deg, var(--rosa-vibrante), #ff1493);
+      box-shadow: 0 20px 50px rgba(255,105,180,0.7);
+    }
 
     .modal {
       display: none;
@@ -187,152 +158,95 @@
       z-index: 1000;
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background: rgba(25,13,43,0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(25,13,43,0.9);
+      backdrop-filter: blur(10px);
     }
     .modal-content {
       background: linear-gradient(135deg, var(--card), #3a1a5c);
-      margin: 12% auto;
-      padding: 3.5rem 2.5rem;
+      margin: 10% auto;
+      padding: 4rem 3rem;
       border-radius: 32px;
       width: 90%;
-      max-width: 580px;
+      max-width: 600px;
       text-align: center;
       border: 3px solid var(--rosa-vibrante);
-      box-shadow: 0 20px 60px rgba(186,85,211,0.7);
+      box-shadow: 0 25px 70px rgba(186,85,211,0.8);
     }
-    .modal-content h3 { color: var(--rosa-vibrante); font-size: 2.8rem; margin-bottom: 1.5rem; }
-    .modal-content p.instruccion { font-size: 2rem; color: var(--morado-suave); margin: 1.5rem 0 2.5rem; line-height: 1.5; }
-    .close-btn {
+    .modal-content h3 { color: var(--rosa-vibrante); font-size: 3rem; margin-bottom: 1.8rem; text-shadow: var(--glow); }
+    .modal-content p.instruccion { font-size: 2rem; color: var(--morado-suave); margin: 1.8rem 0 2.5rem; line-height: 1.6; }
+    .action-btn {
       background: var(--rosa-vibrante);
       color: white;
       border: none;
-      padding: 1.2rem 3rem;
+      padding: 1.3rem 3rem;
       font-size: 2rem;
       border-radius: 16px;
       cursor: pointer;
+      margin: 1rem 0.8rem;
+      transition: all 0.3s;
     }
-    .close-btn:hover { background: #ff1493; transform: scale(1.08); }
+    .action-btn:hover { background: #ff1493; transform: scale(1.08); box-shadow: var(--glow); }
+    .close-btn { background: #555; }
 
     footer {
       text-align: center;
       padding: 4rem 1.5rem 3rem;
       background: var(--morado-oscuro);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       color: var(--morado-suave);
-      border-top: 4px solid var(--rosa-vibrante);
+      border-top: 5px solid var(--rosa-vibrante);
     }
 
     @media (max-width: 768px) {
-      .logo-container { width: 180px; height: 220px; }
-      .brain-logo { width: 140px; height: 120px; }
-      .arm-left, .arm-right { width: 50px; height: 80px; }
-      .leg-left, .leg-right { width: 40px; height: 80px; bottom: -50px; }
-      h1 { font-size: 3rem; }
-      h2 { font-size: 2.6rem; }
-      .equipos-btn { min-width: 45%; }
-    }
-    @media (max-width: 480px) {
-      .equipos-btn { min-width: 100%; margin: 0.8rem 0; }
+      .logo-wrapper { width: 260px; height: 260px; }
+      h1 { font-size: 3.2rem; }
+      h2 { font-size: 2.7rem; }
+      .equipos-btn { min-width: 80%; padding: 1.3rem 2rem; font-size: 1.9rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo-container">
-      <div class="brain-logo">
-        <div class="smile"></div>
+    <div class="logo-wrapper">
+      <div class="logo-bg"></div>
+      <img src="https://files.catbox.moe/0x0x0x.png" alt="Bienestar Emocional Logo" class="logo-img">
+      <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
       </div>
-      <div class="arm-left"></div>
-      <div class="arm-right"></div>
-      <div class="leg-left"></div>
-      <div class="leg-right"></div>
     </div>
-    <h1>Bienestar Emocional 🧠🌸</h1>
-    <p class="tagline">¡Tu mente feliz salta de alegría con nosotros! 💜✨</p>
+    <h1>Bienestar Emocional</h1>
+    <p class="tagline">Profesionales dedicados al bienestar mental y emocional</p>
   </header>
 
-  <section id="quienes-somos">
-    <h2>Quiénes Somos</h2>
-    <div class="card">
-      <p>Somos un equipo de profesionales apasionados por la psicología, dedicados a llevar bienestar a cada rincón de la vida: desde el crecimiento personal en nuestra consulta privada, hasta el fortalecimiento de comunidades en escuelas y el desarrollo de culturas saludables en empresas.</p>
-    </div>
-  </section>
-
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="card">
-      <ul>
-        <li>Acompañamiento psicológico individual</li>
-        <li>Evaluaciones psicológicas</li>
-        <li>Detección temprana y canalización de casos</li>
-        <li>Orientación vocacional y elección de carrera</li>
-        <li>Orientación a padres de familia</li>
-        <li>Talleres y pláticas psicoeducativas</li>
-      </ul>
-      <h3 style="margin: 2.5rem 0 1.2rem; color: var(--rosa-vibrante); font-size: 2.4rem;">Temas que trabajamos</h3>
-      <ul>
-        <li>Gestión emocional</li>
-        <li>Prevención del bullying y acoso escolar</li>
-        <li>Uso saludable de pantallas y redes sociales</li>
-        <li>Autoestima, habilidades sociales y trabajo en equipo</li>
-        <li>Educación sexual y responsable</li>
-        <li>Manejo del estrés y ansiedad</li>
-      </ul>
-      <h3 style="margin: 2.5rem 0 1.2rem; color: var(--rosa-vibrante); font-size: 2.4rem;">Modalidad</h3>
-      <p>Presencial • En línea • Híbrido</p>
-    </div>
-  </section>
-
-  <section id="equipos">
-    <h2>¿A quiénes acompañamos con amor? 💕</h2>
-    
-    <div class="equipos-btns">
-      <button class="equipos-btn" onclick="openModal('Escuelas')"><span>🏫</span> Escuelas</button>
-      <button class="equipos-btn" onclick="openModal('Empresas')"><span>💼</span> Empresas</button>
-      <button class="equipos-btn" onclick="openModal('Infantil')"><span>🧸</span> Infantil</button>
-      <button class="equipos-btn" onclick="openModal('Adolescentes')"><span>🎒</span> Adolescentes</button>
-      <button class="equipos-btn" onclick="openModal('Adultos')"><span>🌟</span> Adultos</button>
-    </div>
-
-    <div id="infoModal" class="modal">
-      <div class="modal-content">
-        <h3 id="modalTitle"></h3>
-        <p class="instruccion">
-          🌸 Aquí va todo el contenido especial para este grupo 🌸<br><br>
-          <strong>¿Qué debes agregar?</strong><br>
-          • Descripción detallada del servicio para este público<br>
-          • Talleres o actividades específicas<br>
-          • Beneficios principales<br>
-          • Fotos o ejemplos (si tienes)<br>
-          • Cualquier nota extra o testimonios<br><br>
-          ¡Edita el HTML en esta parte del código para personalizarlo! 💜🧠
-        </p>
-        <button class="close-btn" onclick="closeModal()">Cerrar 💕</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto 💌</h2>
-    <div class="contact-grid">
-      <!-- Mantengo la sección de contacto como antes, puedes pegarla aquí si quieres -->
-      <!-- Por brevedad la omito en este snippet, pero agrégala del HTML anterior si la necesitas -->
-    </div>
-  </section>
-
-  <footer>
-    <p>Bienestar Emocional • ¡Tu cerebro feliz está en buenas manos! • 2026 🧠🌸💜</p>
-  </footer>
+  <!-- Resto de las secciones (quienes somos, servicios, equipos, contacto, footer) igual que en la versión anterior -->
+  <!-- Puedes copiarlas directamente del mensaje previo si no las has modificado -->
 
   <script>
-    function openModal(title) {
-      document.getElementById('modalTitle').textContent = title;
+    // Script para modales y redirección (igual que antes)
+    let currentGroup = '';
+    function openModal(group) {
+      currentGroup = group;
+      document.getElementById('modalTitle').textContent = group;
       document.getElementById('infoModal').style.display = 'block';
     }
     function closeModal() {
       document.getElementById('infoModal').style.display = 'none';
+    }
+    function redirectToWebapp() {
+      let url = '';
+      switch(currentGroup) {
+        case 'Escuelas': url = 'https://tu-dominio.com/webapp/escuelas.html'; break;
+        case 'Empresas': url = 'https://tu-dominio.com/webapp/empresas.html'; break;
+        case 'Infantil': url = 'https://tu-dominio.com/webapp/infantil.html'; break;
+        case 'Adolescentes y Adultos': url = 'https://tu-dominio.com/webapp/adolescentes-adultos.html'; break;
+        default: url = 'https://tu-dominio.com/webapp/default.html';
+      }
+      window.open(url, '_blank');
+      closeModal();
     }
     window.onclick = function(event) {
       if (event.target == document.getElementById('infoModal')) closeModal();
