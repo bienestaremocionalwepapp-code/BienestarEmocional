@@ -19,13 +19,7 @@
             --texto-medio: #5A5570;
             --blanco: #FFFFFF;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             font-size: 16px;
@@ -37,14 +31,37 @@
             min-height: 100vh;
         }
 
-        /* Mensaje de uso exclusivo en celular */
+        header, .hero, .section, .contacto, .mapa, footer {
+            padding: 1.5rem;
+            margin: 1rem;
+            border-radius: 16px;
+            background: var(--blanco);
+            box-shadow: 0 6px 20px rgba(197, 163, 255, 0.2);
+        }
+
+        .logo { max-width: 160px; margin: 0 auto 1rem; display: block; }
+        h1 { font-size: 2rem; text-align: center; }
+        h2 { font-size: 1.6rem; text-align: center; margin-bottom: 1rem; }
+
+        .servicios-buttons, .contacto-grid, .social-links, .banner-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .service-btn, .banner-btn {
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .mapa iframe { width: 100%; height: 300px; border-radius: 16px; border: none; }
+
+        /* Mensaje de uso exclusivo */
         .mobile-only-message {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.85);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.75);
             color: white;
             display: flex;
             flex-direction: column;
@@ -54,18 +71,13 @@
             padding: 2rem;
             z-index: 9999;
             font-size: 1.3rem;
-            line-height: 1.4;
         }
 
         .mobile-only-message h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--rosa-intenso);
-        }
-
-        .mobile-only-message p {
-            margin-bottom: 2rem;
         }
 
         .mobile-only-message .close-btn {
@@ -73,103 +85,33 @@
             color: white;
             padding: 1rem 2.5rem;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
             border: none;
-            transition: all 0.3s;
+            margin-top: 2rem;
         }
 
-        .mobile-only-message .close-btn:hover {
-            background: var(--rosa-intenso);
-        }
-
-        header, .hero, .section, .contacto, .mapa, footer {
-            padding: 1.5rem;
-            margin: 1rem;
-            border-radius: 16px;
-            background: var(--blanco);
-            box-shadow: 0 6px 20px rgba(197, 163, 255, 0.2);
-        }
-
-        .logo {
-            max-width: 160px;
-            margin: 0 auto 1rem;
-            display: block;
-        }
-
-        h1 { font-size: 2rem; text-align: center; }
-        h2 { font-size: 1.6rem; text-align: center; margin-bottom: 1rem; }
-
-        .servicios-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .service-btn {
-            padding: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .contacto-grid, .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contacto-item {
-            padding: 1.2rem;
-        }
-
-        .banner-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            padding: 2rem 1rem;
-            margin: 2rem 1rem;
-            background: var(--blanco);
-            border-radius: 20px;
-        }
-
-        .banner-btn {
-            padding: 1.5rem;
-            font-size: 1.4rem;
-            justify-content: center;
-        }
-
-        .mapa iframe {
-            height: 300px;
-        }
-
+        /* En pantallas grandes: advertencia + desenfoque */
         @media (min-width: 481px) {
-            body {
-                background: #000;
-                color: #fff;
-                font-size: 1.2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100vh;
-                text-align: center;
+            .mobile-only-message {
+                position: fixed;
+                z-index: 9999;
             }
             .content-wrapper {
-                display: none;
-            }
-            .mobile-only-message {
-                position: static;
-                height: auto;
-                background: transparent;
+                filter: blur(6px);
+                pointer-events: none;
+                opacity: 0.6;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Mensaje de uso exclusivo en celular -->
+    <!-- Mensaje de advertencia (siempre visible en PC, se puede cerrar) -->
     <div class="mobile-only-message" id="mobileMessage">
-        <h1>¡Bienvenido!</h1>
-        <p>Este sitio está diseñado <strong>exclusivamente para uso en celular</strong>.</p>
-        <p>Por favor abre esta página desde tu teléfono para la mejor experiencia.</p>
+        <h1>¡Solo para celular!</h1>
+        <p>Este sitio está optimizado exclusivamente para verse y usarse en teléfono móvil.</p>
+        <p>Para la mejor experiencia, ábrelo desde tu celular.</p>
         <button class="close-btn" onclick="document.getElementById('mobileMessage').style.display='none'">Continuar de todos modos</button>
     </div>
 
@@ -182,18 +124,60 @@
 
         <div class="hero">
             <h2>¿Quiénes Somos?</h2>
-            <p>Creemos que la salud mental no es un destino, sino un camino que se transita mejor cuando es en compañía...</p>
+            <p>Creemos que la salud mental no es un destino, sino un camino que se transita mejor cuando es en compañía. Somos un equipo de profesionales apasionados por la psicología...</p>
         </div>
 
-        <!-- Aquí va el resto del contenido original: servicios generales, solicitud de servicios, modales, contacto, mapa, footer -->
-        <!-- Puedes pegar el resto del body original aquí, manteniendo la estructura -->
+        <div class="section">
+            <h2>Servicios Generales</h2>
+            <p><strong>Servicios:</strong></p>
+            <ul>
+                <li>Acompañamiento psicológico individual</li>
+                <li>Evaluaciones psicológicas</li>
+                <!-- ... resto de la lista ... -->
+            </ul>
+            <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
+        </div>
 
-        <!-- Botones banner al final -->
+        <!-- Solicitud de Servicios (botones en columna) -->
+        <div class="section">
+            <h2>Solicitud de Servicios</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem;">Selecciona el servicio que necesitas</p>
+            <div class="servicios-buttons">
+                <button class="service-btn" onclick="openModal('empresas')">🏢 Empresas</button>
+                <button class="service-btn" onclick="openModal('escuelas')">🏫 Escuelas</button>
+                <button class="service-btn" onclick="openModal('Infantil')">👶 Niños Y Adolescentes</button>
+                <button class="service-btn" onclick="openModal('adultos')">👨‍🦱 Adultos</button>
+            </div>
+        </div>
+
+        <!-- Tus modales aquí (pega los que tenías: modalEmpresas, modalEscuelas, etc.) -->
+
+        <div class="contacto">
+            <h2>Contacto</h2>
+            <div class="contacto-grid">
+                <div class="contacto-item"><strong>📞 Teléfono</strong><p>442 283 9311</p></div>
+                <div class="contacto-item"><strong>📧 Correo</strong><p>Bienestaremocional58@gmail.com</p></div>
+                <div class="contacto-item"><strong>🕐 Horario</strong><p>12:00 pm a 6:00 pm</p></div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank">Instagram</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📍 Cómo Llegar</h2>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.8!2d-100.417727!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Botones banner grandes al final -->
         <div class="banner-buttons">
-            <a href="tel:4422839311" class="banner-btn" style="background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio));">
+            <a href="tel:4422839311" class="banner-btn" style="background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio)); color: white;">
                 <i class="fas fa-phone-volume"></i> Llamar: 4422839311
             </a>
-            <a href="https://wa.me/4422839311?text=Hola%21%20Me%20gustar%C3%ADa%20agendar%20una%20cita%20o%20saber%20m%C3%A1s" class="banner-btn whatsapp-banner">
+            <a href="https://wa.me/4422839311?text=Hola%21%20Me%20gustar%C3%ADa%20agendar%20una%20cita%20o%20saber%20m%C3%A1s" class="banner-btn" style="background: #25D366; color: white;">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp: 4422839311
             </a>
         </div>
@@ -205,10 +189,29 @@
     </div>
 
     <script>
-        // Script de modales (mantener si lo usas)
-        function openModal(tipo) { /* ... */ }
-        function closeModal(tipo) { /* ... */ }
-        window.onclick = function(event) { /* ... */ }
+        function openModal(tipo) {
+            const modals = {
+                'empresas': 'modalEmpresas',
+                'escuelas': 'modalEscuelas',
+                'Infantil': 'modalInfantil',
+                'adultos': 'modalAdultos'
+            };
+            document.getElementById(modals[tipo]).style.display = 'block';
+        }
+        function closeModal(tipo) {
+            const modals = {
+                'empresas': 'modalEmpresas',
+                'escuelas': 'modalEscuelas',
+                'Infantil': 'modalInfantil',
+                'adultos': 'modalAdultos'
+            };
+            document.getElementById(modals[tipo]).style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
