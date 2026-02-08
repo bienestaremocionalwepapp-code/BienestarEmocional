@@ -26,63 +26,48 @@
 
         body {
             font-family: 'Inter', sans-serif;
+            font-size: 18px;
             color: var(--texto-oscuro);
+            line-height: 1.6;
             background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--morado-claro) 100%);
-            overflow-x: hidden;
         }
 
-        /* Estilos para los iframes */
-        .section-iframe {
-            width: 100%;
-            border: none;
-            display: block;
-            overflow: hidden;
-        }
-
-        /* Alturas específicas para cada sección */
-        #iframe-header {
-            height: 200px;
-        }
-
-        #iframe-quienes-somos {
-            height: 300px;
-            margin: 2rem 0;
-        }
-
-        #iframe-servicios {
-            height: 600px;
-            margin: 2rem 0;
-        }
-
-        #iframe-contacto {
-            height: 500px;
-            margin: 2rem 0;
-        }
-
-        #iframe-mapa {
-            height: 500px;
-            margin: 2rem 0;
-        }
-
-        #iframe-footer {
-            height: 100px;
-            margin-top: 3rem;
-        }
-
-        /* Loading spinner */
-        .iframe-loading {
-            text-align: center;
+        header {
+            background: var(--blanco);
             padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(197, 163, 255, 0.2);
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
             color: var(--morado-intenso);
-            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Contenedor principal */
-        .main-container {
-            min-height: 100vh;
+        .hero {
+            background: var(--blanco);
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(197, 163, 255, 0.15);
         }
 
-        /* Estilos para sección de botones y modales */
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
         .section {
             background: var(--blanco);
             padding: 3rem 2rem;
@@ -213,236 +198,302 @@
             box-shadow: 0 8px 24px rgba(197, 163, 255, 0.6);
         }
 
-        /* Responsive */
+        .contacto {
+            background: var(--blanco);
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(197, 163, 255, 0.15);
+            text-align: center;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contacto-item {
+            padding: 1.5rem;
+            background: var(--rosa-claro);
+            border-radius: 16px;
+        }
+
+        .contacto-item strong {
+            color: var(--morado-intenso);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--morado-intenso);
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: var(--morado-claro);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--morado-intenso);
+            color: var(--blanco);
+            transform: translateY(-3px);
+        }
+
+        .mapa {
+            margin-top: 3rem;
+        }
+
+        .mapa iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            border: none;
+        }
+
+        footer {
+            background: var(--morado-intenso);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
         @media (max-width: 768px) {
-            #iframe-header {
-                height: 180px;
+            h1 {
+                font-size: 1.8rem;
             }
 
-            #iframe-quienes-somos {
-                height: 350px;
-            }
-
-            #iframe-servicios {
-                height: 800px;
-            }
-
-            #iframe-contacto {
-                height: 600px;
-            }
-
-            .servicios-buttons {
-                grid-template-columns: 1fr;
+            h2 {
+                font-size: 1.5rem;
             }
 
             .modal-content {
                 margin: 10% 5%;
                 padding: 2rem;
             }
+
+            .servicios-buttons {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        
-        <!-- SECCIÓN: HEADER -->
-        <div class="iframe-loading" id="loading-header">Cargando encabezado...</div>
-        <iframe 
-            id="iframe-header"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=header"
-            onload="hideLoading('header')"
-            title="Header Bienestar Emocional">
-        </iframe>
+    <header>
+        <img src="plantillas_Images/Bienestar Emocional.imagen.124245.png" alt="Bienestar Emocional" class="logo">
+        <h1>Terapeutas En Constante Actualización Académica</h1>
+    </header>
 
-        <!-- SECCIÓN: QUIÉNES SOMOS -->
-        <div class="iframe-loading" id="loading-quienes-somos">Cargando información...</div>
-        <iframe 
-            id="iframe-quienes-somos"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=quienes_somos"
-            onload="hideLoading('quienes-somos')"
-            title="¿Quiénes Somos?">
-        </iframe>
-
-        <!-- SECCIÓN: SERVICIOS GENERALES -->
-        <div class="iframe-loading" id="loading-servicios">Cargando servicios...</div>
-        <iframe 
-            id="iframe-servicios"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=servicios"
-            onload="hideLoading('servicios')"
-            title="Servicios Generales">
-        </iframe>
-
-        <!-- SECCIÓN: BOTONES DE SERVICIOS Y MODALES (NO USAR IFRAME) -->
-        <div class="section">
-            <h2>Solicitud de Servicios</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Selecciona el servicio que necesitas</p>
-            
-            <div class="servicios-buttons">
-                <button class="service-btn" onclick="openModal('empresas')">🏢 Empresas</button>
-                <button class="service-btn" onclick="openModal('escuelas')">🏫 Escuelas</button>
-                <button class="service-btn" onclick="openModal('infantil')">👶 Infantil</button>
-                <button class="service-btn" onclick="openModal('adultos')">👨‍🦱 Adolescentes y Adultos</button>
-            </div>
-        </div>
-
-        <!-- MODAL EMPRESAS -->
-        <div id="modalEmpresas" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('empresas')">&times;</span>
-                <h3>🏢 Bienestar Emocional en tu Empresa</h3>
-                <p>Acompañamos a las organizaciones en el cuidado del bienestar emocional de sus colaboradores, a través de atención psicológica profesional y estrategias preventivas que favorecen entornos laborales saludables, en apego a la NOM-035-STPS.</p>
-                
-                <p><strong>Servicios:</strong></p>
-                <ul>
-                    <li>Atención psicológica a trabajadores (ético, confidencial y seguro)</li>
-                    <li>Seguimiento y reportes de avance respetando la confidencialidad</li>
-                    <li>Talleres, pláticas y conferencias</li>
-                    <li>Evaluaciones psicométricas para reclutamiento</li>
-                </ul>
-
-                <p><strong>Temas:</strong></p>
-                <ul>
-                    <li>Inteligencia emocional</li>
-                    <li>Liderazgo</li>
-                    <li>Trabajo en equipo</li>
-                    <li>Comunicación asertiva y efectiva</li>
-                    <li>Prevención de violencia y acoso laboral</li>
-                    <li>Manejo del estrés y prevención del burnout</li>
-                    <li>Factores de riesgo psicosocial (NOM-035)</li>
-                </ul>
-
-                <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
-
-                <div style="text-align: center;">
-                    <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=empresa" class="cta-button">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL ESCUELAS -->
-        <div id="modalEscuelas" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('escuelas')">&times;</span>
-                <h3>🏫 Espacios de Aprendizaje y Bienestar Emocional</h3>
-                <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas, niños y adolescentes, integrando a las familias como parte fundamental del proceso. Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo.</p>
-                
-                <p><strong>Servicios:</strong></p>
-                <ul>
-                    <li>Acompañamiento psicológico individual</li>
-                    <li>Evaluaciones psicológicas</li>
-                    <li>Detección temprana y canalización de casos</li>
-                    <li>Orientación vocacional y elección de carrera</li>
-                    <li>Orientación a padres de familia</li>
-                    <li>Talleres y pláticas psicoeducativas</li>
-                </ul>
-
-                <p><strong>Temas:</strong></p>
-                <ul>
-                    <li>Gestión emocional</li>
-                    <li>Prevención del bullying y acoso escolar</li>
-                    <li>Uso saludable de pantallas y redes sociales</li>
-                    <li>Autoestima, habilidades sociales y trabajo en equipo</li>
-                    <li>Educación sexual y responsable</li>
-                    <li>Manejo del estrés y ansiedad</li>
-                </ul>
-
-                <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
-
-                <div style="text-align: center;">
-                    <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=escuela" class="cta-button">Solicitar Cotización</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL INFANTIL -->
-        <div id="modalInfantil" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('infantil')">&times;</span>
-                <h3>👶 Terapia Psicológica Infantil</h3>
-                <p>El proceso de la terapia psicológica infantil se lleva de la siguiente manera:</p>
-                
-                <ul>
-                    <li><strong>Primera sesión:</strong> Entrevista con mamá y/o papá para conocer el motivo de consulta, desarrollo del niño, conducta, emociones y contexto familiar y escolar.</li>
-                    <li><strong>Sesiones posteriores:</strong> Directamente con el niño/a en un espacio terapéutico adecuado a su edad, utilizando juego, dibujo y actividades terapéuticas.</li>
-                    <li><strong>Valoración psicológica:</strong> Cuando se requiere mayor información, aplicamos pruebas psicológicas para comprender mejor su mundo emocional y conductual.</li>
-                    <li><strong>Acompañamiento a los padres:</strong> Brindamos retroalimentación y estrategias prácticas para apoyar al niño desde casa.</li>
-                </ul>
-
-                <p>Trabajo desde un enfoque integrativo, combinando la terapia de juego con la evaluación psicológica y neuropsicológica.</p>
-
-                <div style="text-align: center;">
-                    <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL ADULTOS -->
-        <div id="modalAdultos" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('adultos')">&times;</span>
-                <h3>👨‍🦱 Psicología de Adolescentes y Adultos</h3>
-                <p>La psicología de adolescentes y adultos estudia el desarrollo, comportamiento y procesos mentales en estas etapas.</p>
-                
-                <p><strong>Psicología Adolescente (10-19/20 años):</strong></p>
-                <ul>
-                    <li>Formación de identidad</li>
-                    <li>Cambios físicos y emocionales</li>
-                    <li>Socialización y desarrollo de relaciones</li>
-                    <li>Manejo de emociones complejas</li>
-                </ul>
-
-                <p><strong>Psicología Adulta:</strong></p>
-                <ul>
-                    <li>Consolidación de la personalidad</li>
-                    <li>Relaciones profundas y estables</li>
-                    <li>Estabilidad profesional</li>
-                    <li>Adaptación a cambios evolutivos</li>
-                    <li>Gestión del estrés y ansiedad</li>
-                </ul>
-
-                <div style="text-align: center;">
-                    <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN: CONTACTO -->
-        <div class="iframe-loading" id="loading-contacto">Cargando contacto...</div>
-        <iframe 
-            id="iframe-contacto"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=contacto"
-            onload="hideLoading('contacto')"
-            title="Contacto">
-        </iframe>
-
-        <!-- SECCIÓN: MAPA -->
-        <div class="iframe-loading" id="loading-mapa">Cargando ubicación...</div>
-        <iframe 
-            id="iframe-mapa"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=mapa"
-            onload="hideLoading('mapa')"
-            title="Ubicación">
-        </iframe>
-
-        <!-- SECCIÓN: FOOTER -->
-        <div class="iframe-loading" id="loading-footer">Cargando...</div>
-        <iframe 
-            id="iframe-footer"
-            class="section-iframe"
-            src="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?section=footer"
-            onload="hideLoading('footer')"
-            title="Footer">
-        </iframe>
-
+    <div class="hero">
+        <h2>¿Quiénes Somos?</h2>
+        <p>Creemos que la salud mental no es un destino, sino un camino que se transita mejor cuando es en compañía. Somos un equipo de profesionales apasionados por la psicología, dedicados a llevar bienestar a cada rincón de la vida: desde el crecimiento personal en nuestra consulta privada, hasta el fortalecimiento de comunidades en escuelas y el desarrollo de culturas saludables en empresas.</p>
     </div>
 
+    <div class="section">
+        <h2>Servicios Generales</h2>
+        <p><strong>Servicios:</strong></p>
+        <ul>
+            <li>Acompañamiento psicológico individual</li>
+            <li>Evaluaciones psicológicas</li>
+            <li>Detección temprana y canalización de casos</li>
+            <li>Orientación vocacional y elección de carrera</li>
+            <li>Orientación a padres de familia</li>
+            <li>Talleres y pláticas psicoeducativas</li>
+        </ul>
+
+        <p><strong>Temas que trabajamos:</strong></p>
+        <ul>
+            <li>Gestión emocional</li>
+            <li>Prevención del bullying y acoso escolar</li>
+            <li>Uso saludable de pantallas y redes sociales</li>
+            <li>Autoestima, habilidades sociales y trabajo en equipo</li>
+            <li>Educación sexual y responsable</li>
+            <li>Manejo del estrés y ansiedad</li>
+        </ul>
+
+        <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
+    </div>
+
+    <div class="section">
+        <h2>Solicitud de Servicios</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Selecciona el servicio que necesitas</p>
+        
+        <div class="servicios-buttons">
+            <button class="service-btn" onclick="openModal('empresas')">🏢 Empresas</button>
+            <button class="service-btn" onclick="openModal('escuelas')">🏫 Escuelas</button>
+            <button class="service-btn" onclick="openModal('infantil')">👶 Infantil</button>
+            <button class="service-btn" onclick="openModal('adultos')">👨‍🦱 Adolescentes y Adultos</button>
+        </div>
+    </div>
+
+    <!-- MODAL EMPRESAS -->
+    <div id="modalEmpresas" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('empresas')">&times;</span>
+            <h3>🏢 Bienestar Emocional en tu Empresa</h3>
+            <p>Acompañamos a las organizaciones en el cuidado del bienestar emocional de sus colaboradores, a través de atención psicológica profesional y estrategias preventivas que favorecen entornos laborales saludables, en apego a la NOM-035-STPS.</p>
+            
+            <p><strong>Servicios:</strong></p>
+            <ul>
+                <li>Atención psicológica a trabajadores (ético, confidencial y seguro)</li>
+                <li>Seguimiento y reportes de avance respetando la confidencialidad</li>
+                <li>Talleres, pláticas y conferencias</li>
+                <li>Evaluaciones psicométricas para reclutamiento</li>
+            </ul>
+
+            <p><strong>Temas:</strong></p>
+            <ul>
+                <li>Inteligencia emocional</li>
+                <li>Liderazgo</li>
+                <li>Trabajo en equipo</li>
+                <li>Comunicación asertiva y efectiva</li>
+                <li>Prevención de violencia y acoso laboral</li>
+                <li>Manejo del estrés y prevención del burnout</li>
+                <li>Factores de riesgo psicosocial (NOM-035)</li>
+            </ul>
+
+            <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
+
+            <div style="text-align: center;">
+                <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=empresa" class="cta-button">Solicitar Cotización</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ESCUELAS -->
+    <div id="modalEscuelas" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('escuelas')">&times;</span>
+            <h3>🏫 Espacios de Aprendizaje y Bienestar Emocional</h3>
+            <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas, niños y adolescentes, integrando a las familias como parte fundamental del proceso. Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo.</p>
+            
+            <p><strong>Servicios:</strong></p>
+            <ul>
+                <li>Acompañamiento psicológico individual</li>
+                <li>Evaluaciones psicológicas</li>
+                <li>Detección temprana y canalización de casos</li>
+                <li>Orientación vocacional y elección de carrera</li>
+                <li>Orientación a padres de familia</li>
+                <li>Talleres y pláticas psicoeducativas</li>
+            </ul>
+
+            <p><strong>Temas:</strong></p>
+            <ul>
+                <li>Gestión emocional</li>
+                <li>Prevención del bullying y acoso escolar</li>
+                <li>Uso saludable de pantallas y redes sociales</li>
+                <li>Autoestima, habilidades sociales y trabajo en equipo</li>
+                <li>Educación sexual y responsable</li>
+                <li>Manejo del estrés y ansiedad</li>
+            </ul>
+
+            <p><strong>Modalidad:</strong> Presencial | En línea | Híbrido</p>
+
+            <div style="text-align: center;">
+                <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=escuela" class="cta-button">Solicitar Cotización</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL INFANTIL -->
+    <div id="modalInfantil" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('infantil')">&times;</span>
+            <h3>👶 Terapia Psicológica Infantil</h3>
+            <p>El proceso de la terapia psicológica infantil se lleva de la siguiente manera:</p>
+            
+            <ul>
+                <li><strong>Primera sesión:</strong> Entrevista con mamá y/o papá para conocer el motivo de consulta, desarrollo del niño, conducta, emociones y contexto familiar y escolar.</li>
+                <li><strong>Sesiones posteriores:</strong> Directamente con el niño/a en un espacio terapéutico adecuado a su edad, utilizando juego, dibujo y actividades terapéuticas.</li>
+                <li><strong>Valoración psicológica:</strong> Cuando se requiere mayor información, aplicamos pruebas psicológicas para comprender mejor su mundo emocional y conductual.</li>
+                <li><strong>Acompañamiento a los padres:</strong> Brindamos retroalimentación y estrategias prácticas para apoyar al niño desde casa.</li>
+            </ul>
+
+            <p>Trabajo desde un enfoque integrativo, combinando la terapia de juego con la evaluación psicológica y neuropsicológica.</p>
+
+            <div style="text-align: center;">
+                <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ADULTOS -->
+    <div id="modalAdultos" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adultos')">&times;</span>
+            <h3>👨‍🦱 Psicología de Adolescentes y Adultos</h3>
+            <p>La psicología de adolescentes y adultos estudia el desarrollo, comportamiento y procesos mentales en estas etapas.</p>
+            
+            <p><strong>Psicología Adolescente (10-19/20 años):</strong></p>
+            <ul>
+                <li>Formación de identidad</li>
+                <li>Cambios físicos y emocionales</li>
+                <li>Socialización y desarrollo de relaciones</li>
+                <li>Manejo de emociones complejas</li>
+            </ul>
+
+            <p><strong>Psicología Adulta:</strong></p>
+            <ul>
+                <li>Consolidación de la personalidad</li>
+                <li>Relaciones profundas y estables</li>
+                <li>Estabilidad profesional</li>
+                <li>Adaptación a cambios evolutivos</li>
+                <li>Gestión del estrés y ansiedad</li>
+            </ul>
+
+            <div style="text-align: center;">
+                <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-grid">
+            <div class="contacto-item">
+                <strong>📞 Teléfono</strong>
+                <p>442 400 3376</p>
+            </div>
+            <div class="contacto-item">
+                <strong>📧 Correo</strong>
+                <p>Bienestaremocional58@gmail.com</p>
+            </div>
+            <div class="contacto-item">
+                <strong>🕐 Horario</strong>
+                <p>12:00 pm a 6:00 pm</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📍 Cómo Llegar</h2>
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.8!2d-100.417727!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Bienestar Emocional. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        // Funciones para controlar modales
         function openModal(tipo) {
             const modals = {
                 'empresas': 'modalEmpresas',
@@ -463,41 +514,13 @@
             document.getElementById(modals[tipo]).style.display = 'none';
         }
 
-        // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
-
-        // Ocultar mensaje de carga cuando el iframe carga
-        function hideLoading(section) {
-            const loadingElement = document.getElementById('loading-' + section);
-            if (loadingElement) {
-                loadingElement.style.display = 'none';
-            }
-        }
-
-        // Auto-ajustar altura de iframes (fallback)
-        window.addEventListener('load', function() {
-            const iframes = document.querySelectorAll('.section-iframe');
-            
-            iframes.forEach(function(iframe) {
-                iframe.addEventListener('load', function() {
-                    try {
-                        // Intentar ajustar la altura automáticamente
-                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        const height = iframeDoc.body.scrollHeight;
-                        if (height > 0) {
-                            iframe.style.height = height + 'px';
-                        }
-                    } catch (e) {
-                        // Si hay error de CORS, mantener altura predefinida
-                        console.log('No se puede ajustar altura automáticamente debido a CORS');
-                    }
-                });
-            });
-        });
     </script>
 </body>
 </html>
+
+
