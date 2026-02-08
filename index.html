@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bienestar Emocional 🧠✨ | Psicología y Bienestar Mental</title>
+  <title>Bienestar Emocional | Psicología y Bienestar Mental</title>
   <style>
     :root {
       --rosa-vibrante: #ff69b4;
@@ -16,7 +16,7 @@
       --card: #2c144a;
       --border: #ff69b433;
       --shadow: 0 12px 40px rgba(186,85,211,0.35);
-      --glow: 0 0 40px rgba(255,105,180,0.7);
+      --glow: 0 0 25px rgba(255,105,180,0.5);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -24,173 +24,34 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      font-size: 1.125rem; /* 18px base */
+      font-size: 1.125rem; /* 18px */
     }
-
     header {
       background: linear-gradient(135deg, var(--morado-oscuro), #3a1a5c);
-      padding: 4rem 1.5rem 3rem;
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-
-    /* Logo recreado con CSS fiel al original */
-    .logo-container {
-      position: relative;
-      width: 320px;
-      height: 320px;
-      margin: 0 auto 2rem;
-      animation: floatGlow 8s infinite ease-in-out;
+    .logo-img {
+      max-width: 100%;
+      width: 380px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      border-radius: 24px;
+      box-shadow: var(--glow), 0 8px 30px rgba(0,0,0,0.5);
+      border: 3px solid rgba(255,105,180,0.3);
     }
-    .brain {
-      position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 170px;
-      height: 150px;
-      background: radial-gradient(circle at 30% 40%, white, var(--rosa-vibrante) 35%, #c71585 70%);
-      border-radius: 50% 50% 40% 40%;
-      box-shadow: var(--glow), inset 0 10px 30px rgba(255,255,255,0.5);
-      animation: pulseBrain 4.5s infinite alternate;
-    }
-    .brain::before, .brain::after {
-      content: '';
-      position: absolute;
-      background: #fff8;
-      border-radius: 50%;
-      box-shadow: inset 0 4px 10px #0003;
-    }
-    .brain::before { width: 40px; height: 40px; top: 40px; left: 30px; }
-    .brain::after { width: 40px; height: 40px; top: 40px; right: 30px; }
-
-    .personaje {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 170px;
-      animation: jumpHappy 3.2s infinite ease-in-out;
-    }
-    .cabeza {
-      width: 65px;
-      height: 65px;
-      background: var(--morado-vibrante);
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      left: 22px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .ojos {
-      position: absolute;
-      top: 18px;
-      left: 12px;
-      width: 40px;
-      height: 18px;
-    }
-    .ojo {
-      width: 14px;
-      height: 14px;
-      background: white;
-      border-radius: 50%;
-      position: absolute;
-      box-shadow: inset 0 3px 6px #0003;
-    }
-    .ojo-izq { left: 0; }
-    .ojo-der { right: 0; }
-    .boca {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 35px;
-      height: 18px;
-      border-bottom: 9px solid white;
-      border-radius: 0 0 50px 50px;
-    }
-    .brazos {
-      position: absolute;
-      top: 45px;
-      left: 0;
-      width: 110px;
-      height: 70px;
-    }
-    .brazo {
-      position: absolute;
-      width: 22px;
-      height: 65px;
-      background: linear-gradient(var(--morado-suave), var(--morado-vibrante));
-      border-radius: 11px;
-      transform-origin: top center;
-    }
-    .brazo-izq { left: 10px; transform: rotate(-65deg); animation: waveArm 2.8s infinite alternate; }
-    .brazo-der { right: 10px; transform: rotate(65deg); animation: waveArm 2.8s infinite alternate reverse; }
-    .piernas {
-      position: absolute;
-      bottom: 0;
-      left: 25px;
-      width: 60px;
-      height: 70px;
-    }
-    .pierna {
-      position: absolute;
-      width: 22px;
-      height: 60px;
-      background: var(--morado-vibrante);
-      border-radius: 11px;
-    }
-    .pierna-izq { left: 0; animation: kickLeg 3.5s infinite alternate; }
-    .pierna-der { right: 0; animation: kickLeg 3.5s infinite alternate reverse; }
-
-    .corazon {
-      position: absolute;
-      top: -50px;
-      right: -40px;
-      font-size: 55px;
-      animation: heartFloat 4.5s infinite ease-in-out;
-    }
-
-    @keyframes jumpHappy { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-70px); } }
-    @keyframes pulseBrain { 0% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(1.1); } }
-    @keyframes floatGlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
-    @keyframes waveArm { 0% { transform: rotate(-65deg); } 100% { transform: rotate(-35deg); } }
-    @keyframes kickLeg { 0% { transform: rotate(-20deg); } 100% { transform: rotate(20deg); } }
-    @keyframes heartFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-35px) scale(1.25); } }
-
-    .sparkles { position: absolute; inset: 0; pointer-events: none; }
-    .sparkle {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 18px white, 0 0 35px var(--rosa-vibrante);
-      opacity: 0;
-      animation: twinkle 5.5s infinite;
-    }
-    .sparkle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-    .sparkle:nth-child(2) { top: 40%; left: 80%; animation-delay: 1s; }
-    .sparkle:nth-child(3) { top: 70%; left: 25%; animation-delay: 2s; }
-    .sparkle:nth-child(4) { top: 55%; left: 70%; animation-delay: 3s; }
-    .sparkle:nth-child(5) { top: 85%; left: 40%; animation-delay: 4s; }
-
-    @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1.6); } }
-
-    h1 { color: var(--rosa-vibrante); font-size: 2.8rem; margin-bottom: 1rem; text-shadow: var(--glow); }
+    h1 { color: var(--rosa-vibrante); font-size: 2.8rem; margin-bottom: 0.8rem; text-shadow: var(--glow); }
     .tagline { font-size: 1.5rem; color: var(--morado-suave); max-width: 90%; margin: 0 auto; }
 
-    section { padding: 3.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-    h2 { color: var(--rosa-vibrante); font-size: 2.4rem; margin-bottom: 1.8rem; text-align: center; text-shadow: var(--glow); }
+    section { padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    h2 { color: var(--rosa-vibrante); font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; }
 
     .card {
       background: var(--card);
-      border: 2px dashed var(--rosa-vibrante);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
       box-shadow: var(--shadow);
     }
 
@@ -199,26 +60,22 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.2rem;
-      margin: 2.5rem 0;
+      margin: 2rem 0;
     }
     .equipos-btn {
       background: linear-gradient(135deg, var(--morado-vibrante), #8a2be2);
       color: white;
       border: none;
-      padding: 1.2rem 2rem;
-      font-size: 1.8rem;
-      border-radius: 18px;
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      border-radius: 16px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(186,85,211,0.5);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      min-width: 220px;
-      justify-content: center;
+      transition: all 0.3s;
+      min-width: 200px;
+      box-shadow: 0 6px 20px rgba(186,85,211,0.4);
     }
     .equipos-btn:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       background: linear-gradient(135deg, var(--rosa-vibrante), #ff1493);
     }
 
@@ -231,96 +88,75 @@
       width: 100%;
       height: 100%;
       background: rgba(25,13,43,0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
     }
     .modal-content {
       background: linear-gradient(135deg, var(--card), #3a1a5c);
-      margin: 12% auto;
-      padding: 3rem 2.5rem;
-      border-radius: 24px;
+      margin: 15% auto;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
       width: 90%;
-      max-width: 550px;
+      max-width: 520px;
       text-align: center;
-      border: 3px solid var(--rosa-vibrante);
-      box-shadow: 0 20px 60px rgba(186,85,211,0.7);
+      border: 2px solid var(--rosa-vibrante);
+      box-shadow: 0 15px 50px rgba(186,85,211,0.6);
       position: relative;
     }
     .modal-close-x {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.5rem;
+      top: 10px;
+      right: 15px;
+      font-size: 2.8rem;
       color: var(--rosa-vibrante);
       cursor: pointer;
       font-weight: bold;
       line-height: 1;
     }
-    .modal-close-x:hover { color: white; transform: scale(1.2); }
-    .modal-content h3 { color: var(--rosa-vibrante); font-size: 2.5rem; margin-bottom: 1.5rem; text-shadow: var(--glow); }
-    .modal-content p.instruccion { font-size: 1.6rem; color: var(--morado-suave); margin: 1.5rem 0 2rem; line-height: 1.5; }
+    .modal-close-x:hover { color: white; transform: scale(1.15); }
+    .modal-content h3 { color: var(--rosa-vibrante); font-size: 2.2rem; margin-bottom: 1.2rem; }
+    .modal-content p.instruccion { font-size: 1.4rem; color: var(--morado-suave); margin: 1.2rem 0 1.8rem; }
     .action-btn {
       background: var(--rosa-vibrante);
       color: white;
       border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.7rem;
-      border-radius: 14px;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.5rem;
+      border-radius: 12px;
       cursor: pointer;
-      margin: 1rem 0.6rem;
+      margin: 0.8rem 0.5rem;
       transition: all 0.3s;
     }
-    .action-btn:hover { background: #ff1493; transform: scale(1.05); box-shadow: var(--glow); }
+    .action-btn:hover { background: #ff1493; transform: scale(1.05); }
     .close-btn { background: #555; }
 
     footer {
       text-align: center;
-      padding: 3rem 1.5rem 2.5rem;
+      padding: 2.5rem 1.5rem;
       background: var(--morado-oscuro);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--morado-suave);
-      border-top: 4px solid var(--rosa-vibrante);
+      border-top: 3px solid var(--rosa-vibrante);
     }
 
     @media (max-width: 768px) {
-      body { font-size: 1rem; } /* ajusta un poco más pequeño en móviles si 18px se siente grande */
-      .logo-container { width: 260px; height: 260px; }
-      h1 { font-size: 2.6rem; }
-      h2 { font-size: 2.1rem; }
-      .equipos-btn { min-width: 90%; font-size: 1.6rem; }
+      body { font-size: 1rem; }
+      .logo-img { width: 300px; }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.9rem; }
+      .equipos-btn { min-width: 100%; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo-container">
-      <div class="brain"></div>
-      <div class="personaje">
-        <div class="cabeza">
-          <div class="ojos">
-            <div class="ojo ojo-izq"></div>
-            <div class="ojo ojo-der"></div>
-          </div>
-          <div class="boca"></div>
-        </div>
-        <div class="brazos">
-          <div class="brazo brazo-izq"></div>
-          <div class="brazo brazo-der"></div>
-        </div>
-        <div class="piernas">
-          <div class="pierna pierna-izq"></div>
-          <div class="pierna pierna-der"></div>
-        </div>
-        <div class="corazon">💖</div>
-      </div>
-      <div class="sparkles">
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-      </div>
-    </div>
+    <img src="https://files.catbox.moe/abcdefg.png" alt="Bienestar Emocional Logo" class="logo-img">
+    <!-- 
+      IMPORTANTE: Reemplaza la URL de arriba por tu propia subida permanente.
+      Sube la imagen a GitHub (misma repo) → src="logo.png"
+      O a ImgBB / Catbox y copia el link directo.
+      Esta URL es temporal solo para que funcione ahora.
+    -->
     <h1>Bienestar Emocional</h1>
     <p class="tagline">Profesionales dedicados al bienestar mental y emocional</p>
   </header>
@@ -343,7 +179,7 @@
         <li>Orientación a padres de familia</li>
         <li>Talleres y pláticas psicoeducativas</li>
       </ul>
-      <h3 style="margin: 2rem 0 1rem; color: var(--rosa-vibrante); font-size: 1.8rem;">Temas que trabajamos</h3>
+      <h3 style="margin: 1.8rem 0 1rem; color: var(--rosa-vibrante);">Temas que trabajamos</h3>
       <ul>
         <li>Gestión emocional</li>
         <li>Prevención del bullying y acoso escolar</li>
@@ -352,7 +188,7 @@
         <li>Educación sexual y responsable</li>
         <li>Manejo del estrés y ansiedad</li>
       </ul>
-      <h3 style="margin: 2rem 0 1rem; color: var(--rosa-vibrante); font-size: 1.8rem;">Modalidad</h3>
+      <h3 style="margin: 1.8rem 0 1rem; color: var(--rosa-vibrante);">Modalidad</h3>
       <p>Presencial • En línea • Híbrido</p>
     </div>
   </section>
@@ -378,7 +214,7 @@
           • Talleres o intervenciones adaptadas<br>
           • Beneficios esperados<br>
           • Ejemplos o casos (sin datos personales)<br><br>
-          Haz clic en "Abrir WebApp" para ir a la página dedicada.
+          Pulsa "Abrir WebApp" para ir a la página dedicada.
         </p>
         <button class="action-btn" onclick="redirectToWebapp()">Abrir WebApp</button>
         <button class="action-btn close-btn" onclick="closeModal()">Cerrar</button>
@@ -388,21 +224,35 @@
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.8rem; margin-top: 2.5rem;">
-      <div class="contact-item" style="background: var(--card); padding: 1.8rem; border-radius: 16px; text-align: center; border: 1px solid var(--border);">
+    <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+      <div class="contact-item" style="background: var(--card); padding: 1.5rem; border-radius: 14px; text-align: center; border: 1px solid var(--border);">
         <strong>Facebook</strong><br>
-        <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank" style="color: var(--morado-suave); text-decoration: none; font-weight: bold;">Visítanos</a>
+        <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank" style="color: var(--morado-suave);">Visítanos</a>
       </div>
-      <!-- Los demás contact-item igual, solo ajusté padding para que queden bien con 18px -->
-      <!-- ... copia los otros 4 contact-item del código anterior si los necesitas ... -->
+      <div class="contact-item" style="background: var(--card); padding: 1.5rem; border-radius: 14px; text-align: center; border: 1px solid var(--border);">
+        <strong>Instagram</strong><br>
+        <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank" style="color: var(--morado-suave);">@bienestar_emocional01</a>
+      </div>
+      <div class="contact-item" style="background: var(--card); padding: 1.5rem; border-radius: 14px; text-align: center; border: 1px solid var(--border);">
+        <strong>Correo</strong><br>
+        <a href="mailto:Bienestaremocional58@gmail.com" style="color: var(--morado-suave);">Bienestaremocional58@gmail.com</a>
+      </div>
+      <div class="contact-item" style="background: var(--card); padding: 1.5rem; border-radius: 14px; text-align: center; border: 1px solid var(--border);">
+        <strong>Teléfono</strong><br>
+        <a href="tel:+524424003376" style="color: var(--morado-suave);">442 400 3376</a>
+      </div>
+      <div class="contact-item" style="background: var(--card); padding: 1.5rem; border-radius: 14px; text-align: center; border: 1px solid var(--border);">
+        <strong>Horario</strong><br>
+        12:00 pm a 6:00 pm
+      </div>
     </div>
 
-    <h3 style="text-align:center; margin:2.5rem 0 1.2rem; color:var(--rosa-vibrante); font-size:2rem;">Ubicación</h3>
-    <iframe style="width:100%; height:360px; border:none; border-radius:16px; margin-top:1.5rem; box-shadow:var(--shadow);" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.0000000000005!2d-100.417727!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1730000000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
+    <h3 style="text-align:center; margin:2.5rem 0 1rem; color:var(--rosa-vibrante); font-size:1.9rem;">Ubicación</h3>
+    <iframe style="width:100%; height:340px; border:none; border-radius:14px; margin-top:1rem; box-shadow:var(--shadow);" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.0000000000005!2d-100.417727!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1730000000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
   <footer>
-    <p>Bienestar Emocional • Profesionales en salud mental • 2026 🧠✨</p>
+    <p>Bienestar Emocional • Profesionales en salud mental • 2026</p>
   </footer>
 
   <script>
