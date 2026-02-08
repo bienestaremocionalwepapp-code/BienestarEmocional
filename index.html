@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienestar Emocional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8B5FA8;
-            --primary-dark: #6B3F88;
-            --accent-empresarial: #6DB1C3;
-            --accent-adolescente: #D97BA4;
-            --accent-infantil: #E89FB5;
-            --bg-cream: #f8f6f2;
-            --bg-white: #ffffff;
-            --text-dark: #2d2d2d;
-            --text-light: #6a6a6a;
-            --border: #e5e2dc;
+            --rosa-claro: #FFE5F0;
+            --rosa-medio: #FFB6D9;
+            --rosa-intenso: #FF85C0;
+            --morado-claro: #E8D5FF;
+            --morado-medio: #C5A3FF;
+            --morado-intenso: #A67FFF;
+            --texto-oscuro: #2D2A3D;
+            --texto-medio: #5A5570;
+            --blanco: #FFFFFF;
+            --sombra-suave: 0 8px 32px rgba(197, 163, 255, 0.15);
         }
 
         * {
@@ -26,107 +28,49 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--morado-claro) 100%);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* LOADING SPINNER */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(139, 95, 168, 0.95);
+        .loading {
             display: flex;
-            align-items: center;
             justify-content: center;
-            z-index: 99999;
-            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--morado-intenso);
         }
 
         .spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--rosa-medio);
+            border-top: 4px solid var(--morado-intenso);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin-right: 1rem;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        .loading-text {
-            color: white;
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
+        header {
+            background: var(--blanco);
+            box-shadow: var(--sombra-suave);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.6s ease-out;
         }
 
-        /* CONTROL DE PÁGINAS */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(135deg, rgba(139, 95, 168, 0.1) 0%, rgba(217, 123, 164, 0.1) 100%);
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(139, 95, 168, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-logo {
-            width: 200px;
-            height: auto;
-            margin: 0 auto 2rem;
-            display: block;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        @keyframes fadeInDown {
+        @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-30px);
@@ -137,417 +81,59 @@
             }
         }
 
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary) 0%, #D97BA4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: var(--primary-dark);
-        }
-
-        /* ABOUT SECTION */
-        .about-section {
+        .container {
             max-width: 1200px;
-            margin: 4rem auto;
-            padding: 4rem 2rem;
-            background: var(--bg-white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(139, 95, 168, 0.15);
-        }
-
-        .about-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .about-section p {
-            font-size: 1.15rem;
-            line-height: 1.9;
-            color: var(--text-dark);
-            text-align: center;
-            max-width: 900px;
             margin: 0 auto;
-        }
-
-        /* SERVICES GRID */
-        .services-section {
-            max-width: 1400px;
-            margin: 4rem auto;
             padding: 0 2rem;
         }
 
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background: var(--bg-white);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(139, 95, 168, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--card-color) 0%, var(--card-color) 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(139, 95, 168, 0.2);
-            border-color: var(--card-color);
-        }
-
-        .service-card.empresarial {
-            --card-color: var(--accent-empresarial);
-        }
-
-        .service-card.adolescente {
-            --card-color: var(--accent-adolescente);
-        }
-
-        .service-card.infantil {
-            --card-color: var(--accent-infantil);
-        }
-
-        .service-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-        }
-
-        .btn-empresarial {
-            background: linear-gradient(135deg, var(--accent-empresarial) 0%, #5896a4 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(109, 177, 195, 0.4);
-        }
-
-        .btn-adolescente {
-            background: linear-gradient(135deg, var(--accent-adolescente) 0%, #c06184 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(217, 123, 164, 0.4);
-        }
-
-        .btn-infantil {
-            background: linear-gradient(135deg, var(--accent-infantil) 0%, #d67899 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(232, 159, 181, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        /* CONTACT SECTION */
-        .contact-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-card {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(139, 95, 168, 0.1);
-        }
-        
-        .contact-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .map-container {
-            margin-top: 1rem;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: 0;
-            border-radius: 10px;
-        }
-        
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .contact-link {
+        .header-content {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-cream);
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .contact-link span {
-            font-size: 1.5rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .social-link {
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, #D97BA4 100%);
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(139, 95, 168, 0.3);
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        
-        .cta-buttons {
-            display: flex;
             gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn-cta {
-            padding: 1.5rem 3rem;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        
-        .btn-cta-rosa {
-            background: linear-gradient(135deg, #E89FB5 0%, #D97BA4 100%);
-            color: white;
-        }
-        
-        .btn-cta-morado {
-            background: linear-gradient(135deg, #8B5FA8 0%, #6B3F88 100%);
-            color: white;
-        }
-        
-        .btn-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-        }
-        
-        /* FORM OVERLAY */
-        .form-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.7);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .form-popup {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        
-        .form-popup h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            text-align: center;
         }
 
-        .subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
+        .logo-container {
+            flex-shrink: 0;
         }
-        
-        .close-form {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2.5rem;
-            cursor: pointer;
-            color: var(--primary);
-            line-height: 1;
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            border-radius: 12px;
             transition: transform 0.3s ease;
         }
-        
-        .close-form:hover {
-            transform: scale(1.2);
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--morado-intenso);
+            line-height: 1.2;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-dark);
+        section {
+            background: var(--blanco);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: var(--sombra-suave);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
         }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--bg-cream);
-        }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
 
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(139, 95, 168, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .alert {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -555,1066 +141,548 @@
             }
         }
 
-        .alert-success {
-            background: #f0fdf4;
-            border-color: #22c55e;
-            color: #166534;
-        }
-
-        .alert-error {
-            background: #fef2f2;
-            border-color: #ef4444;
-            color: #991b1b;
-        }
-
-        /* SERVICE PAGE HEADER */
-        .service-header {
-            background: linear-gradient(135deg, var(--service-color) 0%, var(--service-color-dark) 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--morado-intenso);
+            margin-bottom: 1.5rem;
             position: relative;
-            overflow: hidden;
+            display: inline-block;
         }
 
-        .service-header::before {
+        h2::after {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -150px;
-            right: -150px;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rosa-intenso), var(--morado-medio));
+            border-radius: 2px;
         }
 
-        .service-header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+        .servicios-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .service-header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .back-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-            padding: 0.8rem 2rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
+        .servicio-item {
+            background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--morado-claro) 100%);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--morado-intenso);
             transition: all 0.3s ease;
         }
 
-        .back-btn:hover {
-            background: white;
-            color: var(--service-color);
+        .servicio-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 16px rgba(197, 163, 255, 0.3);
         }
 
-        /* CONTENT SECTIONS */
-        .content-section {
-            max-width: 1000px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .content-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
-        }
-
-        .service-detail {
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(139, 95, 168, 0.1);
-            border-left: 5px solid var(--service-color);
-        }
-
-        .service-detail h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .service-detail h4 {
+        .servicio-item h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--morado-intenso);
             font-size: 1.3rem;
-            color: var(--primary);
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .service-detail p {
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin-bottom: 1rem;
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
         }
 
-        .service-detail ul {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .service-detail li {
-            padding: 0.8rem 0;
-            color: var(--text-dark);
+        .service-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
             position: relative;
-            padding-left: 2rem;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
         }
 
-        .service-detail li::before {
-            content: '✓';
+        .service-card:nth-child(1) { animation-delay: 0.4s; }
+        .service-card:nth-child(2) { animation-delay: 0.5s; }
+        .service-card:nth-child(3) { animation-delay: 0.6s; }
+        .service-card:nth-child(4) { animation-delay: 0.7s; }
+
+        .service-card::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            color: var(--service-color);
-            font-weight: bold;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 48px rgba(197, 163, 255, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .service-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--morado-intenso);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--texto-medio);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 42, 61, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--blanco);
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--texto-medio);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close:hover {
+            background: var(--rosa-claro);
+            color: var(--morado-intenso);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content p {
+            color: var(--texto-medio);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--rosa-intenso), var(--morado-intenso));
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(197, 163, 255, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(197, 163, 255, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        footer {
+            background: var(--blanco);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            box-shadow: 0 -8px 32px rgba(197, 163, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--morado-intenso);
+            margin-bottom: 1rem;
             font-size: 1.2rem;
         }
 
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(139, 95, 168, 0.05) 0%, rgba(139, 95, 168, 0.1) 100%);
-            border: 2px solid var(--service-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+        .footer-section p,
+        .footer-section a {
+            color: var(--texto-medio);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
         }
 
-        .highlight-box p {
-            margin: 0.5rem 0;
-            font-weight: 500;
-            color: var(--primary);
+        .footer-section a:hover {
+            color: var(--morado-intenso);
         }
 
-        .intro-text {
-            background: var(--bg-white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(139, 95, 168, 0.1);
-            border-left: 5px solid var(--service-color);
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .intro-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
-        /* CTA en páginas de servicio */
-        .service-cta {
-            text-align: center;
-            margin: 3rem auto;
-            padding: 2rem;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            opacity: 0.9;
+        .social-links a:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 4px 16px rgba(197, 163, 255, 0.5);
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            h1 {
+                font-size: 1.5rem;
             }
 
-            .hero-logo {
-                width: 150px;
+            h2 {
+                font-size: 2rem;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card {
+            section {
                 padding: 2rem;
             }
 
-            .cta-buttons {
-                flex-direction: column;
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
 
-            .btn-cta {
-                width: 100%;
-            }
-
-            .form-popup {
-                padding: 2rem 1.5rem;
+            .modal-content {
+                margin: 10% 1rem;
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- LOADING OVERLAY -->
-    <div id="loading-overlay" class="loading-overlay">
+    <div id="app" class="loading">
         <div class="spinner"></div>
-        <div class="loading-text">Cargando información...</div>
+        <span>Cargando...</span>
     </div>
 
-    <!-- PÁGINA PRINCIPAL -->
-    <div id="main-page" class="page">
-        <section class="hero">
-            <div class="hero-content">
-                <img id="hero-logo" src="" alt="Bienestar Emocional Logo" class="hero-logo">
-                <h1 id="hero-title">Bienestar Emocional</h1>
-                <p class="hero-subtitle">La salud mental es un camino que se transita mejor en compañía</p>
-            </div>
-        </section>
-
-        <section class="about-section">
-            <h2>¿Quiénes somos?</h2>
-            <p>Creemos que la salud mental no es un destino, sino un camino que se transita mejor cuando es en compañía. Somos un equipo de profesionales apasionados por la psicología, dedicados a llevar bienestar a cada rincón de la vida: desde el crecimiento personal en nuestra consulta privada, hasta el fortalecimiento de comunidades en escuelas y el desarrollo de culturas saludables en empresas.</p>
-        </section>
-
-        <section class="services-section">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card infantil" onclick="showService('clinica')">
-                    <span class="service-icon">🏥</span>
-                    <h3>Clínica y Consulta Privada</h3>
-                    <p>Atención psicológica personalizada para niños, adolescentes y adultos</p>
-                    <button class="btn btn-infantil">Conocer Más</button>
-                </div>
-
-                <div class="service-card adolescente" onclick="showService('educativo')">
-                    <span class="service-icon">📚</span>
-                    <h3>Bienestar Educativo</h3>
-                    <p>Programas psicoeducativos para el desarrollo emocional en escuelas</p>
-                    <button class="btn btn-adolescente">Conocer Más</button>
-                </div>
-
-                <div class="service-card empresarial" onclick="showService('corporativo')">
-                    <span class="service-icon">💼</span>
-                    <h3>Soluciones Corporativas</h3>
-                    <p>"No solo cumplimos con la norma, cuidamos a tu equipo"</p>
-                    <button class="btn btn-empresarial">Conocer Más</button>
-                </div>
-
-                <div class="service-card empresarial" onclick="showService('psicometria')">
-                    <span class="service-icon">📊</span>
-                    <h3>Evaluaciones Especializadas</h3>
-                    <p>Psicometría profesional y evaluaciones psicológicas</p>
-                    <button class="btn btn-empresarial">Conocer Más</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <h2 class="section-title">Contáctanos</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>📍 Ubicación</h3>
-                    <div class="map-container" id="map-container">
-                        <!-- El mapa se cargará dinámicamente -->
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <h3>💬 Contacto Directo</h3>
-                    <div class="contact-links" id="contact-links">
-                        <!-- Los contactos se cargarán dinámicamente -->
-                    </div>
-                    <h3 style="margin-top: 2rem;">🌐 Redes Sociales</h3>
-                    <div class="social-links" id="social-links">
-                        <!-- Las redes sociales se cargarán dinámicamente -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="cta-buttons">
-                <button class="btn-cta btn-cta-rosa" onclick="toggleForm('personal')">
-                    Quiero agendar una cita personal
-                </button>
-                <button class="btn-cta btn-cta-morado" onclick="toggleForm('empresa')">
-                    Cotización para mi empresa o escuela
-                </button>
-            </div>
-            
-            <!-- Formulario Cita Personal -->
-            <div id="form-personal" class="form-overlay" style="display: none;">
-                <div class="form-popup">
-                    <button class="close-form" onclick="toggleForm('personal')">×</button>
-                    <h2>Agendar Cita Personal</h2>
-                    <p class="subtitle">Nos pondremos en contacto contigo para confirmar tu cita</p>
-                    <div id="personal-alert"></div>
-                    <form id="personalForm">
-                        <div class="form-group">
-                            <label for="per_nombre">Nombre completo *</label>
-                            <input type="text" id="per_nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="per_edad">Edad *</label>
-                            <input type="number" id="per_edad" min="3" max="100" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="per_email">Email *</label>
-                            <input type="email" id="per_email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="per_telefono">Teléfono *</label>
-                            <input type="tel" id="per_telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="per_motivo">Motivo de consulta *</label>
-                            <textarea id="per_motivo" required placeholder="Describe brevemente..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="per_preferencia">Preferencia de modalidad</label>
-                            <select id="per_preferencia">
-                                <option value="Presencial">Presencial</option>
-                                <option value="En línea">En línea</option>
-                                <option value="Sin preferencia">Sin preferencia</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-infantil" style="width: 100%;">Enviar Solicitud</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Formulario Cotización Empresa/Escuela -->
-            <div id="form-empresa" class="form-overlay" style="display: none;">
-                <div class="form-popup">
-                    <button class="close-form" onclick="toggleForm('empresa')">×</button>
-                    <h2>Cotización Empresarial o Educativa</h2>
-                    <p class="subtitle">Un especialista se pondrá en contacto contigo</p>
-                    <div id="empresa-alert"></div>
-                    <form id="empresaForm">
-                        <div class="form-group">
-                            <label for="emp_nombre">Nombre completo *</label>
-                            <input type="text" id="emp_nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_organizacion">Empresa o Institución Educativa *</label>
-                            <input type="text" id="emp_organizacion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_cargo">Cargo</label>
-                            <input type="text" id="emp_cargo">
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_email">Email *</label>
-                            <input type="email" id="emp_email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_telefono">Teléfono *</label>
-                            <input type="tel" id="emp_telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_tipo">Tipo de servicio</label>
-                            <select id="emp_tipo">
-                                <option value="Corporativo">Soluciones Corporativas</option>
-                                <option value="Educativo">Bienestar Educativo</option>
-                                <option value="Psicometría">Evaluaciones Especializadas</option>
-                                <option value="Varios">Varios servicios</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="emp_mensaje">Mensaje</label>
-                            <textarea id="emp_mensaje" placeholder="Cuéntanos más sobre tus necesidades..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-empresarial" style="width: 100%;">Enviar Solicitud</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- PÁGINA EDUCATIVO -->
-    <div id="educativo-page" class="page" style="--service-color: var(--accent-adolescente); --service-color-dark: #c06184;">
-        <div class="service-header">
-            <button class="btn back-btn" onclick="showMain()">← Volver al Inicio</button>
-            <h1>📚 Bienestar Educativo</h1>
-            <p>Espacios de aprendizaje y bienestar emocional</p>
+    <!-- Modal Template -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <a id="modal-btn" class="btn" href="#" target="_blank"></a>
         </div>
-
-        <div class="content-section">
-            <div class="intro-text">
-                <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas, niños y adolescentes, integrando a las familias como parte fundamental del proceso. Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo, con contenidos diseñados para acompañar procesos formativos desde preescolar hasta preparatoria.</p>
-            </div>
-
-            <div class="service-detail">
-                <h3>Servicios</h3>
-                <ul>
-                    <li>Acompañamiento psicológico individual</li>
-                    <li>Evaluaciones psicológicas</li>
-                    <li>Detección temprana y canalización de casos</li>
-                    <li>Orientación vocacional y elección de carrera</li>
-                    <li>Orientación a padres de familia</li>
-                    <li>Talleres y pláticas psicoeducativas</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Temas que trabajamos</h3>
-                <ul>
-                    <li>Gestión emocional</li>
-                    <li>Prevención del bullying y acoso escolar</li>
-                    <li>Uso saludable de pantallas y redes sociales</li>
-                    <li>Autoestima, habilidades sociales y trabajo en equipo</li>
-                    <li>Educación sexual y responsable</li>
-                    <li>Manejo del estrés y ansiedad</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>Modalidad:</strong></p>
-                <p>✓ Presencial</p>
-                <p>✓ En línea</p>
-                <p>✓ Híbrido</p>
-            </div>
-
-            <div class="service-cta">
-                <button class="btn-cta btn-cta-morado" onclick="showMain(); setTimeout(() => toggleForm('empresa'), 100);">
-                    Solicitar Cotización para mi Escuela
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- PÁGINA CORPORATIVO -->
-    <div id="corporativo-page" class="page" style="--service-color: var(--accent-empresarial); --service-color-dark: #5896a4;">
-        <div class="service-header">
-            <button class="btn back-btn" onclick="showMain()">← Volver al Inicio</button>
-            <h1>💼 Soluciones Corporativas</h1>
-            <p>Bienestar Emocional en tu empresa</p>
-        </div>
-
-        <div class="content-section">
-            <div class="intro-text">
-                <p>Acompañamos a las organizaciones en el cuidado del bienestar emocional de sus colaboradores, a través de atención psicológica profesional y estrategias preventivas que favorecen entornos laborales saludables, en apego a la NOM-035-STPS.</p>
-            </div>
-
-            <div class="service-detail">
-                <h3>Servicios</h3>
-                
-                <h4>Atención psicológica a trabajadores</h4>
-                <p>Ético, confidencial y seguro. Seguimiento y reportes de avance, respetando la confidencialidad del colaborador y cumplimiento de las normas.</p>
-                
-                <h4>Talleres, pláticas y conferencias</h4>
-                <p>Espacios dinámicos enfocados en fortalecer el bienestar emocional y el funcionamiento de los equipos de trabajo.</p>
-                
-                <h4>Evaluaciones psicométricas</h4>
-                <p>Aplicación e interpretación de pruebas psicométricas para procesos de reclutamiento y evaluación psicológica laboral, con entrega de reportes claros y profesionales.</p>
-            </div>
-
-            <div class="service-detail">
-                <h3>Temas que trabajamos</h3>
-                <ul>
-                    <li>Inteligencia emocional</li>
-                    <li>Liderazgo</li>
-                    <li>Trabajo en equipo</li>
-                    <li>Comunicación asertiva y efectiva</li>
-                    <li>Acción preventiva de la violencia y acoso laboral</li>
-                    <li>Manejo del estrés y prevención del burnout</li>
-                    <li>Factores de riesgo psicosocial (NOM-035)</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Perfiles evaluados</h3>
-                <ul>
-                    <li>Personal operativo</li>
-                    <li>Personal administrativo</li>
-                    <li>Personal del área de la salud</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>Modalidad:</strong></p>
-                <p>✓ Presencial</p>
-                <p>✓ En línea</p>
-                <p>✓ Híbrido</p>
-            </div>
-
-            <div class="service-cta">
-                <button class="btn-cta btn-cta-morado" onclick="showMain(); setTimeout(() => toggleForm('empresa'), 100);">
-                    Solicitar Cotización para mi Empresa
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- PÁGINA CLÍNICA -->
-    <div id="clinica-page" class="page" style="--service-color: var(--accent-infantil); --service-color-dark: #d67899;">
-        <div class="service-header">
-            <button class="btn back-btn" onclick="showMain()">← Volver al Inicio</button>
-            <h1>🏥 Clínica y Consulta Privada</h1>
-            <p>Atención psicológica personalizada</p>
-        </div>
-
-        <div class="content-section">
-            <div class="intro-text">
-                <p>Brindamos atención psicológica profesional y personalizada para niños, adolescentes y adultos en un espacio seguro, confidencial y empático. Nuestro enfoque se centra en el bienestar integral de cada persona, respetando su ritmo y necesidades particulares.</p>
-            </div>
-
-            <div class="service-detail">
-                <h3>Atención Infantil (3-12 años)</h3>
-                <p>Terapia especializada para niñas y niños que enfrentan dificultades emocionales, conductuales o de desarrollo.</p>
-                <ul>
-                    <li>Terapia de juego</li>
-                    <li>Manejo de emociones y conductas</li>
-                    <li>Dificultades de aprendizaje y atención</li>
-                    <li>Ansiedad y miedos infantiles</li>
-                    <li>Adaptación a cambios familiares</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Atención a Adolescentes (13-18 años)</h3>
-                <p>Acompañamiento especializado en esta etapa de cambios y descubrimiento personal.</p>
-                <ul>
-                    <li>Ansiedad y depresión</li>
-                    <li>Autoestima e identidad</li>
-                    <li>Relaciones interpersonales</li>
-                    <li>Manejo de estrés escolar</li>
-                    <li>Orientación vocacional</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Atención a Adultos (18+ años)</h3>
-                <p>Terapia individual enfocada en el crecimiento personal y el bienestar emocional.</p>
-                <ul>
-                    <li>Ansiedad y trastornos del estado de ánimo</li>
-                    <li>Duelo y pérdidas</li>
-                    <li>Relaciones de pareja y familiares</li>
-                    <li>Desarrollo personal y autoconocimiento</li>
-                    <li>Manejo del estrés laboral</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Terapia de Pareja</h3>
-                <p>Espacio para fortalecer la comunicación y resolver conflictos en la relación.</p>
-                <ul>
-                    <li>Comunicación efectiva</li>
-                    <li>Resolución de conflictos</li>
-                    <li>Reconstrucción de confianza</li>
-                    <li>Fortalecimiento del vínculo</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>Modalidades disponibles:</strong></p>
-                <p>✓ Presencial - En nuestro consultorio</p>
-                <p>✓ En línea - Videollamada segura y confidencial</p>
-                <p><strong>Primera sesión:</strong> Evaluación inicial y diseño de plan terapéutico personalizado</p>
-            </div>
-
-            <div class="service-cta">
-                <button class="btn-cta btn-cta-rosa" onclick="showMain(); setTimeout(() => toggleForm('personal'), 100);">
-                    Agendar una Cita Personal
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- PÁGINA PSICOMETRÍA -->
-    <div id="psicometria-page" class="page" style="--service-color: var(--accent-empresarial); --service-color-dark: #5896a4;">
-        <div class="service-header">
-            <button class="btn back-btn" onclick="showMain()">← Volver al Inicio</button>
-            <h1>📊 Evaluaciones Especializadas</h1>
-            <p>Psicometría profesional y evaluaciones psicológicas</p>
-        </div>
-
-        <div class="content-section">
-            <div class="intro-text">
-                <p>Realizamos evaluaciones psicológicas integrales utilizando herramientas psicométricas validadas y estandarizadas. Nuestros servicios están dirigidos tanto a organizaciones para procesos de selección y desarrollo, como a personas que requieren evaluaciones clínicas especializadas.</p>
-            </div>
-
-            <div class="service-detail">
-                <h3>Evaluaciones Psicológicas Clínicas</h3>
-                <p>Evaluaciones especializadas para el ámbito personal y clínico:</p>
-                <ul>
-                    <li>Evaluación de inteligencia (WAIS, WISC, Raven)</li>
-                    <li>Evaluación de personalidad (MMPI, 16PF, Big Five)</li>
-                    <li>Evaluación neuropsicológica</li>
-                    <li>Evaluación de trastornos específicos (ansiedad, depresión, TDAH)</li>
-                    <li>Evaluación del desarrollo infantil y adolescente</li>
-                    <li>Evaluación vocacional y de aptitudes</li>
-                    <li>Informes psicológicos para trámites legales, médicos o educativos</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Evaluaciones Psicométricas Empresariales</h3>
-                <p>Herramientas para la gestión del talento humano:</p>
-                <ul>
-                    <li>Evaluación de competencias laborales</li>
-                    <li>Pruebas de selección de personal (Cleaver, Kostick, Terman Merrill)</li>
-                    <li>Evaluación de clima laboral</li>
-                    <li>Evaluación de riesgos psicosociales (NOM-035)</li>
-                    <li>Assessment de liderazgo y potencial</li>
-                    <li>Evaluación de equipos de trabajo</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Proceso de Evaluación</h3>
-                <p>Nuestro proceso garantiza resultados confiables y profesionales:</p>
-                <ul>
-                    <li>Entrevista inicial para definir objetivos</li>
-                    <li>Aplicación de batería de pruebas seleccionadas</li>
-                    <li>Análisis e interpretación de resultados</li>
-                    <li>Elaboración de informe profesional detallado</li>
-                    <li>Sesión de retroalimentación y orientación</li>
-                </ul>
-            </div>
-
-            <div class="service-detail">
-                <h3>Áreas de Aplicación</h3>
-                <p>Nuestras evaluaciones son útiles en diversos contextos:</p>
-                <ul>
-                    <li>Diagnóstico clínico y diseño de tratamiento</li>
-                    <li>Selección y reclutamiento de personal</li>
-                    <li>Desarrollo organizacional</li>
-                    <li>Orientación vocacional</li>
-                    <li>Peritajes y dictámenes legales</li>
-                    <li>Admisión a programas educativos</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>Entrega de resultados:</strong></p>
-                <p>✓ Informe psicológico profesional</p>
-                <p>✓ Sesión de interpretación de resultados</p>
-                <p>✓ Recomendaciones y orientación personalizada</p>
-                <p><strong>Tiempo de entrega:</strong> 5-10 días hábiles según la complejidad</p>
-            </div>
-
-            <div class="service-cta">
-                <button class="btn-cta btn-cta-rosa" onclick="showMain(); setTimeout(() => toggleForm('personal'), 100);" style="margin-right: 1rem; margin-bottom: 1rem;">
-                    Evaluación Personal
-                </button>
-                <button class="btn-cta btn-cta-morado" onclick="showMain(); setTimeout(() => toggleForm('empresa'), 100);">
-                    Evaluación Empresarial
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Bienestar Emocional 01. Todos los derechos reservados.</p>
-        </footer>
     </div>
 
     <script>
-        // ========================================
-        // CONFIGURACIÓN
-        // ========================================
-        // IMPORTANTE: Reemplaza esta URL con la URL de tu Google Apps Script
-        // La obtienes después de hacer "Implementar > Nueva implementación"
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNlWcQ4PfKCR5rDoTA45KkTzBA2hHwri3SoISK0ffcuaGv7r3ocOhhPKLLN87aTVzDiQ/exec';
+        const SHEET_ID = '1TkqkTfe3y74XCq-mskPdaCM_0WCIBAQwW0RsMNNRm3o';
+        const SHEET_NAME = 'frontpage';
+        const API_KEY = 'TU_API_KEY_AQUI'; // Reemplazar con tu API Key de Google
+        
+        // URLs de los formularios WebApp
+        const FORM_URLS = {
+            empresas: 'URL_WEBAPP_EMPRESAS_AQUI',
+            escuelas: 'URL_WEBAPP_ESCUELAS_AQUI',
+            infantil: 'URL_WEBAPP_CITAS_AQUI',
+            adolescentes: 'URL_WEBAPP_CITAS_AQUI'
+        };
 
-        // Parámetros globales cargados desde Google Sheets
-        let parametrosGlobales = null;
+        let pageData = {};
 
-        // ========================================
-        // CARGAR PARÁMETROS AL INICIAR
-        // ========================================
-        document.addEventListener('DOMContentLoaded', async function() {
-            console.log('🚀 Iniciando carga de parámetros...');
-            await cargarParametros();
-        });
-
-        // ========================================
-        // FUNCIÓN: CARGAR PARÁMETROS DESDE GOOGLE SHEETS
-        // ========================================
-        async function cargarParametros() {
+        async function loadPageData() {
             try {
-                // Mostrar loading
-                const loading = document.getElementById('loading-overlay');
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}!A1:N2?key=${API_KEY}`;
+                const response = await fetch(url);
+                const data = await response.json();
                 
-                // Verificar si la URL está configurada
-                if (SCRIPT_URL === 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI') {
-                    console.warn('⚠️ URL de Google Apps Script no configurada');
-                    // Usar valores por defecto
-                    usarValoresPorDefecto();
-                    ocultarLoading();
-                    return;
-                }
-
-                console.log('📡 Solicitando parámetros a:', SCRIPT_URL);
-
-                // Hacer la petición con timeout
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
-
-                const response = await fetch(SCRIPT_URL + '?action=obtenerParametros', {
-                    method: 'GET',
-                    signal: controller.signal
-                });
-
-                clearTimeout(timeoutId);
-
-                const result = await response.json();
-                console.log('📥 Respuesta recibida:', result);
-
-                if (result.status === 'success' && result.data) {
-                    parametrosGlobales = result.data;
-                    aplicarParametros(result.data);
-                    console.log('✅ Parámetros aplicados correctamente');
+                if (data.values && data.values.length >= 2) {
+                    const headers = data.values[0];
+                    const values = data.values[1];
+                    
+                    headers.forEach((header, index) => {
+                        let value = values[index] || '';
+                        // Limpiar guiones bajos de las URLs
+                        if (header === 'facebook' || header === 'instagram' || header === 'Ubicacion') {
+                            value = value.replace(/^__/, '').replace(/__$/, '');
+                        }
+                        pageData[header] = value;
+                    });
+                    
+                    renderPage();
                 } else {
-                    console.error('❌ Error en la respuesta:', result.message);
-                    usarValoresPorDefecto();
+                    throw new Error('No se encontraron datos en la hoja');
                 }
-
             } catch (error) {
-                console.error('❌ Error al cargar parámetros:', error);
-                usarValoresPorDefecto();
-            } finally {
-                ocultarLoading();
+                console.error('Error cargando datos:', error);
+                document.getElementById('app').innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <h2 style="color: var(--morado-intenso);">Error al cargar el sitio</h2>
+                        <p style="color: var(--texto-medio);">Por favor, verifica la configuración de la API de Google Sheets.</p>
+                    </div>
+                `;
             }
         }
 
-        // ========================================
-        // FUNCIÓN: APLICAR PARÁMETROS AL HTML
-        // ========================================
-        function aplicarParametros(params) {
-            console.log('🎨 Aplicando parámetros al HTML...');
+        function renderPage() {
+            const app = document.getElementById('app');
+            app.className = '';
+            app.innerHTML = `
+                <header>
+                    <div class="container">
+                        <div class="header-content">
+                            <div class="logo-container">
+                                <img src="${pageData.imagen || 'placeholder.png'}" alt="Logo" class="logo" onerror="this.style.display='none'">
+                            </div>
+                            <h1>${pageData.Nombre_Web || 'Bienestar Emocional'}</h1>
+                        </div>
+                    </div>
+                </header>
 
-            // 1. LOGO
-            const logo = document.getElementById('hero-logo');
-            if (params.logo && params.logo !== '__' && params.logo.trim() !== '') {
-                // Si el logo viene como URL o base64
-                if (params.logo.startsWith('http')) {
-                    logo.src = params.logo;
-                } else if (params.logo.startsWith('data:image')) {
-                    logo.src = params.logo;
-                } else {
-                    // Si es base64 sin el prefijo
-                    logo.src = 'data:image/png;base64,' + params.logo;
-                }
-            } else {
-                // Logo por defecto (placeholder)
-                logo.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="%238B5FA8" width="200" height="200"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="60" fill="white">BE</text></svg>';
-            }
+                <div class="container">
+                    <section>
+                        <h2>Quiénes Somos</h2>
+                        <p>${pageData.Quienes_somos || ''}</p>
+                    </section>
 
-            // 2. TÍTULO
-            if (params.nombre) {
-                document.getElementById('hero-title').textContent = params.nombre;
-                document.title = params.nombre;
-            }
+                    <section>
+                        <h2>Servicios</h2>
+                        <div class="servicios-grid">
+                            ${formatServicios(pageData.Servicios || '')}
+                        </div>
+                    </section>
 
-            // 3. MAPA
-            if (params.mapa && params.mapa !== '__') {
-                const mapContainer = document.getElementById('map-container');
-                let embedUrl = params.mapa;
-                
-                // Convertir diferentes formatos de Google Maps a embed
-                if (params.mapa.includes('maps.app.goo.gl') || params.mapa.includes('goo.gl')) {
-                    // Para links cortos, crear iframe básico
-                    mapContainer.innerHTML = `
-                        <iframe 
-                            src="${params.mapa}" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0; border-radius: 10px;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    `;
-                } else if (params.mapa.includes('google.com/maps')) {
-                    // Extraer coordenadas si están en la URL
-                    mapContainer.innerHTML = `
-                        <iframe 
-                            src="${params.mapa}" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0; border-radius: 10px;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    `;
-                }
-            }
+                    <div class="cards-grid">
+                        <div class="service-card" onclick="openModal('Escuelas')">
+                            <div class="service-card-content">
+                                <span class="service-icon">🏫</span>
+                                <h3>Escuelas</h3>
+                                <p>Programas especializados para instituciones educativas</p>
+                            </div>
+                        </div>
 
-            // 4. WHATSAPP
-            if (params.whatsapp && params.whatsapp !== '__') {
-                const contactLinks = document.getElementById('contact-links');
-                const whatsappNum = params.whatsapp.replace(/\s/g, '');
-                const whatsappLink = `https://wa.me/52${whatsappNum}`;
-                
-                contactLinks.innerHTML += `
-                    <a href="${whatsappLink}" target="_blank" class="contact-link whatsapp">
-                        <span>📱</span> WhatsApp: ${params.whatsapp}
-                    </a>
-                `;
-            }
+                        <div class="service-card" onclick="openModal('Empresas')">
+                            <div class="service-card-content">
+                                <span class="service-icon">🏢</span>
+                                <h3>Empresas</h3>
+                                <p>Soluciones de bienestar para tu organización</p>
+                            </div>
+                        </div>
 
-            // 5. EMAIL
-            if (params.correo && params.correo !== '__') {
-                const contactLinks = document.getElementById('contact-links');
-                contactLinks.innerHTML += `
-                    <a href="mailto:${params.correo}" class="contact-link email">
-                        <span>📧</span> ${params.correo}
-                    </a>
-                `;
-            }
+                        <div class="service-card" onclick="openModal('Infantil')">
+                            <div class="service-card-content">
+                                <span class="service-icon">🧸</span>
+                                <h3>Infantil</h3>
+                                <p>Atención especializada para niños y niñas</p>
+                            </div>
+                        </div>
 
-            // 6. REDES SOCIALES
-            const socialLinks = document.getElementById('social-links');
-            
-            if (params.instagram && params.instagram !== '__' && params.instagram.includes('instagram.com')) {
-                socialLinks.innerHTML += `
-                    <a href="${params.instagram}" target="_blank" class="social-link">
-                        📷 Instagram
-                    </a>
-                `;
-            }
-            
-            if (params.facebook && params.facebook !== '__' && params.facebook.includes('facebook.com')) {
-                socialLinks.innerHTML += `
-                    <a href="${params.facebook}" target="_blank" class="social-link">
-                        👥 Facebook
-                    </a>
-                `;
-            }
+                        <div class="service-card" onclick="openModal('Adolescente Y Adultos')">
+                            <div class="service-card-content">
+                                <span class="service-icon">💭</span>
+                                <h3>Adolescentes y Adultos</h3>
+                                <p>Acompañamiento terapéutico personalizado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            console.log('✅ Parámetros aplicados');
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-section">
+                                <h3>Contacto</h3>
+                                <p>📧 ${pageData.correo || ''}</p>
+                                <p>📱 ${pageData.Telefono || ''}</p>
+                                <p>🕒 ${pageData.Horario || ''}</p>
+                            </div>
+
+                            <div class="footer-section">
+                                <h3>Ubicación</h3>
+                                ${pageData.Ubicacion ? `<a href="${pageData.Ubicacion}" target="_blank">📍 Ver en Google Maps</a>` : ''}
+                            </div>
+
+                            <div class="footer-section">
+                                <h3>Síguenos</h3>
+                                <div class="social-links">
+                                    ${pageData.facebook ? `<a href="${pageData.facebook}" target="_blank">f</a>` : ''}
+                                    ${pageData.instagram ? `<a href="${pageData.instagram}" target="_blank">📷</a>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            `;
         }
 
-        // ========================================
-        // FUNCIÓN: USAR VALORES POR DEFECTO
-        // ========================================
-        function usarValoresPorDefecto() {
-            console.log('⚙️ Usando valores por defecto...');
+        function formatServicios(serviciosText) {
+            if (!serviciosText) return '';
             
-            aplicarParametros({
-                nombre: 'Bienestar Emocional',
-                logo: '',
-                facebook: 'https://www.facebook.com/share/1CD3a2fD2M/',
-                instagram: 'https://www.instagram.com/bienestar_emocional01',
-                mapa: 'https://maps.app.goo.gl/gQ4dhmGrFiXezif17',
-                whatsapp: '442 583 9311',
-                correo: 'bienestaremocional58@gmail.com'
+            // Separar por secciones principales
+            const sections = serviciosText.split(/(?=Servicios|Temas que trabajamos|Modalidad)/);
+            let html = '';
+
+            sections.forEach(section => {
+                if (section.trim()) {
+                    const lines = section.split('.').filter(line => line.trim());
+                    lines.forEach(line => {
+                        if (line.trim()) {
+                            const cleanLine = line.trim();
+                            if (cleanLine.match(/^(Servicios|Temas que trabajamos|Modalidad)/)) {
+                                html += `<div class="servicio-item"><h3>${cleanLine}</h3></div>`;
+                            } else {
+                                html += `<div class="servicio-item"><p>${cleanLine}</p></div>`;
+                            }
+                        }
+                    });
+                }
             });
+
+            return html || `<div class="servicio-item"><p>${serviciosText}</p></div>`;
         }
 
-        // ========================================
-        // FUNCIÓN: OCULTAR LOADING
-        // ========================================
-        function ocultarLoading() {
-            const loading = document.getElementById('loading-overlay');
-            setTimeout(() => {
-                loading.style.opacity = '0';
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                    document.getElementById('main-page').classList.add('active');
-                }, 300);
-            }, 500);
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const description = document.getElementById('modal-description');
+            const btn = document.getElementById('modal-btn');
+
+            const modalConfig = {
+                'Escuelas': {
+                    title: 'Escuelas',
+                    description: pageData.Escuelas || 'Servicios especializados para instituciones educativas.',
+                    btnText: 'Solicitar Cotización',
+                    url: FORM_URLS.escuelas
+                },
+                'Empresas': {
+                    title: 'Empresas',
+                    description: pageData.Empresas || 'Soluciones de bienestar emocional para tu organización.',
+                    btnText: 'Solicitar Cotización',
+                    url: FORM_URLS.empresas
+                },
+                'Infantil': {
+                    title: 'Terapia Infantil',
+                    description: pageData.Infantil || 'Atención psicológica especializada para niños y niñas.',
+                    btnText: 'Agendar Cita',
+                    url: FORM_URLS.infantil
+                },
+                'Adolescente Y Adultos': {
+                    title: 'Adolescentes y Adultos',
+                    description: pageData['Adolescente Y Adultos'] || 'Acompañamiento terapéutico para adolescentes y adultos.',
+                    btnText: 'Agendar Cita',
+                    url: FORM_URLS.adolescentes
+                }
+            };
+
+            const config = modalConfig[type];
+            title.textContent = config.title;
+            description.textContent = config.description;
+            btn.textContent = config.btnText;
+            btn.href = config.url;
+
+            modal.style.display = 'block';
         }
 
-        // ========================================
-        // NAVEGACIÓN ENTRE PÁGINAS
-        // ========================================
-        function showService(service) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(service + '-page').classList.add('active');
-            window.scrollTo(0, 0);
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
         }
 
-        function showMain() {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById('main-page').classList.add('active');
-            window.scrollTo(0, 0);
-        }
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', loadPageData);
 
-        // ========================================
-        // TOGGLE FORMULARIOS
-        // ========================================
-        function toggleForm(formType) {
-            const formId = 'form-' + formType;
-            const formElement = document.getElementById(formId);
-            
-            if (formElement.style.display === 'none') {
-                formElement.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            } else {
-                formElement.style.display = 'none';
-                document.body.style.overflow = 'auto';
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
             }
         }
 
-        // Cerrar formulario al hacer clic fuera
+        // Close button
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('form-overlay')) {
-                e.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // ========================================
-        // FUNCIÓN: MOSTRAR ALERTAS
-        // ========================================
-        function showAlert(elementId, message, type) {
-            const alertDiv = document.getElementById(elementId);
-            alertDiv.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
-            
-            // Auto-ocultar después de 5 segundos
-            setTimeout(() => {
-                alertDiv.innerHTML = '';
-            }, 5000);
-        }
-
-        // ========================================
-        // FUNCIÓN: ENVIAR DATOS A GOOGLE SHEETS
-        // ========================================
-        async function enviarASheet(action, data) {
-            // Verificar si la URL está configurada
-            if (SCRIPT_URL === 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI') {
-                return { 
-                    error: 'El sistema no está configurado. Por favor contacta al administrador.' 
-                };
-            }
-
-            try {
-                console.log('📤 Enviando datos:', action, data);
-
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ action, ...data })
-                });
-
-                const result = await response.json();
-                console.log('📥 Respuesta recibida:', result);
-
-                return result;
-
-            } catch (error) {
-                console.error('❌ Error al enviar datos:', error);
-                return { 
-                    error: 'Error de conexión. Por favor intenta nuevamente.' 
-                };
-            }
-        }
-
-        // ========================================
-        // FORMULARIO: CITA PERSONAL
-        // ========================================
-        document.getElementById('personalForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const data = {
-                nombre: document.getElementById('per_nombre').value,
-                edad: document.getElementById('per_edad').value,
-                email: document.getElementById('per_email').value,
-                telefono: document.getElementById('per_telefono').value,
-                motivo: document.getElementById('per_motivo').value,
-                preferencia: document.getElementById('per_preferencia').value
-            };
-
-            // Deshabilitar botón mientras se envía
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-
-            const result = await enviarASheet('personal', data);
-
-            if (result.error) {
-                showAlert('personal-alert', '❌ ' + result.error, 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar Solicitud';
-            } else if (result.status === 'success') {
-                showAlert('personal-alert', '✅ ' + result.message + ' Nos pondremos en contacto contigo pronto.', 'success');
-                this.reset();
-                
-                // Cerrar formulario después de 2 segundos
-                setTimeout(() => {
-                    toggleForm('personal');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Enviar Solicitud';
-                }, 2000);
-            } else {
-                showAlert('personal-alert', '❌ Error inesperado. Por favor intenta nuevamente.', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar Solicitud';
-            }
-        });
-
-        // ========================================
-        // FORMULARIO: COTIZACIÓN EMPRESA
-        // ========================================
-        document.getElementById('empresaForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const data = {
-                nombre: document.getElementById('emp_nombre').value,
-                organizacion: document.getElementById('emp_organizacion').value,
-                cargo: document.getElementById('emp_cargo').value,
-                email: document.getElementById('emp_email').value,
-                telefono: document.getElementById('emp_telefono').value,
-                tipo: document.getElementById('emp_tipo').value,
-                mensaje: document.getElementById('emp_mensaje').value
-            };
-
-            // Deshabilitar botón mientras se envía
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-
-            const result = await enviarASheet('empresa', data);
-
-            if (result.error) {
-                showAlert('empresa-alert', '❌ ' + result.error, 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar Solicitud';
-            } else if (result.status === 'success') {
-                showAlert('empresa-alert', '✅ ' + result.message + ' Un especialista se pondrá en contacto contigo pronto.', 'success');
-                this.reset();
-                
-                // Cerrar formulario después de 2 segundos
-                setTimeout(() => {
-                    toggleForm('empresa');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Enviar Solicitud';
-                }, 2000);
-            } else {
-                showAlert('empresa-alert', '❌ Error inesperado. Por favor intenta nuevamente.', 'error');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar Solicitud';
+            if (e.target.classList.contains('close')) {
+                closeModal();
             }
         });
     </script>
