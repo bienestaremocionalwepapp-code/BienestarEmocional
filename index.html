@@ -6,98 +6,152 @@
   <title>Bienestar Emocional | Psicología y Acompañamiento</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --text: #c9d1d9;
-      --accent: #58a6ff;
-      --card: #161b22;
-      --border: #30363d;
+      --rosa-suave: #f8c8dc;
+      --rosa-medio: #f06292;
+      --morado-suave: #d7bdf5;
+      --morado-medio: #9b59b6;
+      --morado-oscuro: #6a1b9a;
+      --bg: #1a0f24;          /* fondo oscuro morado suave */
+      --text: #f0e6ff;        /* texto claro lila-rosado */
+      --card: #2a1b3d;        /* tarjetas más claras */
+      --border: #c084fc33;    /* borde sutil morado */
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 1.875rem;     /* ≈30px base */
     }
     header {
-      background: linear-gradient(to bottom, #0d1117, #161b22);
-      padding: 3rem 1rem 2rem;
+      background: linear-gradient(to bottom, var(--morado-oscuro), var(--card));
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
-      border-bottom: 1px solid var(--border);
     }
     .logo-img {
-      max-width: 300px;
+      max-width: 90%;
+      width: 280px;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      margin-bottom: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(155,89,182,0.4);
+      margin-bottom: 2rem;
     }
-    h1 { color: var(--accent); font-size: 2.8rem; margin-bottom: 0.5rem; }
-    .tagline { font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+    h1 {
+      color: var(--rosa-medio);
+      font-size: 3.2rem;       /* más grande en desktop, se reduce en mobile */
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      font-size: 1.9rem;
+      max-width: 90%;
+      margin: 0 auto;
+      color: var(--morado-suave);
+    }
 
     section {
-      padding: 3rem 1rem;
+      padding: 3.5rem 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
     }
     h2 {
-      color: var(--accent);
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
+      color: var(--rosa-medio);
+      font-size: 2.8rem;
+      margin-bottom: 1.8rem;
       text-align: center;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 25px rgba(106,27,154,0.2);
     }
-    ul { list-style: none; padding-left: 0; }
-    ul li { margin-bottom: 1rem; font-size: 1.1rem; }
-    ul li::before { content: "• "; color: var(--accent); font-weight: bold; }
+    p, li {
+      font-size: 1.9rem;       /* párrafos y listas grandes */
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 1.2rem;
+    }
+    ul li::before {
+      content: "✦ ";
+      color: var(--rosa-medio);
+      font-weight: bold;
+      margin-right: 0.6rem;
+    }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      margin-top: 2.5rem;
     }
     .contact-item {
       background: var(--card);
-      padding: 1.5rem;
-      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
       text-align: center;
       border: 1px solid var(--border);
     }
-    .contact-item a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: bold;
+    .contact-item strong {
+      color: var(--rosa-medio);
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 2rem;
     }
-    .contact-item a:hover { text-decoration: underline; }
+    .contact-item a {
+      color: var(--morado-suave);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+    .contact-item a:hover {
+      color: var(--rosa-medio);
+      text-decoration: underline;
+    }
 
     iframe.map {
       width: 100%;
-      height: 400px;
+      height: 380px;
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border-radius: 16px;
+      margin-top: 2rem;
+      box-shadow: 0 10px 35px rgba(155,89,182,0.3);
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background: var(--card);
+      padding: 3rem 1.5rem;
+      background: var(--morado-oscuro);
       border-top: 1px solid var(--border);
-      font-size: 0.95rem;
-      color: #8b949e;
+      font-size: 1.7rem;
+      color: var(--morado-suave);
     }
 
+    /* Mobile y tablet - ajustes */
     @media (max-width: 768px) {
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.8rem; }
-      section { padding: 2rem 1rem; }
+      body { font-size: 1.7rem; }           /* base un poco más pequeña en móviles */
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 2.4rem; }
+      .logo-img { width: 240px; }
+      section { padding: 2.5rem 1.2rem; }
+      .card { padding: 1.8rem; }
+      iframe.map { height: 320px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 2.1rem; }
+      .logo-img { width: 200px; }
     }
   </style>
 </head>
@@ -127,7 +181,7 @@
         <li>Orientación a padres de familia</li>
         <li>Talleres y pláticas psicoeducativas</li>
       </ul>
-      <h3 style="margin: 1.5rem 0 0.8rem; color: var(--accent);">Temas que trabajamos</h3>
+      <h3 style="margin: 2rem 0 1rem; color: var(--rosa-medio); font-size: 2.2rem;">Temas que trabajamos</h3>
       <ul>
         <li>Gestión emocional</li>
         <li>Prevención del bullying y acoso escolar</li>
@@ -136,7 +190,7 @@
         <li>Educación sexual y responsable</li>
         <li>Manejo del estrés y ansiedad</li>
       </ul>
-      <h3 style="margin: 1.5rem 0 0.8rem; color: var(--accent);">Modalidad</h3>
+      <h3 style="margin: 2rem 0 1rem; color: var(--rosa-medio); font-size: 2.2rem;">Modalidad</h3>
       <p>Presencial • En línea • Híbrido</p>
     </div>
   </section>
@@ -144,7 +198,7 @@
   <section id="equipos">
     <h2>¿A quiénes atendemos?</h2>
     <div class="card" style="text-align:center;">
-      <p style="font-size:1.3rem; margin:1rem 0;">Escuelas • Empresas • Infantil • Adolescentes y Adultos</p>
+      <p style="font-size:2.1rem; margin:1.5rem 0;">Escuelas • Empresas • Infantil • Adolescentes y Adultos</p>
       <p>Terapeutas en constante actualización académica</p>
     </div>
   </section>
@@ -153,39 +207,36 @@
     <h2>Contacto</h2>
     <div class="contact-grid">
       <div class="contact-item">
-        <strong>Facebook</strong><br>
+        <strong>Facebook</strong>
         <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank">Visítanos</a>
       </div>
       <div class="contact-item">
-        <strong>Instagram</strong><br>
+        <strong>Instagram</strong>
         <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank">@bienestar_emocional01</a>
       </div>
       <div class="contact-item">
-        <strong>Correo</strong><br>
+        <strong>Correo</strong>
         <a href="mailto:Bienestaremocional58@gmail.com">Bienestaremocional58@gmail.com</a>
       </div>
       <div class="contact-item">
-        <strong>Teléfono</strong><br>
+        <strong>Teléfono</strong>
         <a href="tel:+524424003376">442 400 3376</a>
       </div>
       <div class="contact-item">
-        <strong>Horario</strong><br>
+        <strong>Horario</strong>
         12:00 pm a 6:00 pm
       </div>
     </div>
 
-    <h3 style="text-align:center; margin:2rem 0 1rem; color:var(--accent);">Ubicación</h3>
+    <h3 style="text-align:center; margin:3rem 0 1.5rem; color:var(--rosa-medio); font-size:2.4rem;">Ubicación</h3>
     <iframe class="map"
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.0000000000005!2d-100.417727!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1730000000000!5m2!1ses!2smx"
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
-    <p style="text-align:center; margin-top:1rem; font-size:0.95rem;">
-      Coordenadas aproximadas: 20.581839, -100.417727 (Querétaro, México – Col. Ensueño o zona cercana)
-    </p>
   </section>
 
   <footer>
-    <p>Bienestar Emocional • Psicología con empatía y profesionalismo • En constante actualización • 2026</p>
+    <p>Bienestar Emocional • Psicología con empatía y profesionalismo • 2026</p>
   </footer>
 
 </body>
