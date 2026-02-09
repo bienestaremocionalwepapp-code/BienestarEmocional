@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Bienestar Emocional</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --rosa-claro: #FFE5F0;
@@ -31,7 +32,7 @@
             color: var(--texto-oscuro);
             line-height: 1.6;
             background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--morado-claro) 100%);
-            padding-bottom: 80px; /* Espacio para botón flotante */
+            padding-bottom: 80px;
         }
 
         header {
@@ -187,11 +188,18 @@
             transform: scale(0.98);
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
-        .whatsapp-float {
+        /* BOTONES FLOTANTES */
+        .floating-buttons {
             position: fixed;
             bottom: 20px;
             right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .whatsapp-float {
             width: 60px;
             height: 60px;
             background: var(--whatsapp);
@@ -200,7 +208,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -229,6 +236,122 @@
             }
         }
 
+        /* BOTÓN DE COMPARTIR */
+        .share-float {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rosa-intenso), var(--morado-intenso));
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(166, 127, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .share-float:active {
+            transform: scale(0.9);
+        }
+
+        .share-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* MODAL DE COMPARTIR */
+        .share-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 42, 61, 0.9);
+            backdrop-filter: blur(8px);
+        }
+
+        .share-modal-content {
+            background: var(--blanco);
+            margin: 20% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 90%;
+            width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .share-modal h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--morado-intenso);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .share-option {
+            background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+        }
+
+        .share-option:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio));
+        }
+
+        .share-option svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 0.5rem;
+            fill: var(--morado-intenso);
+        }
+
+        #qrCode {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--rosa-claro);
+            border-radius: 12px;
+            display: none;
+        }
+
+        #qrCode canvas {
+            margin: 0 auto;
+            display: block;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -255,17 +378,6 @@
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
         }
 
         .close {
@@ -474,16 +586,24 @@
                 padding: 2.5rem 2rem;
             }
 
-            .whatsapp-float {
-                width: 65px;
-                height: 65px;
+            .floating-buttons {
                 bottom: 25px;
                 right: 25px;
+            }
+
+            .whatsapp-float, .share-float {
+                width: 65px;
+                height: 65px;
             }
 
             .whatsapp-float svg {
                 width: 38px;
                 height: 38px;
+            }
+
+            .share-float svg {
+                width: 35px;
+                height: 35px;
             }
         }
 
@@ -530,7 +650,7 @@
                 box-shadow: 0 6px 20px rgba(197, 163, 255, 0.6);
             }
 
-            .whatsapp-float:hover {
+            .whatsapp-float:hover, .share-float:hover {
                 transform: scale(1.1);
             }
 
@@ -545,20 +665,33 @@
                 box-shadow: 0 8px 24px rgba(197, 163, 255, 0.6);
             }
 
+            .share-option:hover {
+                background: linear-gradient(135deg, var(--rosa-medio), var(--morado-medio));
+                transform: translateY(-3px);
+            }
+
             .mapa iframe {
                 height: 450px;
             }
 
-            .whatsapp-float {
-                width: 70px;
-                height: 70px;
+            .floating-buttons {
                 bottom: 30px;
                 right: 30px;
+            }
+
+            .whatsapp-float, .share-float {
+                width: 70px;
+                height: 70px;
             }
 
             .whatsapp-float svg {
                 width: 40px;
                 height: 40px;
+            }
+
+            .share-float svg {
+                width: 38px;
+                height: 38px;
             }
         }
     </style>
@@ -753,14 +886,57 @@
         <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Terapeutas En Constante Actualización Académica</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/4425839311?text=Hola,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.607 2.137 8.058L.069 31.488l7.695-2.01A15.87 15.87 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.28 22.663c-.36.981-2.106 1.8-2.898 1.92-.77.12-1.588.173-2.564-.165a23.726 23.726 0 01-2.322-.857c-4.08-1.77-6.736-5.93-6.944-6.204-.208-.273-1.705-2.292-1.705-4.374 0-2.082 1.073-3.104 1.456-3.527.384-.423.837-.53 1.116-.53.28 0 .558.003.803.015.26.013.606-.098.95.723.344.82 1.174 2.903 1.278 3.115.104.212.173.46.034.733-.139.273-.208.442-.415.681-.207.24-.435.535-.621.72-.207.205-.422.427-.182.838.24.41 1.07 1.782 2.298 2.888 1.58 1.423 2.912 1.868 3.327 2.08.415.212.657.177.9-.107.243-.284.953-1.13 1.208-1.518.254-.39.508-.325.86-.195.35.13 2.23 1.062 2.612 1.255.383.192.638.287.734.445.096.158.096.915-.264 1.896z"/>
-        </svg>
-    </a>
+    <!-- BOTONES FLOTANTES -->
+    <div class="floating-buttons">
+        <button class="share-float" onclick="openShareModal()" aria-label="Compartir página">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+            </svg>
+        </button>
+        <a href="https://wa.me/4425839311?text=Hola,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.607 2.137 8.058L.069 31.488l7.695-2.01A15.87 15.87 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.28 22.663c-.36.981-2.106 1.8-2.898 1.92-.77.12-1.588.173-2.564-.165a23.726 23.726 0 01-2.322-.857c-4.08-1.77-6.736-5.93-6.944-6.204-.208-.273-1.705-2.292-1.705-4.374 0-2.082 1.073-3.104 1.456-3.527.384-.423.837-.53 1.116-.53.28 0 .558.003.803.015.26.013.606-.098.95.723.344.82 1.174 2.903 1.278 3.115.104.212.173.46.034.733-.139.273-.208.442-.415.681-.207.24-.435.535-.621.72-.207.205-.422.427-.182.838.24.41 1.07 1.782 2.298 2.888 1.58 1.423 2.912 1.868 3.327 2.08.415.212.657.177.9-.107.243-.284.953-1.13 1.208-1.518.254-.39.508-.325.86-.195.35.13 2.23 1.062 2.612 1.255.383.192.638.287.734.445.096.158.096.915-.264 1.896z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- MODAL COMPARTIR -->
+    <div id="shareModal" class="share-modal">
+        <div class="share-modal-content">
+            <span class="close" onclick="closeShareModal()">&times;</span>
+            <h3>📤 Compartir Página</h3>
+            <div class="share-options">
+                <button class="share-option" onclick="shareWhatsApp()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp
+                </button>
+                <button class="share-option" onclick="shareEmail()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    Email
+                </button>
+                <button class="share-option" onclick="copyLink()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                    Copiar Link
+                </button>
+                <button class="share-option" onclick="generateQR()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM13 13h2v2h-2zM15 15h2v2h-2zM13 17h2v2h-2zM15 19h2v2h-2zM17 17h2v2h-2zM17 13h2v2h-2zM19 15h2v2h-2zM19 19h2v2h-2z"/>
+                    </svg>
+                    Código QR
+                </button>
+            </div>
+            <div id="qrCode"></div>
+        </div>
+    </div>
 
     <script>
+        // Funciones modales originales
         function openModal(tipo) {
             const modals = {
                 'empresas': 'modalEmpresas',
@@ -789,15 +965,77 @@
             }
         }
 
-        // Cerrar modal al hacer click fuera de él
+        // Funciones de compartir
+        function openShareModal() {
+            document.getElementById('shareModal').style.display = 'block';
+            document.getElementById('qrCode').style.display = 'none';
+            document.getElementById('qrCode').innerHTML = '';
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+
+        function shareWhatsApp() {
+            const url = 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/';
+            const text = 'Conoce Bienestar Emocional - Servicios de psicología profesional';
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function shareEmail() {
+            const url = 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/';
+            const subject = 'Te comparto: Bienestar Emocional';
+            const body = `Hola,\n\nTe comparto este enlace de Bienestar Emocional - Servicios de psicología profesional:\n\n${url}\n\n¡Saludos!`;
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function copyLink() {
+            const url = 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/';
+            navigator.clipboard.writeText(url).then(() => {
+                alert('✅ Enlace copiado al portapapeles');
+            }).catch(() => {
+                // Fallback para navegadores que no soportan clipboard API
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('✅ Enlace copiado al portapapeles');
+            });
+        }
+
+        function generateQR() {
+            const qrContainer = document.getElementById('qrCode');
+            qrContainer.innerHTML = '<p style="margin-bottom: 1rem; color: var(--morado-intenso); font-weight: 600;">Escanea el código QR:</p>';
+            qrContainer.style.display = 'block';
+            
+            const qrDiv = document.createElement('div');
+            qrContainer.appendChild(qrDiv);
+            
+            new QRCode(qrDiv, {
+                text: 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/',
+                width: 200,
+                height: 200,
+                colorDark: '#000000',
+                colorLight: '#FFFFFF',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Cerrar modales al hacer click fuera
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
+            if (event.target.classList.contains('share-modal')) {
+                event.target.style.display = 'none';
+            }
         }
 
-        // Cerrar modal con tecla Escape
+        // Cerrar modales con tecla Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modals = document.querySelectorAll('.modal');
@@ -807,6 +1045,10 @@
                         document.body.style.overflow = 'auto';
                     }
                 });
+                const shareModal = document.getElementById('shareModal');
+                if (shareModal.style.display === 'block') {
+                    shareModal.style.display = 'none';
+                }
             }
         });
 
