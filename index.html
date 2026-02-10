@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -139,52 +143,71 @@
             font-size: 0.95rem;
         }
 
-        .servicios-buttons {
+        /* NUEVAS TARJETAS CON IMAGEN */
+        .servicios-cards {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.2rem;
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
-        .service-btn {
+        .service-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(197, 163, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(197, 163, 255, 0.35);
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
+        }
+
+        .service-card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .service-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--morado-intenso);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .service-card-description {
+            font-size: 0.9rem;
+            color: var(--texto-medio);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .service-card-button {
+            display: inline-block;
             background: linear-gradient(135deg, var(--rosa-intenso), var(--morado-intenso));
             color: var(--blanco);
-            padding: 1.8rem 1.5rem;
-            border: none;
-            border-radius: 16px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
+            border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(197, 163, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
+            box-shadow: 0 4px 12px rgba(197, 163, 255, 0.4);
         }
 
-        .service-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--morado-intenso), var(--rosa-intenso));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-btn:active::before {
-            opacity: 1;
-        }
-
-        .service-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-btn:active {
+        .service-card-button:active {
             transform: scale(0.98);
         }
 
@@ -563,9 +586,9 @@
                 padding: 2.5rem 2rem;
             }
 
-            .servicios-buttons {
+            .servicios-cards {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                gap: 2rem;
             }
 
             .contacto-grid {
@@ -626,18 +649,19 @@
                 padding: 3rem 2rem;
             }
 
-            .servicios-buttons {
+            .servicios-cards {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
             }
 
-            .service-btn:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 24px rgba(197, 163, 255, 0.6);
+            .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 16px 40px rgba(197, 163, 255, 0.4);
             }
 
-            .service-btn:hover::before {
-                opacity: 1;
+            .service-card-button:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(197, 163, 255, 0.6);
             }
 
             .contacto-item:hover {
@@ -699,22 +723,12 @@
 <body>
     <header>
         <img src="plantillas_Images/Bienestar Emocional.imagen.124245.png" alt="Bienestar Emocional" class="logo" onerror="this.src='https://via.placeholder.com/200x200/A67FFF/FFFFFF?text=Bienestar+Emocional'">
-        <h1>Bienestar Emocional </h1>
-    <h1>Para niños adolescentes, adultos, escuelas y empresas . </h1>
-        <h1>Atencion clara, Empatica y sin juicios </h1>
-    
-    
+        <h1>Bienestar Emocional</h1>
     </header>
 
     <div class="hero">
-        <h2>Cada uno de nuestros dias Existen</h2>
-        <p>Momentos en los que podemos acompañarte
-Estrés, ansiedad o preocupación
-Tristeza o desánimo
-Conflictos familiares o escolares
-Dudas sobre ti mismo o tu autoestima
-Desarrollo de habilidades sociales y liderazgo
-Bienestar en escuelas y equipos de trabajo</p>
+        <h2>¿Quiénes Somos?</h2>
+        <p>Creemos que la salud mental no es un destino, sino un camino que se transita mejor cuando es en compañía. Somos un equipo de profesionales apasionados por la psicología, dedicados a llevar bienestar a cada rincón de la vida: desde el crecimiento personal en nuestra consulta privada, hasta el fortalecimiento de comunidades en escuelas y el desarrollo de culturas saludables en empresas.</p>
     </div>
 
     <div class="section">
@@ -736,11 +750,42 @@ Bienestar en escuelas y equipos de trabajo</p>
         <h2>Solicitud de Servicios</h2>
         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1rem; color: var(--texto-medio);">Selecciona el servicio que necesitas</p>
         
-        <div class="servicios-buttons">
-            <button class="service-btn" onclick="openModal('empresas')"><span>🏢 Empresas</span></button>
-            <button class="service-btn" onclick="openModal('escuelas')"><span>🏫 Escuelas</span></button>
-            <button class="service-btn" onclick="openModal('infantil')"><span>👶 Niños Y Adolescentes</span></button>
-            <button class="service-btn" onclick="openModal('adultos')"><span>👨‍🦱 Adultos</span></button>
+        <!-- NUEVA SECCIÓN CON TARJETA DE IMAGEN - TEST EMPRESAS -->
+        <div class="servicios-cards">
+            <!-- TARJETA EMPRESAS CON IMAGEN -->
+            <div class="service-card" onclick="openModal('empresas')">
+                <img src="imagen_empresa_png.jpeg" alt="Servicios Empresariales" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
+                <div class="service-card-content">
+                    <h3 class="service-card-title">🏢 Servicios Empresariales</h3>
+                    <p class="service-card-description">Bienestar emocional para tu equipo de trabajo</p>
+                    <button class="service-card-button">Ver más información</button>
+                </div>
+            </div>
+
+            <!-- TARJETAS ORIGINALES (TEMPORAL - LAS CAMBIAREMOS DESPUÉS) -->
+            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('escuelas')">
+                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+                    <h3 class="service-card-title">🏫 Escuelas</h3>
+                    <p class="service-card-description">Programas psicoeducativos para instituciones</p>
+                    <button class="service-card-button">Ver más información</button>
+                </div>
+            </div>
+
+            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('infantil')">
+                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+                    <h3 class="service-card-title">👶 Niños y Adolescentes</h3>
+                    <p class="service-card-description">Terapia especializada para menores</p>
+                    <button class="service-card-button">Ver más información</button>
+                </div>
+            </div>
+
+            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('adultos')">
+                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+                    <h3 class="service-card-title">👨‍🦱 Adultos</h3>
+                    <p class="service-card-description">Acompañamiento psicológico integral</p>
+                    <button class="service-card-button">Ver más información</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1073,8 +1118,4 @@ Bienestar en escuelas y equipos de trabajo</p>
     </script>
 </body>
 </html>
-
-
-
-
 
