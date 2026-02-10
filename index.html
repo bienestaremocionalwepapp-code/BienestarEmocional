@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -143,8 +139,7 @@
             font-size: 0.95rem;
         }
 
-        /* NUEVAS TARJETAS CON IMAGEN */
-        .servicios-cards {
+        .servicios-buttons {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
@@ -181,15 +176,8 @@
             font-family: 'Outfit', sans-serif;
             font-size: 1.3rem;
             color: var(--morado-intenso);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-weight: 600;
-        }
-
-        .service-card-description {
-            font-size: 0.9rem;
-            color: var(--texto-medio);
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
         }
 
         .service-card-button {
@@ -259,7 +247,6 @@
             }
         }
 
-        /* BOTÓN DE COMPARTIR */
         .share-float {
             width: 60px;
             height: 60px;
@@ -284,7 +271,6 @@
             fill: white;
         }
 
-        /* MODAL DE COMPARTIR */
         .share-modal {
             display: none;
             position: fixed;
@@ -565,7 +551,6 @@
             font-size: 0.9rem;
         }
 
-        /* TABLETS (min-width: 768px) */
         @media (min-width: 768px) {
             body {
                 font-size: 17px;
@@ -586,7 +571,7 @@
                 padding: 2.5rem 2rem;
             }
 
-            .servicios-cards {
+            .servicios-buttons {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
@@ -630,7 +615,6 @@
             }
         }
 
-        /* DESKTOP (min-width: 1024px) */
         @media (min-width: 1024px) {
             body {
                 font-size: 18px;
@@ -649,7 +633,7 @@
                 padding: 3rem 2rem;
             }
 
-            .servicios-cards {
+            .servicios-buttons {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
             }
@@ -750,46 +734,41 @@
         <h2>Solicitud de Servicios</h2>
         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1rem; color: var(--texto-medio);">Selecciona el servicio que necesitas</p>
         
-        <!-- NUEVA SECCIÓN CON TARJETA DE IMAGEN - TEST EMPRESAS -->
-        <div class="servicios-cards">
-            <!-- TARJETA EMPRESAS CON IMAGEN -->
+        <div class="servicios-buttons">
             <div class="service-card" onclick="openModal('empresas')">
-                <img src="imagen_empresa_png.jpeg" alt="Servicios Empresariales" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
+                <img src="plantillas_Images/imagenempresa.png" alt="Empresas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
                 <div class="service-card-content">
-                    <h3 class="service-card-title">🏢 Servicios Empresariales</h3>
-                    <p class="service-card-description">Bienestar emocional para tu equipo de trabajo</p>
+                    <h3 class="service-card-title">🏢 Empresas</h3>
                     <button class="service-card-button">Ver más información</button>
                 </div>
             </div>
 
-            <!-- TARJETAS ORIGINALES (TEMPORAL - LAS CAMBIAREMOS DESPUÉS) -->
-            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('escuelas')">
-                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+            <div class="service-card" onclick="openModal('escuelas')">
+                <img src="plantillas_Images/imagenescolar.png" alt="Escuelas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Escuelas'">
+                <div class="service-card-content">
                     <h3 class="service-card-title">🏫 Escuelas</h3>
-                    <p class="service-card-description">Programas psicoeducativos para instituciones</p>
                     <button class="service-card-button">Ver más información</button>
                 </div>
             </div>
 
-            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('infantil')">
-                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+            <div class="service-card" onclick="openModal('infantil')">
+                <img src="plantillas_Images/imagenadolescentes.png" alt="Niños y Adolescentes" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Niños'">
+                <div class="service-card-content">
                     <h3 class="service-card-title">👶 Niños y Adolescentes</h3>
-                    <p class="service-card-description">Terapia especializada para menores</p>
                     <button class="service-card-button">Ver más información</button>
                 </div>
             </div>
 
-            <div class="service-card" style="background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro)); cursor: pointer;" onclick="openModal('adultos')">
-                <div class="service-card-content" style="padding: 3rem 1.5rem;">
+            <div class="service-card" onclick="openModal('adultos')">
+                <img src="plantillas_Images/imagenadultos.png" alt="Adultos" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Adultos'">
+                <div class="service-card-content">
                     <h3 class="service-card-title">👨‍🦱 Adultos</h3>
-                    <p class="service-card-description">Acompañamiento psicológico integral</p>
                     <button class="service-card-button">Ver más información</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL EMPRESAS -->
     <div id="modalEmpresas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('empresas')">&times;</span>
@@ -824,7 +803,6 @@
         </div>
     </div>
 
-    <!-- MODAL ESCUELAS -->
     <div id="modalEscuelas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('escuelas')">&times;</span>
@@ -848,7 +826,6 @@
         </div>
     </div>
 
-    <!-- MODAL INFANTIL -->
     <div id="modalInfantil" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('infantil')">&times;</span>
@@ -882,7 +859,6 @@
         </div>
     </div>
 
-    <!-- MODAL ADULTOS -->
     <div id="modalAdultos" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('adultos')">&times;</span>
@@ -941,7 +917,6 @@
         <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Terapeutas En Constante Actualización Académica</p>
     </footer>
 
-    <!-- BOTONES FLOTANTES -->
     <div class="floating-buttons">
         <button class="share-float" onclick="openShareModal()" aria-label="Compartir página">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -955,7 +930,6 @@
         </a>
     </div>
 
-    <!-- MODAL COMPARTIR -->
     <div id="shareModal" class="share-modal">
         <div class="share-modal-content">
             <span class="close" onclick="closeShareModal()">&times;</span>
@@ -991,7 +965,6 @@
     </div>
 
     <script>
-        // Funciones modales originales
         function openModal(tipo) {
             const modals = {
                 'empresas': 'modalEmpresas',
@@ -1020,7 +993,6 @@
             }
         }
 
-        // Funciones de compartir
         function openShareModal() {
             document.getElementById('shareModal').style.display = 'block';
             document.getElementById('qrCode').style.display = 'none';
@@ -1050,7 +1022,6 @@
             navigator.clipboard.writeText(url).then(() => {
                 alert('✅ Enlace copiado al portapapeles');
             }).catch(() => {
-                // Fallback para navegadores que no soportan clipboard API
                 const textArea = document.createElement('textarea');
                 textArea.value = url;
                 document.body.appendChild(textArea);
@@ -1079,7 +1050,6 @@
             });
         }
 
-        // Cerrar modales al hacer click fuera
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
@@ -1090,7 +1060,6 @@
             }
         }
 
-        // Cerrar modales con tecla Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modals = document.querySelectorAll('.modal');
@@ -1107,7 +1076,6 @@
             }
         });
 
-        // Prevenir zoom en inputs en iOS
         const viewport = document.querySelector('meta[name="viewport"]');
         if (viewport) {
             let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
