@@ -387,6 +387,25 @@
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(197, 163, 255, 0.2);
+            display: block;
+            background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+
+        .modal[style*="display: block"] .modal-image {
+            opacity: 1;
         }
 
         .close {
@@ -772,6 +791,7 @@
     <div id="modalEmpresas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('empresas')">&times;</span>
+            <img src="plantillas_Images/imagenempresa.png" alt="Servicios Empresariales" class="modal-image" onerror="this.style.display='none'">
             <h3>🏢 Bienestar Emocional en tu Empresa</h3>
             <p>Acompañamos a las organizaciones en el cuidado del bienestar emocional de sus colaboradores, a través de atención psicológica profesional y estrategias preventivas que favorecen entornos laborales saludables, en apego a la NOM-035-STPS.</p>
             
@@ -806,6 +826,7 @@
     <div id="modalEscuelas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('escuelas')">&times;</span>
+            <img src="plantillas_Images/imagenescolar.png" alt="Servicios Escolares" class="modal-image" onerror="this.style.display='none'">
             <h3>🏫 Espacios de Aprendizaje y Bienestar Emocional</h3>
             <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas, niños y adolescentes, integrando a las familias como parte fundamental del proceso. Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo, con contenidos diseñados para acompañar procesos formativos desde preescolar hasta preparatoria.</p>
             
@@ -829,6 +850,7 @@
     <div id="modalInfantil" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('infantil')">&times;</span>
+            <img src="plantillas_Images/imagenadolescentes.png" alt="Terapia Infantil y Adolescentes" class="modal-image" onerror="this.style.display='none'">
             <h3>👶 Terapia Psicológica Niños Y Adolescentes</h3>
             <p>El proceso de la terapia psicológica infantil se lleva de la siguiente manera:</p>
             
@@ -862,6 +884,7 @@
     <div id="modalAdultos" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('adultos')">&times;</span>
+            <img src="plantillas_Images/imagenadultos.png" alt="Psicología Adultos" class="modal-image" onerror="this.style.display='none'">
             <h3>👨‍🦱 Psicología En Adultos</h3>
             <p>La psicología de adolescentes y adultos estudia el desarrollo, comportamiento y procesos mentales en estas etapas.</p>
             
@@ -965,6 +988,21 @@
     </div>
 
     <script>
+        // Precargar imágenes al cargar la página
+        window.addEventListener('load', function() {
+            const imagesToPreload = [
+                'plantillas_Images/imagenempresa.png',
+                'plantillas_Images/imagenescolar.png',
+                'plantillas_Images/imagenadolescentes.png',
+                'plantillas_Images/imagenadultos.png'
+            ];
+            
+            imagesToPreload.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+
         function openModal(tipo) {
             const modals = {
                 'empresas': 'modalEmpresas',
@@ -974,8 +1012,17 @@
             };
             const modalId = modals[tipo];
             if (modalId) {
-                document.getElementById(modalId).style.display = 'block';
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+                
+                // Asegurar que la imagen se muestre correctamente
+                const img = modal.querySelector('.modal-image');
+                if (img && !img.complete) {
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    }, { once: true });
+                }
             }
         }
 
