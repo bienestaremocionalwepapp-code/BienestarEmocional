@@ -139,6 +139,59 @@
             font-size: 0.95rem;
         }
 
+        /* BOTÓN SOLICITUD DE SERVICIOS */
+        .solicitud-servicios-button {
+            background: linear-gradient(135deg, var(--rosa-intenso), var(--morado-intenso));
+            color: var(--blanco);
+            padding: 2rem 2rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            width: calc(100% - 2rem);
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 8px 32px rgba(197, 163, 255, 0.4);
+            transition: all 0.3s ease;
+            margin: 1.5rem 1rem;
+        }
+
+        .solicitud-servicios-button:active {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(197, 163, 255, 0.6);
+        }
+
+        .solicitud-servicios-button h2 {
+            color: var(--blanco);
+            margin-bottom: 1rem;
+        }
+
+        .solicitud-servicios-button h2::after {
+            background: var(--blanco);
+        }
+
+        .solicitud-servicios-button p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.95;
+        }
+
+        .servicios-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .servicios-list span {
+            background: var(--blanco);
+            color: var(--morado-intenso);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .servicios-buttons {
             display: grid;
             grid-template-columns: 1fr;
@@ -590,6 +643,12 @@
                 padding: 2.5rem 2rem;
             }
 
+            .solicitud-servicios-button {
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .servicios-buttons {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
@@ -650,6 +709,15 @@
             .hero, .section, .contacto {
                 max-width: 1200px;
                 padding: 3rem 2rem;
+            }
+
+            .solicitud-servicios-button {
+                max-width: 1200px;
+            }
+
+            .solicitud-servicios-button:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 16px 48px rgba(197, 163, 255, 0.6);
             }
 
             .servicios-buttons {
@@ -744,8 +812,10 @@ Bienestar en escuelas y equipos de trabajo</p>
     </div>
 
     <div class="section">
-   <img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="modal-image" style="margin-bottom: 1.5rem;" onerror="this.style.display='none'">
+<img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="modal-image" style="margin-bottom: 1.5rem;" onerror="this.style.display='none'">
+   
         <h2>Evaluciones Especializadas</h2>
+        <img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="modal-image" style="margin-bottom: 1.5rem;" onerror="this.style.display='none'">
         <p><strong>Realizamos evaluaciones psicológicas</strong></p>
         <ul>
             <li> De manera individual (niños, 
@@ -758,40 +828,53 @@ Bienestar en escuelas y equipos de trabajo</p>
          <p><strong>Modalidad:</strong> Presencial • En línea </p>
     </div>
 
-    <div class="section">
+    <button class="solicitud-servicios-button" onclick="openModalServicios()">
         <h2>Solicitud de Servicios</h2>
-        <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1rem; color: var(--texto-medio);">Selecciona el servicio que necesitas</p>
-        
-        <div class="servicios-buttons">
-            <div class="service-card" onclick="openModal('empresas')">
-                <img src="plantillas_Images/imagenempresa.png" alt="Empresas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
-                <div class="service-card-content">
-                    <h3 class="service-card-title">🏢 Empresas</h3>
-                    <button class="service-card-button">Ver más información</button>
-                </div>
-            </div>
+        <p>Selecciona el servicio que necesitas</p>
+        <div class="servicios-list">
+            <span>🏢 Empresarial</span>
+            <span>🏫 Escolar</span>
+            <span>👶 Niños y Adolescentes</span>
+            <span>👨‍🦱 Adultos</span>
+        </div>
+    </button>
 
-            <div class="service-card" onclick="openModal('escuelas')">
-                <img src="plantillas_Images/imagenescuela.png" alt="Escuelas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Escuelas'">
-                <div class="service-card-content">
-                    <h3 class="service-card-title">🏫 Escuelas</h3>
-                    <button class="service-card-button">Ver más información</button>
+    <div id="modalServicios" class="modal">
+        <div class="modal-content" style="max-width: 95%; width: 900px;">
+            <span class="close" onclick="closeModalServicios()">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 2rem;">Selecciona el Servicio que Necesitas</h3>
+            
+            <div class="servicios-buttons">
+                <div class="service-card" onclick="openModalFromServicios('empresas')">
+                    <img src="plantillas_Images/imagenempresa.png" alt="Empresas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">🏢 Empresas</h3>
+                        <button class="service-card-button">Ver más información</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="service-card" onclick="openModal('infantil')">
-                <img src="plantillas_Images/imagenadolescentes.png" alt="Niños y Adolescentes" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Niños'">
-                <div class="service-card-content">
-                    <h3 class="service-card-title">👶 Niños y Adolescentes</h3>
-                    <button class="service-card-button">Ver más información</button>
+                <div class="service-card" onclick="openModalFromServicios('escuelas')">
+                    <img src="plantillas_Images/imagenescuela.png" alt="Escuelas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Escuelas'">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">🏫 Escuelas</h3>
+                        <button class="service-card-button">Ver más información</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="service-card" onclick="openModal('adultos')">
-                <img src="plantillas_Images/imagenadultos.png" alt="Adultos" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Adultos'">
-                <div class="service-card-content">
-                    <h3 class="service-card-title">👨‍🦱 Adultos</h3>
-                    <button class="service-card-button">Ver más información</button>
+                <div class="service-card" onclick="openModalFromServicios('infantil')">
+                    <img src="plantillas_Images/imagenadolescentes.png" alt="Niños y Adolescentes" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Niños'">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">👶 Niños y Adolescentes</h3>
+                        <button class="service-card-button">Ver más información</button>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openModalFromServicios('adultos')">
+                    <img src="plantillas_Images/imagenadultos.png" alt="Adultos" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Adultos'">
+                    <div class="service-card-content">
+                        <h3 class="service-card-title">👨‍🦱 Adultos</h3>
+                        <button class="service-card-button">Ver más información</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1012,6 +1095,23 @@ Bienestar en escuelas y equipos de trabajo</p>
             });
         });
 
+        function openModalServicios() {
+            document.getElementById('modalServicios').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModalServicios() {
+            document.getElementById('modalServicios').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openModalFromServicios(tipo) {
+            closeModalServicios();
+            setTimeout(() => {
+                openModal(tipo);
+            }, 100);
+        }
+
         function openModal(tipo) {
             const modals = {
                 'empresas': 'modalEmpresas',
@@ -1142,4 +1242,3 @@ Bienestar en escuelas y equipos de trabajo</p>
     </script>
 </body>
 </html>
-
