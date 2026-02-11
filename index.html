@@ -2062,6 +2062,390 @@ isplay=swap" rel="stylesheet">
             }
         }
     </script>
+            // ============================================
+// SISTEMA DINÁMICO - BIENESTAR EMOCIONAL
+// ============================================
+// Este código se debe pegar en el HTML justo antes de </body>
+
+// 🔧 CONFIGURACIÓN - PEGA AQUÍ TU URL DE APPS SCRIPT
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxv__Im64HXOpGN5O2bONXWRcFg2DgDVz9f00F9v-IXQXi14xZwVLLzoykf5E4zwuoH/exec';  // ⬅️ REEMPLAZAR CON TU URL
+
+// Cache en localStorage
+const CACHE_KEY = 'bienestarEmocional_data';
+const CACHE_TIMESTAMP_KEY = 'bienestarEmocional_timestamp';
+const CACHE_DURATION = 3600000; // 1 hora en milisegundos
+
+// Cargar datos al iniciar
+window.addEventListener('DOMContentLoaded', async function() {
+    try {
+        // Intentar cargar desde caché primero
+        const cachedData = loadFromCache();
+        
+        if (cachedData) {
+            console.log('✅ Cargando desde caché...');
+            renderContent(cachedData);
+        }
+        
+        // Luego actualizar desde el servidor
+        console.log('🔄 Actualizando desde Google Sheets...');
+        const freshData = await fetchFromGoogleSheets();
+        
+        if (freshData && !freshData.error) {
+            saveToCache(freshData);
+            renderContent(freshData);
+            console.log('✅ Contenido actualizado');
+        } else if (!cachedData) {
+            console.error('❌ Error y sin caché disponible');
+        }
+        
+    } catch (error) {
+        console.error('Error al cargar datos:', error);
+    }
+});
+
+// Cargar desde caché
+function loadFromCache() {
+    try {
+        const timestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+        const now = new Date().getTime();
+        
+        if (timestamp && (now - parseInt(timestamp)) < CACHE_DURATION) {
+            const data = localStorage.getItem(CACHE_KEY);
+            return data ? JSON.parse(data) : null;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error al cargar caché:', error);
+        return null;
+    }
+}
+
+// Guardar en caché
+function saveToCache(data) {
+    try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(CACHE_TIMESTAMP_KEY, new Date().getTime().toString());
+    } catch (error) {
+        console.error('Error al guardar caché:', error);
+    }
+}
+
+// Obtener datos de Google Sheets
+async function fetchFromGoogleSheets() {
+    try {
+        const response = await fetch(APPS_SCRIPT_URL);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error al obtener datos:', error);
+        return null;
+    }
+}
+
+// Renderizar contenido en el HTML
+function renderContent(data) {
+    if (!data || data.error) return;
+    
+    // Renderizar Principal
+    if (data.principal) {
+        renderPrincipal(data.principal);
+    }
+    
+    // Renderizar Modales
+    if (data.empresas) renderModalEmpresas(data.empresas);
+    if (data.escuelas) renderModalEscuelas(data.escuelas);
+    if (data.infantil) renderModalInfantil(data.infantil);
+    if (data.adultos) renderModalAdultos(data.adultos);
+}
+
+// Renderizar datos principales
+function renderPrincipal(principal) {
+    // Header - Títulos
+    const h1Elements = document.querySelectorAll('header h1');
+    if (h1Elements[0] && principal.Plantil) {
+        h1Elements[0].textContent = principal.Plantil;
+    }
+    if (h1Elements[1] && principal.Descripcion) {
+        h1Elements[1].textContent = principal.Descripcion;
+    }
+    
+    // Hero Section
+    const heroH2 = document.querySelector('.hero h2');
+    const heroP = document.querySelector('.hero p');
+    if (heroH2 && principal['Frase Del Dia']) {
+        heroH2.textContent = principal['Frase Del Dia'];
+    }
+    if (heroP && principal.Frase) {
+        heroP.textContent = principal.Frase;
+    }
+    
+    // Evaluaciones - Parsear el texto complejo
+    if (principal['Servicio Senior']) {
+        const servicioText = principal['Servicio Senior'];
+        const evalSection = document.querySelectorAll('.section')[0];
+        
+        if (evalSection) {
+            // Extraer título
+            const tituloMatch = servicioText.match(/^([^\n]+)/);
+            if (tituloMatch) {
+                const h2 = evalSection.querySelector('h2');
+                if (h2) h2.textContent = tituloMatch[1];
+            }
+            
+            // Actualizar descripción
+            const strong = evalSection.querySelector('p strong');
+            if (strong) {
+                const descMatch = servicioText.match(/Realizamos evaluaciones psicológicas/);
+                if (descMatch) strong.textContent = 'Realizamos evaluaciones psicológicas';
+            }
+            
+            // Modalidad
+            const modalidadMatch = servicioText.match(/Modalidad:([^\n]+)/);
+            if (modalidadMatch) {
+                const modalidadP = evalSection.querySelector('p:last-of-type');
+                if (modalidadP) {
+                    modalidadP.innerHTML = '<strong>Modalidad:</strong>' + modalidadMatch[1];
+                }
+            }
+        }
+    }
+    
+    // Contacto
+    if (principal.whatsapp) {
+        const telP = document.querySelector('.contacto-item:first-child p');
+        if (telP) telP.textContent = principal.whatsapp;
+        
+        // Actualizar botón de WhatsApp
+        const whatsappLink = document.querySelector('.whatsapp-float');
+        if (whatsappLink) {
+            const numLimpio = principal.whatsapp.replace(/\s/g, '');
+            whatsappLink.href = `https://wa.me/${numLimpio}?text=Hola,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios`;
+        }
+    }
+    
+    if (principal.correo) {
+        const emailP = document.querySelector('.contacto-item:nth-child(2) p');
+        if (emailP) emailP.textContent = principal.correo;
+    }
+    
+    // Mapa
+    if (principal.mapa) {
+        const iframe = document.querySelector('.mapa iframe');
+        if (iframe) {
+            // Si es URL corta de Google Maps, intentar convertir
+            if (principal.mapa.includes('maps.app.goo.gl')) {
+                // Mantener la URL original ya que la conversión requiere API
+                iframe.src = principal.mapa;
+            } else {
+                iframe.src = principal.mapa;
+            }
+        }
+    }
+}
+
+// Renderizar modal Empresas
+function renderModalEmpresas(empresas) {
+    const modal = document.getElementById('modalEmpresas');
+    if (!modal) return;
+    
+    const h3 = modal.querySelector('h3');
+    if (h3 && empresas.Titulo) h3.textContent = empresas.Titulo;
+    
+    const paragraphs = modal.querySelectorAll('p');
+    if (paragraphs[0] && empresas.Descripcion) {
+        paragraphs[0].textContent = empresas.Descripcion;
+    }
+    
+    // Servicios
+    const uls = modal.querySelectorAll('ul');
+    if (uls[0] && empresas.Servicios) {
+        uls[0].innerHTML = empresas.Servicios
+            .filter(s => s && s.trim())
+            .map(s => `<li>${s}</li>`)
+            .join('');
+    }
+    
+    // Temas
+    if (uls[1] && empresas.Temas) {
+        uls[1].innerHTML = empresas.Temas
+            .filter(t => t && t.trim())
+            .map(t => `<li>${t}</li>`)
+            .join('');
+    }
+    
+    // Modalidad
+    const modalidadP = Array.from(paragraphs).find(p => 
+        p.querySelector('strong')?.textContent.includes('Modalidad')
+    );
+    if (modalidadP && empresas.Modalidad) {
+        modalidadP.innerHTML = `<strong>Modalidad</strong> ${empresas.Modalidad}`;
+    }
+    
+    // Botón
+    const button = modal.querySelector('.cta-button');
+    if (button) {
+        if (empresas.BotonTexto) button.textContent = empresas.BotonTexto;
+        if (empresas.BotonURL) button.href = empresas.BotonURL;
+    }
+}
+
+// Renderizar modal Escuelas
+function renderModalEscuelas(escuelas) {
+    const modal = document.getElementById('modalEscuelas');
+    if (!modal) return;
+    
+    const h3 = modal.querySelector('h3');
+    if (h3 && escuelas.Titulo) h3.textContent = escuelas.Titulo;
+    
+    const paragraphs = modal.querySelectorAll('p');
+    if (paragraphs[0] && escuelas.Descripcion) {
+        paragraphs[0].textContent = escuelas.Descripcion;
+    }
+    
+    // Servicios
+    const ul = modal.querySelector('ul');
+    if (ul && escuelas.Servicios) {
+        ul.innerHTML = escuelas.Servicios
+            .filter(s => s && s.trim())
+            .map(s => `<li>${s}</li>`)
+            .join('');
+    }
+    
+    // Modalidad
+    const modalidadP = Array.from(paragraphs).find(p => 
+        p.querySelector('strong')?.textContent === 'Modalidad:'
+    );
+    if (modalidadP && escuelas.Modalidad) {
+        modalidadP.innerHTML = `<strong>Modalidad:</strong> ${escuelas.Modalidad}`;
+    }
+    
+    // Botón
+    const button = modal.querySelector('.cta-button');
+    if (button) {
+        if (escuelas.BotonTexto) button.textContent = escuelas.BotonTexto;
+        if (escuelas.BotonURL) button.href = escuelas.BotonURL;
+    }
+}
+
+// Renderizar modal Infantil
+function renderModalInfantil(infantil) {
+    const modal = document.getElementById('modalInfantil');
+    if (!modal) return;
+    
+    const h3 = modal.querySelector('h3');
+    if (h3 && infantil.Titulo) h3.textContent = infantil.Titulo;
+    
+    const paragraphs = modal.querySelectorAll('p');
+    if (paragraphs[0] && infantil.IntroTexto) {
+        paragraphs[0].textContent = infantil.IntroTexto;
+    }
+    
+    // Procesos
+    const uls = modal.querySelectorAll('ul');
+    if (uls[0] && infantil.Procesos) {
+        uls[0].innerHTML = infantil.Procesos
+            .filter(p => p && p.titulo)
+            .map(p => `<li><strong>${p.titulo}</strong> ${p.texto}</li>`)
+            .join('');
+    }
+    
+    // Conclusión
+    const conclusionP = Array.from(paragraphs).find(p => 
+        p.textContent.includes('Todo el proceso') || p.textContent.includes('psicóloga infantil')
+    );
+    if (conclusionP && infantil.Conclusion) {
+        conclusionP.textContent = infantil.Conclusion;
+    }
+    
+    // Adolescentes - título y descripción
+    const adoleTitle = Array.from(paragraphs).find(p => 
+        p.querySelector('strong')?.textContent.includes('Adolescente')
+    );
+    if (adoleTitle && infantil.AdolescentesTitulo) {
+        adoleTitle.innerHTML = `<strong>${infantil.AdolescentesTitulo}</strong>`;
+    }
+    
+    const adoleDesc = paragraphs[paragraphs.length - 2];
+    if (adoleDesc && infantil.AdolescentesDescripcion) {
+        adoleDesc.textContent = infantil.AdolescentesDescripcion;
+    }
+    
+    // Lista de características de adolescentes
+    if (uls[1] && infantil.Adolescentes) {
+        uls[1].innerHTML = infantil.Adolescentes
+            .filter(a => a && a.trim())
+            .map(a => `<li>${a}</li>`)
+            .join('');
+    }
+    
+    // Botón
+    const button = modal.querySelector('.cta-button');
+    if (button) {
+        if (infantil.BotonTexto) button.textContent = infantil.BotonTexto;
+        if (infantil.BotonURL) button.href = infantil.BotonURL;
+    }
+}
+
+// Renderizar modal Adultos
+function renderModalAdultos(adultos) {
+    const modal = document.getElementById('modalAdultos');
+    if (!modal) return;
+    
+    const h3 = modal.querySelector('h3');
+    if (h3 && adultos.Titulo) h3.textContent = adultos.Titulo;
+    
+    // Construir contenido completo
+    const ul = modal.querySelector('ul');
+    if (ul) {
+        let html = '';
+        
+        // ¿Qué es?
+        if (adultos.QueEsTitulo && adultos.QueEsTexto) {
+            html += `<li><strong>${adultos.QueEsTitulo}</strong> ${adultos.QueEsTexto}</li>`;
+        }
+        
+        // Proceso
+        if (adultos.ProcesoTitulo && adultos.Procesos) {
+            html += `<li><strong>${adultos.ProcesoTitulo}</strong><ul>`;
+            adultos.Procesos.filter(p => p && p.trim()).forEach(p => {
+                html += `<li>${p}</li>`;
+            });
+            html += `</ul></li>`;
+        }
+        
+        // Enfoques
+        if (adultos.EnfoquesTitulo && adultos.Enfoques) {
+            html += `<li><strong>${adultos.EnfoquesTitulo}</strong><ul>`;
+            adultos.Enfoques.filter(e => e && e.trim()).forEach(e => {
+                html += `<li>${e}</li>`;
+            });
+            html += `</ul></li>`;
+        }
+        
+        // Temas
+        if (adultos.TemasTitulo && adultos.Temas) {
+            html += `<li><strong>${adultos.TemasTitulo}</strong><ul>`;
+            adultos.Temas.filter(t => t && t.trim()).forEach(t => {
+                html += `<li>${t}</li>`;
+            });
+            html += `</ul></li>`;
+        }
+        
+        // Modalidad
+        if (adultos.Modalidad) {
+            html += `<li><strong>Modalidad:</strong> ${adultos.Modalidad}</li>`;
+        }
+        
+        ul.innerHTML = html;
+    }
+    
+    // Botón
+    const button = modal.querySelector('.cta-button');
+    if (button) {
+        if (adultos.BotonTexto) button.textContent = adultos.BotonTexto;
+        if (adultos.BotonURL) button.href = adultos.BotonURL;
+    }
+}
 </body>
 </html>
 
