@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Bienestar Emocional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&d<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Bienestar Emocional</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
@@ -50,14 +44,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
@@ -88,14 +76,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section {
@@ -231,9 +213,7 @@
             animation: pulse 2s infinite;
         }
 
-        .whatsapp-float:active {
-            transform: scale(0.9);
-        }
+        .whatsapp-float:active { transform: scale(0.9); }
 
         .whatsapp-float svg {
             width: 35px;
@@ -242,15 +222,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            }
-            50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.8);
-            }
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            }
+            0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); }
         }
 
         .share-float {
@@ -267,9 +241,7 @@
             border: none;
         }
 
-        .share-float:active {
-            transform: scale(0.9);
-        }
+        .share-float:active { transform: scale(0.9); }
 
         .share-float svg {
             width: 32px;
@@ -302,14 +274,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(60px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .share-modal h3 {
@@ -362,10 +328,7 @@
             display: none;
         }
 
-        #qrCode canvas {
-            margin: 0 auto;
-            display: block;
-        }
+        #qrCode canvas { margin: 0 auto; display: block; }
 
         .modal {
             display: none;
@@ -407,10 +370,6 @@
             display: block;
             background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
             transition: opacity 0.5s ease-in-out;
-            opacity: 1;
-        }
-
-        .modal[style*="display: block"] .modal-image {
             opacity: 1;
         }
 
@@ -486,9 +445,7 @@
             text-align: center;
         }
 
-        .cta-button:active {
-            transform: scale(0.98);
-        }
+        .cta-button:active { transform: scale(0.98); }
 
         .contacto {
             background: var(--blanco);
@@ -514,9 +471,7 @@
             border-left: 4px solid var(--morado-intenso);
         }
 
-        .contacto-item:active {
-            transform: scale(0.98);
-        }
+        .contacto-item:active { transform: scale(0.98); }
 
         .contacto-item strong {
             color: var(--morado-intenso);
@@ -526,9 +481,7 @@
             font-family: 'Outfit', sans-serif;
         }
 
-        .contacto-item p {
-            font-size: 0.95rem;
-        }
+        .contacto-item p { font-size: 0.95rem; }
 
         .social-links {
             display: flex;
@@ -550,13 +503,9 @@
             font-weight: 600;
         }
 
-        .social-links a:active {
-            transform: scale(0.98);
-        }
+        .social-links a:active { transform: scale(0.98); }
 
-        .mapa {
-            margin-top: 1.5rem;
-        }
+        .mapa { margin-top: 1.5rem; }
 
         .mapa iframe {
             width: 100%;
@@ -576,18 +525,57 @@
             font-size: 0.9rem;
         }
 
+        /* Badge especial para tarjeta de evaluaciones */
+        .badge-eval {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rosa-intenso), var(--morado-intenso));
+            color: white;
+            font-size: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            padding: 0.25rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Tabla de áreas evaluadas en modal */
+        .eval-areas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .eval-area-item {
+            background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
+            border-radius: 10px;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--morado-intenso);
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            border-left: 3px solid var(--morado-intenso);
+        }
+
+        .modal-section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--morado-intenso);
+            background: linear-gradient(135deg, var(--rosa-claro), var(--morado-claro));
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: block;
+        }
+
         @media (min-width: 768px) {
-            body {
-                font-size: 17px;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
+            body { font-size: 17px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
 
             .hero, .section, .contacto {
                 max-width: 900px;
@@ -601,57 +589,31 @@
                 gap: 2rem;
             }
 
-            .contacto-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .contacto-grid { grid-template-columns: repeat(3, 1fr); }
 
             .social-links {
                 flex-direction: row;
                 justify-content: center;
             }
 
-            .mapa iframe {
-                height: 400px;
-            }
+            .mapa iframe { height: 400px; }
 
             .modal-content {
                 max-width: 700px;
                 padding: 2.5rem 2rem;
             }
 
-            .floating-buttons {
-                bottom: 25px;
-                right: 25px;
-            }
+            .floating-buttons { bottom: 25px; right: 25px; }
 
-            .whatsapp-float, .share-float {
-                width: 65px;
-                height: 65px;
-            }
-
-            .whatsapp-float svg {
-                width: 38px;
-                height: 38px;
-            }
-
-            .share-float svg {
-                width: 35px;
-                height: 35px;
-            }
+            .whatsapp-float, .share-float { width: 65px; height: 65px; }
+            .whatsapp-float svg { width: 38px; height: 38px; }
+            .share-float svg { width: 35px; height: 35px; }
         }
 
         @media (min-width: 1024px) {
-            body {
-                font-size: 18px;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
+            body { font-size: 18px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
 
             .hero, .section, .contacto {
                 max-width: 1200px;
@@ -683,9 +645,7 @@
                 box-shadow: 0 6px 20px rgba(197, 163, 255, 0.6);
             }
 
-            .whatsapp-float:hover, .share-float:hover {
-                transform: scale(1.1);
-            }
+            .whatsapp-float:hover, .share-float:hover { transform: scale(1.1); }
 
             .close:hover {
                 background: var(--rosa-claro);
@@ -703,57 +663,32 @@
                 transform: translateY(-3px);
             }
 
-            .mapa iframe {
-                height: 450px;
-            }
+            .mapa iframe { height: 450px; }
+            .floating-buttons { bottom: 30px; right: 30px; }
 
-            .floating-buttons {
-                bottom: 30px;
-                right: 30px;
-            }
-
-            .whatsapp-float, .share-float {
-                width: 70px;
-                height: 70px;
-            }
-
-            .whatsapp-float svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .share-float svg {
-                width: 38px;
-                height: 38px;
-            }
+            .whatsapp-float, .share-float { width: 70px; height: 70px; }
+            .whatsapp-float svg { width: 40px; height: 40px; }
+            .share-float svg { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
     <header>
         <img src="plantillas_Images/Bienestar Emocional.imagen.124245.png" alt="Bienestar Emocional" class="logo" onerror="this.src='https://via.placeholder.com/200x200/A67FFF/FFFFFF?text=Bienestar+Emocional'">
-       <h1>Bienestar Emocional </h1>
-    <p>Para niños adolescentes, adultos, escuelas y empresas .</p>
-        <p>Atencion clara, Empatica y sin juicios </p>
-
+        <h1>Bienestar Emocional</h1>
+        <p>Para niños adolescentes, adultos, escuelas y empresas.</p>
+        <p>Atención clara, Empática y sin juicios</p>
     </header>
 
     <div class="hero">
-    <h2>En cada uno de nuestros dias se presentan</h2>
-        <p>Momentos en los que podemos acompañarte
-Estrés, ansiedad o preocupación
-Tristeza o desánimo
-Conflictos familiares o escolares
-Dudas sobre ti mismo o tu autoestima
-Desarrollo de habilidades sociales y liderazgo
-Bienestar en escuelas y equipos de trabajo</p>
+        <h2>En cada uno de nuestros dias se presentan</h2>
+        <p>Momentos en los que podemos acompañarte: Estrés, ansiedad o preocupación. Tristeza o desánimo. Conflictos familiares o escolares. Dudas sobre ti mismo o tu autoestima. Desarrollo de habilidades sociales y liderazgo. Bienestar en escuelas y equipos de trabajo.</p>
     </div>
 
-  
     <div class="section">
         <h2>Solicitud de Servicios</h2>
         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1rem; color: var(--texto-medio);">Selecciona el servicio que necesitas</p>
-        
+
         <div class="servicios-buttons">
             <div class="service-card" onclick="openModal('empresas')">
                 <img src="plantillas_Images/imagenempresa.png" alt="Empresas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Empresas'">
@@ -786,16 +721,26 @@ Bienestar en escuelas y equipos de trabajo</p>
                     <button class="service-card-button">Ver más información</button>
                 </div>
             </div>
+
+            <!-- NUEVA TARJETA: Evaluaciones Especializadas -->
+            <div class="service-card" onclick="openModal('evaluaciones')" style="grid-column: 1 / -1; max-width: 420px; margin: 0 auto; width: 100%;">
+                <img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="service-card-image" onerror="this.src='https://via.placeholder.com/400x200/A67FFF/FFFFFF?text=Evaluaciones'">
+                <div class="service-card-content">
+                    <div class="badge-eval">Nuevo</div>
+                    <h3 class="service-card-title">🧠 Evaluaciones Especializadas</h3>
+                    <button class="service-card-button">Ver más información</button>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- MODAL: Empresas -->
     <div id="modalEmpresas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('empresas')">&times;</span>
             <img src="plantillas_Images/imagenempresa.png" alt="Servicios Empresariales" class="modal-image" onerror="this.style.display='none'">
             <h3>🏢 Bienestar Emocional en tu Empresa</h3>
             <p>Acompañamos a las organizaciones en el cuidado del bienestar emocional de sus colaboradores, a través de atención psicológica profesional y estrategias preventivas que favorecen entornos laborales saludables, en apego a la NOM-035-STPS.</p>
-            
             <p><strong>Servicios:</strong></p>
             <ul>
                 <li>Atención psicológica a trabajadores (ético, confidencial y seguro)</li>
@@ -803,37 +748,30 @@ Bienestar en escuelas y equipos de trabajo</p>
                 <li>Talleres, pláticas y conferencias</li>
                 <li>Evaluaciones psicométricas para reclutamiento</li>
             </ul>
- <p><strong>Temas que manejamos</strong></p>
+            <p><strong>Temas que manejamos:</strong></p>
             <ul>
                 <li>Liderazgo</li>
                 <li>Inteligencia Emocional</li>
-                <li>Accion preventiva de la violencia y acoso laboral</li>
-                <li>Manejo del estres y prevencion del burnout</li>
-                <li>Factores de riesgos psicosocial (NoM-935)</li>
-                <li>Perfiles Evaluados -personal operativo, personal administrativo</li>
-                <li>Personal del area de la salud industrial</li>
-                
-                      
-  </ul>
-
-            <p><strong>Modalidad</strong> Presencia o en linea</p>
-  
+                <li>Acción preventiva de la violencia y acoso laboral</li>
+                <li>Manejo del estrés y prevención del burnout</li>
+                <li>Factores de riesgo psicosocial (NOM-035)</li>
+                <li>Perfiles Evaluados – personal operativo, personal administrativo</li>
+                <li>Personal del área de la salud industrial</li>
+            </ul>
+            <p><strong>Modalidad:</strong> Presencial o en línea</p>
             <div style="text-align: center;">
                 <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=empresa" class="cta-button">Solicitar Cotización</a>
             </div>
         </div>
     </div>
 
+    <!-- MODAL: Escuelas -->
     <div id="modalEscuelas" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('escuelas')">&times;</span>
             <img src="plantillas_Images/imagenescuela.png" alt="Servicios Escolares" class="modal-image" onerror="this.style.display='none'">
             <h3>🏫 Espacios de Aprendizaje y Bienestar Emocional</h3>
-            <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas,
-                niños y adolescentes, integrando a las familias como parte fundamental del proceso. 
-                Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo, 
-                con contenidos diseñados para acompañar procesos formativos desde preescolar hasta preparatoria.</p>
-            
+            <p>Creamos programas psicoeducativos enfocados en el desarrollo emocional y social de niñas, niños y adolescentes, integrando a las familias como parte fundamental del proceso. Nuestros espacios son claros, dinámicos y respetuosos de cada etapa del desarrollo, con contenidos diseñados para acompañar procesos formativos desde preescolar hasta preparatoria.</p>
             <p><strong>Servicios:</strong></p>
             <ul>
                 <li>Acompañamiento psicológico individual</li>
@@ -843,41 +781,37 @@ Bienestar en escuelas y equipos de trabajo</p>
                 <li>Orientación a padres de familia</li>
                 <li>Talleres y pláticas psicoeducativas</li>
             </ul>
- <p><strong>Temas que manejamos</strong></p>
+            <p><strong>Temas que manejamos:</strong></p>
             <ul>
- <li>Gestión emocional.</li>
- <li>Prevención del bullying y acoso escolar.</li>
- <li>Uso saludable de pantallas y redes sociales.</li>
- <li>Autoestima, habilidades sociales y trabajo en equipo.</li>
- <li>Educación sexual y responsable.</li>
- <li>Manejo del estrés y ansiedad.</li>
+                <li>Gestión emocional</li>
+                <li>Prevención del bullying y acoso escolar</li>
+                <li>Uso saludable de pantallas y redes sociales</li>
+                <li>Autoestima, habilidades sociales y trabajo en equipo</li>
+                <li>Educación sexual y responsable</li>
+                <li>Manejo del estrés y ansiedad</li>
+            </ul>
             <p><strong>Modalidad:</strong> Presencial • En línea</p>
-  
             <div style="text-align: center;">
                 <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=escuela" class="cta-button">Solicitar Cotización</a>
             </div>
         </div>
     </div>
 
+    <!-- MODAL: Niños y Adolescentes -->
     <div id="modalInfantil" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('infantil')">&times;</span>
             <img src="plantillas_Images/imagenadolescentes.png" alt="Terapia Infantil y Adolescentes" class="modal-image" onerror="this.style.display='none'">
             <h3>👶 Terapia Psicológica Niños Y Adolescentes</h3>
             <p>El proceso de la terapia psicológica infantil se lleva de la siguiente manera:</p>
-            
             <ul>
                 <li><strong>🔹 Primera sesión:</strong> Se realiza una entrevista con mamá y/o papá, donde platicamos sobre el motivo de consulta, el desarrollo del niño, su conducta, emociones y el contexto familiar y escolar. Esta sesión es muy importante porque nos ayuda a entender qué está pasando y cómo apoyar mejor al niño.</li>
-                
                 <li><strong>🔹 Sesiones posteriores:</strong> Son directamente con el niño/a, en un espacio terapéutico adecuado a su edad, utilizando juego, dibujo y actividades terapéuticas.</li>
-                
                 <li><strong>🔹 Valoración psicológica:</strong> Cuando el motivo de consulta no está del todo claro, o se requiere mayor información, puedo aplicar algunas pruebas psicológicas o actividades de valoración para comprender mejor su mundo emocional y conductual.</li>
-                
                 <li><strong>🔹 Acompañamiento a los padres:</strong> Durante el proceso voy brindando retroalimentación y estrategias prácticas para que puedan apoyar al niño desde casa, ya que el trabajo familiar es clave para lograr avances.</li>
             </ul>
-
-            <p>Todo el proceso se adapta a la edad y necesidades de cada niño. Soy psicóloga infantil y trabajo desde un enfoque integrativo, combinando la terapia de juego con la evaluación psicológica y neuropsicológica. Mi objetivo es comprender al niño en su totalidad para ofrecer un acompañamiento adecuado, así como orientación a los padres para favorecer cambios reales en casa y en la escuela.</p>
-           <p><strong>Psicología Adolescente (10-19/20 años):</strong></p>
+            <p>Todo el proceso se adapta a la edad y necesidades de cada niño. Soy psicóloga infantil y trabajo desde un enfoque integrativo, combinando la terapia de juego con la evaluación psicológica y neuropsicológica.</p>
+            <p><strong>Psicología Adolescente (10-19/20 años):</strong></p>
             <p>Se enfoca en la formación de identidad, cambios físicos/emocionales y socialización.</p>
             <ul>
                 <li>Formación de identidad personal y social</li>
@@ -886,245 +820,148 @@ Bienestar en escuelas y equipos de trabajo</p>
                 <li>Manejo de emociones complejas</li>
                 <li>Toma de decisiones y autonomía</li>
             </ul>
-     <p><strong>Modalidad: Presencial o en línea</strong></p>
-  
+            <p><strong>Modalidad:</strong> Presencial o en línea</p>
             <div style="text-align: center;">
                 <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
             </div>
         </div>
     </div>
 
+    <!-- MODAL: Adultos -->
     <div id="modalAdultos" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('adultos')">&times;</span>
             <img src="plantillas_Images/imagenadultos.png" alt="Psicología Adultos" class="modal-image" onerror="this.style.display='none'">
-            <h3>👨‍🦱 Atencion psicología para adultos:</h3>
-            
-            <p>
-                Espacio terapéutico profesional y confidencial orientado a comprender lo que estás viviendo,
-                identificar patrones emocionales y desarrollar herramientas que permitan afrontar situaciones personales,
-                relacionales y laborales con mayor claridad y bienestar.
-            </p>
-
-                <p><strong>Proceso de atención</strong></p>
-            
+            <h3>👨‍🦱 Atención psicológica para adultos</h3>
+            <p>Espacio terapéutico profesional y confidencial orientado a comprender lo que estás viviendo, identificar patrones emocionales y desarrollar herramientas que permitan afrontar situaciones personales, relacionales y laborales con mayor claridad y bienestar.</p>
+            <p><strong>Proceso de atención:</strong></p>
             <ul>
-               
                 <li>Entrevista inicial de valoración</li>
                 <li>Definición de objetivos terapéuticos</li>
                 <li>Trabajo emocional y conductual en sesiones periódicas</li>
                 <li>Desarrollo de herramientas prácticas aplicables a la vida diaria</li>
                 <li>Seguimiento del progreso y cierre terapéutico</li>
-           
-            </ul>        
-            
-                <p><strong>Nuestros enfoques</strong></p>
-            
+            </ul>
+            <p><strong>Nuestros enfoques:</strong></p>
             <ul>
-    
-        <li>Terapia Cognitivo-Conductual (TCC)</li>
-        <li>Terapia breve centrada en soluciones</li>
-        <li>Intervención en crisis</li>
-        <li>Acompañamiento en duelo (tanatología)</li>
-    
-    </ul>
-            
-             <p><strong>Temas a tratar</strong></p>
-    
-    <ul>
+                <li>Terapia Cognitivo-Conductual (TCC)</li>
+                <li>Terapia breve centrada en soluciones</li>
+                <li>Intervención en crisis</li>
+                <li>Acompañamiento en duelo (tanatología)</li>
+            </ul>
+            <p><strong>Temas a tratar:</strong></p>
+            <ul>
                 <li>Ansiedad, preocupaciones constantes o sensación de no poder desconectar</li>
-            <li>Estrés, saturación mental y agotamiento emocional</li>
-            <li>Tristeza, desánimo o falta de motivación</li>
-            <li>Dificultad para tomar decisiones o claridad personal</li>
-            <li>Autoestima, inseguridad y autovaloración</li>
-            <li>Procesos de duelo y pérdidas importantes</li>
-            <li>Conflictos familiares, de pareja o en relaciones cercanas</li>
-            <li>Manejo del enojo, frustración e impulsividad</li>
-            <li>Cambios de vida y adaptación a nuevas etapas</li>
-            <li>Comunicación y establecimiento de límites personales</li>
-    </ul>
-         <p><strong>Modalidad:</strong> Presencial • En línea </p>
-    <div style="text-align: center;">
+                <li>Estrés, saturación mental y agotamiento emocional</li>
+                <li>Tristeza, desánimo o falta de motivación</li>
+                <li>Dificultad para tomar decisiones o claridad personal</li>
+                <li>Autoestima, inseguridad y autovaloración</li>
+                <li>Procesos de duelo y pérdidas importantes</li>
+                <li>Conflictos familiares, de pareja o en relaciones cercanas</li>
+                <li>Manejo del enojo, frustración e impulsividad</li>
+                <li>Cambios de vida y adaptación a nuevas etapas</li>
+                <li>Comunicación y establecimiento de límites personales</li>
+            </ul>
+            <p><strong>Modalidad:</strong> Presencial • En línea</p>
+            <div style="text-align: center;">
                 <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
             </div>
         </div>
-        </div>
+    </div>
 
-  //----- copia modal
-
-
-    <div id="modalAdultos2" class="modal">
+    <!-- ===== MODAL NUEVO: Evaluaciones Especializadas ===== -->
+    <div id="modalEvaluaciones" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('adultos2')">&times;</span>
-            <img src="plantillas_Images/imagenadultos.png" alt="Psicología Adultos" class="modal-image" onerror="this.style.display='none'">
-            <h3>👨‍🦱 Atencion psicología para adultos:</h3>
-            
-            <p>
-                Espacio terapéutico profesional y confidencial orientado a comprender lo que estás viviendo,
-                identificar patrones emocionales y desarrollar herramientas que permitan afrontar situaciones personales,
-                relacionales y laborales con mayor claridad y bienestar.
-            </p>
+            <span class="close" onclick="closeModal('evaluaciones')">&times;</span>
+            <img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="modal-image" onerror="this.style.display='none'">
+            <h3>🧠 Evaluación Psicológica y Neuropsicológica</h3>
+            <p>Valoración profesional para comprender dificultades emocionales, conductuales, escolares o de adaptación y orientar decisiones en escuela, terapia o trabajo.</p>
 
-                <p><strong>Proceso de atención</strong></p>
-            
+            <span class="modal-section-label">¿A quién va dirigida?</span>
             <ul>
-               
-                <li>Entrevista inicial de valoración</li>
-                <li>Definición de objetivos terapéuticos</li>
-                <li>Trabajo emocional y conductual en sesiones periódicas</li>
-                <li>Desarrollo de herramientas prácticas aplicables a la vida diaria</li>
-                <li>Seguimiento del progreso y cierre terapéutico</li>
-           
-            </ul>        
-            
-                <p><strong>Nuestros enfoques</strong></p>
-            
+                <li><strong>Niños y adolescentes</strong> con dificultades de conducta, aprendizaje o adaptación escolar</li>
+                <li><strong>Adultos</strong> en situaciones personales, emocionales o laborales</li>
+                <li><strong>Escuelas</strong> para orientación y canalización de alumnos</li>
+                <li><strong>Empresas</strong> para valoración previa a contratación o estado emocional del trabajador</li>
+                <li>Personas que desean entender qué les está pasando antes de iniciar terapia</li>
+            </ul>
+
+            <span class="modal-section-label">Áreas que se exploran</span>
+            <div class="eval-areas-grid">
+                <div class="eval-area-item">🎭 Personalidad y manejo emocional</div>
+                <div class="eval-area-item">🔄 Conducta y adaptación</div>
+                <div class="eval-area-item">🎯 Atención y concentración</div>
+                <div class="eval-area-item">📚 Memoria y aprendizaje</div>
+                <div class="eval-area-item">💡 Recursos personales</div>
+                <div class="eval-area-item">⚖️ Toma de decisiones</div>
+            </div>
+
+            <span class="modal-section-label">Importante</span>
             <ul>
-    
-        <li>Terapia Cognitivo-Conductual (TCC)</li>
-        <li>Terapia breve centrada en soluciones</li>
-        <li>Intervención en crisis</li>
-        <li>Acompañamiento en duelo (tanatología)</li>
-    
-    </ul>
-            
-             <p><strong>Temas a tratar</strong></p>
-    
-    <ul>
-                <li>Ansiedad, preocupaciones constantes o sensación de no poder desconectar</li>
-            <li>Estrés, saturación mental y agotamiento emocional</li>
-            <li>Tristeza, desánimo o falta de motivación</li>
-            <li>Dificultad para tomar decisiones o claridad personal</li>
-            <li>Autoestima, inseguridad y autovaloración</li>
-            <li>Procesos de duelo y pérdidas importantes</li>
-            <li>Conflictos familiares, de pareja o en relaciones cercanas</li>
-            <li>Manejo del enojo, frustración e impulsividad</li>
-            <li>Cambios de vida y adaptación a nuevas etapas</li>
-            <li>Comunicación y establecimiento de límites personales</li>
-    </ul>
-         <p><strong>Modalidad:</strong> Presencial • En línea </p>
-    <div style="text-align: center;">
-                <a href="https://script.google.com/macros/s/AKfycbyo7-d8gKDAV1ecNP5EH3iAApJo1J1HXRQ_R7HJ07ZcqbDFBSb_eWRzmsOiEztH_kk/exec?page=cita" class="cta-button">Agendar Cita</a>
+                <li>La evaluación psicológica <strong>no es terapia</strong>.</li>
+                <li>Permite comprender la situación y determinar el tipo de apoyo más adecuado.</li>
+                <li>Los resultados se presentan en un informe claro y orientado a la acción.</li>
+            </ul>
+
+            <p><strong>Modalidad:</strong> Presencial • En línea</p>
+
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://wa.me/5214425839311?text=Hola,%20Necesito%20Servicio%20de%20evaluacion%20Psicologica%20-%20Gracias%20!!!" target="_blank" class="cta-button">
+                    📲 Contactar por WhatsApp
+                </a>
             </div>
         </div>
-        </div>
     </div>
-  
-  //----- terminal copia modal
-  <div class="section">
-        <h2>Evaluciones Especializadas</h2>
-        <img src="plantillas_Images/imagenevaluaciones.png" alt="Evaluaciones Especializadas" class="modal-image" style="margin-bottom: 1.5rem;" onerror="this.style.display='none'">
-        <p><strong>Evaluaciones Especializadas</strong></p>
-        <ul>
-            <h2> Evaluación Psicológica y Neuropsicológicas 
-Valoración profesional para comprender dificultades emocionales, conductuales, escolares o de adaptación y orientar decisiones en escuela, terapia o trabajo.
-¿A quién va dirigida?
-Niños y adolescentes (conducta, aprendizaje o adaptación escolar)
-Adultos (situaciones personales, emocionales o laborales)
-Escuelas (orientación y canalización de alumnos)
-Empresas (valoración previa a contratación o estado emocional del trabajador)
-Personas que desean entender qué les está pasando antes de iniciar terapia
-Áreas que se exploran
-Personalidad y manejo emocional
-Conducta y adaptación
-Atención y concentración
-Memoria y aprendizaje
-Recursos personales y toma de decisiones
-Importante
-La evaluación psicológica no es terapia.
-Permite comprender la situación y determinar el tipo de apoyo más adecuado.
-Modalidad
-Presencial o en línea</h2>
- </h2>
-        </ul>
-         <p><strong>Modalidad:</strong> Presencial • En línea </p>
+    <!-- ===== FIN MODAL Evaluaciones ===== -->
 
-<div class="whatsapp-frame" style="width: 90%; max-width: 1200px; margin: 40px auto; padding: 20px; background: white; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; overflow: hidden;">
-  <h3 style="margin: 0 0 15px; color: #333; font-size: 1.5em;">¿Necesitas una evaluación psicológica?</h3>
-  <p style="margin: 0 0 20px; color: #555; font-size: 1.1em;">
-    Escríbenos por WhatsApp y con gusto te atendemos
-  </p>
-  <a href="https://wa.me/5214425839311?text=Hola,%20Necesito%20Servicio%20de%20evaluacion%20Psicologica%20-%20Gracias%20!!!" 
-     target="_blank"
-     style="display: inline-block; padding: 14px 35px; background-color: #25D366; color: white; text-decoration: none; font-size: 1.2em; font-weight: bold; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: background 0.3s;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 28px; vertical-align: middle; margin-right: 10px; margin-bottom: 2px;">
-    Contactar por WhatsApp
-  </a>
-  <p style="margin: 20px 0 0; font-size: 0.9em; color: #777;">
-  </p>
-</div>
-     
- </div>
- <div class="map-frame" style="width: 90%; max-width: 1200px; margin: 40px auto; padding: 15px; background: white; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden;">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d-100.420301!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1739290000000"
-    width="100%"
-    height="500"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-
-  <!-- Sección de Cómo llegar integrada -->
-  <div style="padding: 20px 10px 10px; text-align: center; border-top: 1px solid #eee; margin-top: 10px;">
-    <h3 style="margin: 0 0 10px; color: #333; font-size: 1.4em;">Cómo llegar</h3>
-    <p style="margin: 0 0 15px; color: #555; font-size: 1em;">
-      Haz clic abajo para ver indicaciones paso a paso en Google Maps. El pin de la ubicación quedará fijo como destino.
-    </p>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=20.581839,-100.417727&travelmode=driving"
-       target="_blank"
-       style="display: inline-block; padding: 12px 30px; background-color: #4285F4; color: white; text-decoration: none; font-size: 1.1em; font-weight: bold; border-radius: 8px; transition: background 0.3s;">
-      Cómo llegar aquí →
-    </a>
-    <p style="margin: 15px 0 0; font-size: 0.9em; color: #777;">
-      (Cambia el modo en Maps: conducir, caminar, bicicleta o transporte público)
-    </p>
-  </div>
-</div>
-  <div class="contacto" style="max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-  <h2 style="text-align: center; color: #333; margin-bottom: 25px;">Contacto</h2>
-  
-  <div class="contacto-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center;">
-    
-    <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;">
-      <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">📞 Teléfono</strong>
-      <a href="tel:4425839311" style="color: #007BFF; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: color 0.2s;">
-        442 583 9311
-      </a>
-    </div>
-    
-    <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;">
-      <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">📧 Correo</strong>
-      <a href="mailto:Bienestaremocional58@gmail.com" style="color: #007BFF; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: color 0.2s; word-break: break-all;">
-        Bienestaremocional58@gmail.com
-      </a>
-    </div>
-    
-    <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s;">
-      <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">🕐 Horario</strong>
-      <p style="margin: 0; font-size: 1.1em; color: #555;">12:00 pm a 6:00 pm</p>
-    </div>
-  
-  </div>
-
-  <style>
-    .contacto-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .contacto-item a:hover {
-      color: #0056b3;
-      text-decoration: underline;
-    }
-  </style>
-</div>      <div class="social-links">
-            <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank">📘 Facebook</a>
-            <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank">📷 Instagram</a>
+    <div class="map-frame" style="width: 90%; max-width: 1200px; margin: 40px auto; padding: 15px; background: white; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d-100.420301!3d20.581839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM0JzU0LjYiTiAxMDDCsDI1JzAzLjgiVw!5e0!3m2!1ses!2smx!4v1739290000000"
+            width="100%"
+            height="500"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="padding: 20px 10px 10px; text-align: center; border-top: 1px solid #eee; margin-top: 10px;">
+            <h3 style="margin: 0 0 10px; color: #333; font-size: 1.4em;">Cómo llegar</h3>
+            <p style="margin: 0 0 15px; color: #555; font-size: 1em;">Haz clic abajo para ver indicaciones paso a paso en Google Maps.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=20.581839,-100.417727&travelmode=driving"
+               target="_blank"
+               style="display: inline-block; padding: 12px 30px; background-color: #4285F4; color: white; text-decoration: none; font-size: 1.1em; font-weight: bold; border-radius: 8px; transition: background 0.3s;">
+                Cómo llegar aquí →
+            </a>
+            <p style="margin: 15px 0 0; font-size: 0.9em; color: #777;">(Cambia el modo en Maps: conducir, caminar, bicicleta o transporte público)</p>
         </div>
     </div>
 
-   
+    <div class="contacto" style="max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="text-align: center; color: #333; margin-bottom: 25px;">Contacto</h2>
+        <div class="contacto-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center;">
+            <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">📞 Teléfono</strong>
+                <a href="tel:4425839311" style="color: #007BFF; font-size: 1.1em; text-decoration: none; font-weight: bold;">442 583 9311</a>
+            </div>
+            <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">📧 Correo</strong>
+                <a href="mailto:Bienestaremocional58@gmail.com" style="color: #007BFF; font-size: 1.1em; text-decoration: none; font-weight: bold; word-break: break-all;">Bienestaremocional58@gmail.com</a>
+            </div>
+            <div class="contacto-item" style="padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <strong style="font-size: 1.2em; display: block; margin-bottom: 8px;">🕐 Horario</strong>
+                <p style="margin: 0; font-size: 1.1em; color: #555;">12:00 pm a 6:00 pm</p>
+            </div>
+        </div>
+        <style>
+            .contacto-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+            .contacto-item a:hover { color: #0056b3; text-decoration: underline; }
+        </style>
+    </div>
+
+    <div class="social-links" style="justify-content: center; padding: 0 1rem;">
+        <a href="https://www.facebook.com/share/1CD3a2fD2M/" target="_blank">📘 Facebook</a>
+        <a href="https://www.instagram.com/bienestar_emocional01?igsh=MXU1cW45MTFodXF2aQ==" target="_blank">📷 Instagram</a>
+    </div>
 
     <footer>
         <p>&copy; 2025 Bienestar Emocional. Todos los derechos reservados.</p>
@@ -1178,15 +1015,14 @@ Presencial o en línea</h2>
     </div>
 
     <script>
-        // Precargar imágenes al cargar la página
         window.addEventListener('load', function() {
             const imagesToPreload = [
                 'plantillas_Images/imagenempresa.png',
                 'plantillas_Images/imagenescuela.png',
                 'plantillas_Images/imagenadolescentes.png',
-                'plantillas_Images/imagenadultos.png'
+                'plantillas_Images/imagenadultos.png',
+                'plantillas_Images/imagenevaluaciones.png'
             ];
-            
             imagesToPreload.forEach(src => {
                 const img = new Image();
                 img.src = src;
@@ -1198,17 +1034,14 @@ Presencial o en línea</h2>
                 'empresas': 'modalEmpresas',
                 'escuelas': 'modalEscuelas',
                 'infantil': 'modalInfantil',
-                'adultos': 'modalAdultos'
-                
-                'adultos2': 'modalAdultos2'
+                'adultos': 'modalAdultos',
+                'evaluaciones': 'modalEvaluaciones'
             };
             const modalId = modals[tipo];
             if (modalId) {
                 const modal = document.getElementById(modalId);
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
-                
-                // Asegurar que la imagen se muestre correctamente
                 const img = modal.querySelector('.modal-image');
                 if (img && !img.complete) {
                     img.addEventListener('load', function() {
@@ -1223,9 +1056,8 @@ Presencial o en línea</h2>
                 'empresas': 'modalEmpresas',
                 'escuelas': 'modalEscuelas',
                 'infantil': 'modalInfantil',
-                'adultos': 'modalAdultos'
-                'adultos2': 'modalAdultos2'
-        
+                'adultos': 'modalAdultos',
+                'evaluaciones': 'modalEvaluaciones'
             };
             const modalId = modals[tipo];
             if (modalId) {
@@ -1247,8 +1079,7 @@ Presencial o en línea</h2>
         function shareWhatsApp() {
             const url = 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/';
             const text = 'Conoce Bienestar Emocional - Servicios de psicología profesional';
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-            window.open(whatsappUrl, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
         }
 
         function shareEmail() {
@@ -1277,10 +1108,8 @@ Presencial o en línea</h2>
             const qrContainer = document.getElementById('qrCode');
             qrContainer.innerHTML = '<p style="margin-bottom: 1rem; color: var(--morado-intenso); font-weight: 600;">Escanea el código QR:</p>';
             qrContainer.style.display = 'block';
-            
             const qrDiv = document.createElement('div');
             qrContainer.appendChild(qrDiv);
-            
             new QRCode(qrDiv, {
                 text: 'https://bienestaremocionalwepapp-code.github.io/BienestarEmocional/',
                 width: 200,
@@ -1303,26 +1132,20 @@ Presencial o en línea</h2>
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                const modals = document.querySelectorAll('.modal');
-                modals.forEach(modal => {
+                document.querySelectorAll('.modal').forEach(modal => {
                     if (modal.style.display === 'block') {
                         modal.style.display = 'none';
                         document.body.style.overflow = 'auto';
                     }
                 });
                 const shareModal = document.getElementById('shareModal');
-                if (shareModal.style.display === 'block') {
-                    shareModal.style.display = 'none';
-                }
+                if (shareModal.style.display === 'block') shareModal.style.display = 'none';
             }
         });
 
         const viewport = document.querySelector('meta[name="viewport"]');
-        if (viewport) {
-            let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            if (isIOS) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-            }
+        if (viewport && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
         }
     </script>
 </body>
